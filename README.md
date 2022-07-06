@@ -1,4 +1,4 @@
-Share the Table App Design Project - README
+Share the Table App Design Project - README
 ===
 
 # Share the Table
@@ -28,16 +28,19 @@ Share the Table is the new dating app designed for foodies! Users will create a 
 **Required Must-have Stories**
 
 * User can create an account
-* User can login
-* User can create a profile and view their own profile
+* User can login to their account
+* User can create a profile based on a questionairre and view their own profile
 * User can swipe to match/not match with another user's profile
 * User can tap on another user's profile and view a detailed profile view
-* User can message another user, if matched with them
+* User can send text-based messages to another user, if matched with them
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User can tap on restaurants/cafes on other user's profile and view information from Google Maps API
+* User can send and share photos or attachements to another user
+* User can edit their profile
+* User can enter dates/times that work for them and algorithm will schedule time for both users
+* Notification of receiving a match feature
 
 ### 2. Screen Archetypes
 
@@ -46,7 +49,9 @@ Share the Table is the new dating app designed for foodies! Users will create a 
 * Registration Screen
    * User can create an account
    * User can create a profile
-* User Profile Screen
+* Questionaire Screen
+   * User can enter and select responses to form their profile and user preferences
+* Self Profile Screen
     * User can view their own profile
 * Feed Screen
     * User can swipe to match/not match with another user's profile
@@ -61,34 +66,43 @@ Share the Table is the new dating app designed for foodies! Users will create a 
 
 * Feed Screen
 * Conversation Screen
-* Profile Screen
+* Self Profile Screen
 
 **Flow Navigation** (Screen to Screen)
 
 * Login Screen
    => Feed Screen
 * Registration Screen
+   => Questionairre Screen
+* Questionairre Screen
    => Feed Screen
 * Feed Screen
    => Conversation Screen
    => Detailed User Profile Screen
-   => User Profile Screen
+   => Self Profile Screen
 * Conversation Screen
    => Feed Screen
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+Photos are store within repo, will embed more fleshed out frames later
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+| Property | Type                     | Description                                                  |
+|----------|--------------------------|--------------------------------------------------------------|
+| objectId | String                   | Unique ID number that corresponds to a user                  |
+| user     | Object pointer to a User | User of the profile displayed                                |
+| image    | File                     | Main image on a user profile that is first displayed on feed |
+| response | String                   | Response to questionaire in initial form                     |
+|          |                          |                                                              |
+
 ### Networking
-- [Add list of network requests by screen ]
+- Home Feed Screen
+  * (Read/GET) Query all other users
+- Conversation Screen  
+  * (READ/GET) Query logged in user object conversations with other users
+- Self Profile Screen
+  * (Read/GET) Query logged in user object
+  * (Update/PUT) Update user images/responses
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
