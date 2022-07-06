@@ -18,6 +18,10 @@
 		BA2FD1F3287632AF008BF56C /* ShareTheTableUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1F2287632AF008BF56C /* ShareTheTableUITests.m */; };
 		BA2FD1F5287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1F4287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m */; };
 		BA2FD202287634FE008BF56C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD201287634FE008BF56C /* Keys.plist */; };
+		BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD2042876393B008BF56C /* InitialViewController.m */; };
+		BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD20728763A08008BF56C /* LoginViewController.m */; };
+		BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD20A28763A93008BF56C /* CreateAccountViewController.m */; };
+		BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD20D28763C5B008BF56C /* FeedViewController.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +68,14 @@
 		BA2FD1F2287632AF008BF56C /* ShareTheTableUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareTheTableUITests.m; sourceTree = "<group>"; };
 		BA2FD1F4287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareTheTableUITestsLaunchTests.m; sourceTree = "<group>"; };
 		BA2FD201287634FE008BF56C /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		BA2FD2032876393B008BF56C /* InitialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
+		BA2FD2042876393B008BF56C /* InitialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		BA2FD20628763A08008BF56C /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BA2FD20728763A08008BF56C /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BA2FD20928763A93008BF56C /* CreateAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		BA2FD20A28763A93008BF56C /* CreateAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
+		BA2FD20C28763C5B008BF56C /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		BA2FD20D28763C5B008BF56C /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +160,8 @@
 				BA2FD1CF287632AE008BF56C /* SceneDelegate.h */,
 				BA2FD1D0287632AE008BF56C /* SceneDelegate.m */,
 				BA2FD1D5287632AE008BF56C /* Main.storyboard */,
+				BA2FD20928763A93008BF56C /* CreateAccountViewController.h */,
+				BA2FD20F28764028008BF56C /* View Controllers */,
 				BA2FD1D8287632AF008BF56C /* Assets.xcassets */,
 				BA2FD1DA287632AF008BF56C /* LaunchScreen.storyboard */,
 				BA2FD1DD287632AF008BF56C /* Info.plist */,
@@ -172,6 +186,20 @@
 				BA2FD1F4287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m */,
 			);
 			path = ShareTheTableUITests;
+			sourceTree = "<group>";
+		};
+		BA2FD20F28764028008BF56C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD20C28763C5B008BF56C /* FeedViewController.h */,
+				BA2FD20D28763C5B008BF56C /* FeedViewController.m */,
+				BA2FD20A28763A93008BF56C /* CreateAccountViewController.m */,
+				BA2FD20628763A08008BF56C /* LoginViewController.h */,
+				BA2FD20728763A08008BF56C /* LoginViewController.m */,
+				BA2FD2032876393B008BF56C /* InitialViewController.h */,
+				BA2FD2042876393B008BF56C /* InitialViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,7 +443,11 @@
 			files = (
 				BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */,
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
+				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
+				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
+				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
+				BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
