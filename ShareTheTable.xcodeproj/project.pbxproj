@@ -10,7 +10,6 @@
 		66DCFFE7B6606937E4E460DA /* Pods_ShareTheTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21313C6A0103CD7115F7F9C1 /* Pods_ShareTheTable.framework */; };
 		BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1CD287632AE008BF56C /* AppDelegate.m */; };
 		BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1D0287632AE008BF56C /* SceneDelegate.m */; };
-		BA2FD1D4287632AE008BF56C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1D3287632AE008BF56C /* ViewController.m */; };
 		BA2FD1D7287632AE008BF56C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1D5287632AE008BF56C /* Main.storyboard */; };
 		BA2FD1D9287632AF008BF56C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1D8287632AF008BF56C /* Assets.xcassets */; };
 		BA2FD1DC287632AF008BF56C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1DA287632AF008BF56C /* LaunchScreen.storyboard */; };
@@ -18,6 +17,7 @@
 		BA2FD1E9287632AF008BF56C /* ShareTheTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1E8287632AF008BF56C /* ShareTheTableTests.m */; };
 		BA2FD1F3287632AF008BF56C /* ShareTheTableUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1F2287632AF008BF56C /* ShareTheTableUITests.m */; };
 		BA2FD1F5287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1F4287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m */; };
+		BA2FD202287634FE008BF56C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD201287634FE008BF56C /* Keys.plist */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,8 +53,6 @@
 		BA2FD1CD287632AE008BF56C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BA2FD1CF287632AE008BF56C /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		BA2FD1D0287632AE008BF56C /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		BA2FD1D2287632AE008BF56C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BA2FD1D3287632AE008BF56C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BA2FD1D6287632AE008BF56C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA2FD1D8287632AF008BF56C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA2FD1DB287632AF008BF56C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +63,7 @@
 		BA2FD1EE287632AF008BF56C /* ShareTheTableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareTheTableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2FD1F2287632AF008BF56C /* ShareTheTableUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareTheTableUITests.m; sourceTree = "<group>"; };
 		BA2FD1F4287632AF008BF56C /* ShareTheTableUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareTheTableUITestsLaunchTests.m; sourceTree = "<group>"; };
+		BA2FD201287634FE008BF56C /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +115,6 @@
 				126ACBFD21F1106B20805717 /* Pods-ShareTheTableTests.debug.xcconfig */,
 				72404BB47F9F1F555E135979 /* Pods-ShareTheTableTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -149,12 +147,11 @@
 				BA2FD1CD287632AE008BF56C /* AppDelegate.m */,
 				BA2FD1CF287632AE008BF56C /* SceneDelegate.h */,
 				BA2FD1D0287632AE008BF56C /* SceneDelegate.m */,
-				BA2FD1D2287632AE008BF56C /* ViewController.h */,
-				BA2FD1D3287632AE008BF56C /* ViewController.m */,
 				BA2FD1D5287632AE008BF56C /* Main.storyboard */,
 				BA2FD1D8287632AF008BF56C /* Assets.xcassets */,
 				BA2FD1DA287632AF008BF56C /* LaunchScreen.storyboard */,
 				BA2FD1DD287632AF008BF56C /* Info.plist */,
+				BA2FD201287634FE008BF56C /* Keys.plist */,
 				BA2FD1DE287632AF008BF56C /* main.m */,
 			);
 			path = ShareTheTable;
@@ -285,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA2FD202287634FE008BF56C /* Keys.plist in Resources */,
 				BA2FD1DC287632AF008BF56C /* LaunchScreen.storyboard in Resources */,
 				BA2FD1D9287632AF008BF56C /* Assets.xcassets in Resources */,
 				BA2FD1D7287632AE008BF56C /* Main.storyboard in Resources */,
@@ -415,7 +413,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2FD1D4287632AE008BF56C /* ViewController.m in Sources */,
 				BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */,
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
