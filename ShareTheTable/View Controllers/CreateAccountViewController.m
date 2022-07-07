@@ -45,7 +45,7 @@
         } else {
             NSLog(@"User registered successfully");
             // Manually segue to feed view
-            [self performSegueWithIdentifier:@"createAccountToFeedSegue" sender:nil];
+            [self performSegueWithIdentifier:@"createToProfileSegue" sender:nil];
         }
     }];
 }
