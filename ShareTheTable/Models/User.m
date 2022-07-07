@@ -28,7 +28,6 @@
     newUser.location = location;
     
     [newUser saveInBackgroundWithBlock: completion];
-    
 }
 
 @end

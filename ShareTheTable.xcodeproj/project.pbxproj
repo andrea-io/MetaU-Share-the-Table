@@ -23,6 +23,8 @@
 		BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD20A28763A93008BF56C /* CreateAccountViewController.m */; };
 		BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD20D28763C5B008BF56C /* FeedViewController.m */; };
 		BA2FD21328775D11008BF56C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21228775D11008BF56C /* User.m */; };
+		BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */; };
+		BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21B28779195008BF56C /* QuestionViewController.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,10 @@
 		BA2FD20D28763C5B008BF56C /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		BA2FD21128775D11008BF56C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		BA2FD21228775D11008BF56C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		BA2FD21728778FFA008BF56C /* AddPhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPhotosViewController.h; sourceTree = "<group>"; };
+		BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPhotosViewController.m; sourceTree = "<group>"; };
+		BA2FD21A28779195008BF56C /* QuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		BA2FD21B28779195008BF56C /* QuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,7 +170,6 @@
 				BA2FD1CF287632AE008BF56C /* SceneDelegate.h */,
 				BA2FD1D0287632AE008BF56C /* SceneDelegate.m */,
 				BA2FD1D5287632AE008BF56C /* Main.storyboard */,
-				BA2FD20928763A93008BF56C /* CreateAccountViewController.h */,
 				BA2FD20F28764028008BF56C /* View Controllers */,
 				BA2FD1D8287632AF008BF56C /* Assets.xcassets */,
 				BA2FD1DA287632AF008BF56C /* LaunchScreen.storyboard */,
@@ -195,13 +200,9 @@
 		BA2FD20F28764028008BF56C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BA2FD20C28763C5B008BF56C /* FeedViewController.h */,
-				BA2FD20D28763C5B008BF56C /* FeedViewController.m */,
-				BA2FD20A28763A93008BF56C /* CreateAccountViewController.m */,
-				BA2FD20628763A08008BF56C /* LoginViewController.h */,
-				BA2FD20728763A08008BF56C /* LoginViewController.m */,
-				BA2FD2032876393B008BF56C /* InitialViewController.h */,
-				BA2FD2042876393B008BF56C /* InitialViewController.m */,
+				BA2FD22728779801008BF56C /* Profile Making */,
+				BA2FD222287791E0008BF56C /* Feed */,
+				BA2FD226287797C1008BF56C /* User Account Content */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -213,6 +214,79 @@
 				BA2FD21228775D11008BF56C /* User.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BA2FD21D287791A2008BF56C /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD21A28779195008BF56C /* QuestionViewController.h */,
+				BA2FD21B28779195008BF56C /* QuestionViewController.m */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		BA2FD21E287791AD008BF56C /* Add Photos */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD21728778FFA008BF56C /* AddPhotosViewController.h */,
+				BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */,
+			);
+			path = "Add Photos";
+			sourceTree = "<group>";
+		};
+		BA2FD21F287791C3008BF56C /* Initial View */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD2032876393B008BF56C /* InitialViewController.h */,
+				BA2FD2042876393B008BF56C /* InitialViewController.m */,
+			);
+			path = "Initial View";
+			sourceTree = "<group>";
+		};
+		BA2FD220287791CE008BF56C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD20628763A08008BF56C /* LoginViewController.h */,
+				BA2FD20728763A08008BF56C /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		BA2FD221287791D5008BF56C /* Create Account */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD20A28763A93008BF56C /* CreateAccountViewController.m */,
+				BA2FD20928763A93008BF56C /* CreateAccountViewController.h */,
+			);
+			path = "Create Account";
+			sourceTree = "<group>";
+		};
+		BA2FD222287791E0008BF56C /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD20C28763C5B008BF56C /* FeedViewController.h */,
+				BA2FD20D28763C5B008BF56C /* FeedViewController.m */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		BA2FD226287797C1008BF56C /* User Account Content */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD21F287791C3008BF56C /* Initial View */,
+				BA2FD221287791D5008BF56C /* Create Account */,
+				BA2FD220287791CE008BF56C /* Login */,
+			);
+			path = "User Account Content";
+			sourceTree = "<group>";
+		};
+		BA2FD22728779801008BF56C /* Profile Making */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD21D287791A2008BF56C /* Question */,
+				BA2FD21E287791AD008BF56C /* Add Photos */,
+			);
+			path = "Profile Making";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +533,8 @@
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
+				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
+				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
 				BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */,
