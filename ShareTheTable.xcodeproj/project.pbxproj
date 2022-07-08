@@ -25,6 +25,9 @@
 		BA2FD21328775D11008BF56C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21228775D11008BF56C /* User.m */; };
 		BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */; };
 		BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21B28779195008BF56C /* QuestionViewController.m */; };
+		BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD229287897CB008BF56C /* SelfProfileViewController.m */; };
+		BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */; };
+		BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +88,12 @@
 		BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPhotosViewController.m; sourceTree = "<group>"; };
 		BA2FD21A28779195008BF56C /* QuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		BA2FD21B28779195008BF56C /* QuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		BA2FD228287897CB008BF56C /* SelfProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfProfileViewController.h; sourceTree = "<group>"; };
+		BA2FD229287897CB008BF56C /* SelfProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfProfileViewController.m; sourceTree = "<group>"; };
+		BA2FD22B2878982C008BF56C /* MessageInboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInboxViewController.h; sourceTree = "<group>"; };
+		BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageInboxViewController.m; sourceTree = "<group>"; };
+		BA2FD22E287898DA008BF56C /* DetailedProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailedProfileViewController.h; sourceTree = "<group>"; };
+		BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedProfileViewController.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,8 +273,10 @@
 		BA2FD222287791E0008BF56C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				BA2FD20C28763C5B008BF56C /* FeedViewController.h */,
-				BA2FD20D28763C5B008BF56C /* FeedViewController.m */,
+				BA2FD231287898E7008BF56C /* Detailed Profile */,
+				BA2FD232287898FB008BF56C /* Message Inbox */,
+				BA2FD23328789908008BF56C /* Self Profile */,
+				BA2FD23428789912008BF56C /* Home Feed */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -287,6 +298,42 @@
 				BA2FD21E287791AD008BF56C /* Add Photos */,
 			);
 			path = "Profile Making";
+			sourceTree = "<group>";
+		};
+		BA2FD231287898E7008BF56C /* Detailed Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD22E287898DA008BF56C /* DetailedProfileViewController.h */,
+				BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */,
+			);
+			path = "Detailed Profile";
+			sourceTree = "<group>";
+		};
+		BA2FD232287898FB008BF56C /* Message Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD22B2878982C008BF56C /* MessageInboxViewController.h */,
+				BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */,
+			);
+			path = "Message Inbox";
+			sourceTree = "<group>";
+		};
+		BA2FD23328789908008BF56C /* Self Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD228287897CB008BF56C /* SelfProfileViewController.h */,
+				BA2FD229287897CB008BF56C /* SelfProfileViewController.m */,
+			);
+			path = "Self Profile";
+			sourceTree = "<group>";
+		};
+		BA2FD23428789912008BF56C /* Home Feed */ = {
+			isa = PBXGroup;
+			children = (
+				BA2FD20C28763C5B008BF56C /* FeedViewController.h */,
+				BA2FD20D28763C5B008BF56C /* FeedViewController.m */,
+			);
+			path = "Home Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,11 +580,14 @@
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
+				BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */,
+				BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */,
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
 				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
 				BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */,
+				BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
