@@ -29,6 +29,30 @@
     }
 }
 
+- (IBAction)didTapChineseFood:(id)sender {
+    [self refreshButtons:self.chineseFoodButton];
+}
+
+- (IBAction)didTapMexicanFood:(id)sender {
+    [self refreshButtons:self.mexicanFoodButton];
+}
+
+- (IBAction)didTapAmericanFood:(id)sender {
+    [self refreshButtons:self.americanFoodButton];
+}
+
+- (IBAction)didTapItalianFood:(id)sender {
+    [self refreshButtons:self.italianFoodButton];
+}
+
+- (IBAction)didTapGreekFood:(id)sender {
+    [self refreshButtons:self.greekFoodButton];
+}
+
+- (IBAction)didTapOtherFood:(id)sender {
+    [self refreshButtons:self.otherFoodButton];
+}
+
 - (IBAction)didTapSeaFoodAllergies:(id)sender {
     [self refreshButtons:self.seaFoodAllergiesButton];
 }
@@ -89,6 +113,36 @@
     
     if(self.seaFoodAllergiesButton.selected == YES) {
         [currentUser addObject:@"Seafood Allergies" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.chineseFoodButton.selected == YES) {
+        [currentUser addObject:@"Chinese" forKey:@"foodPreferences"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.mexicanFoodButton.selected == YES) {
+        [currentUser addObject:@"Mexican" forKey:@"foodPreferences"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.americanFoodButton.selected == YES) {
+        [currentUser addObject:@"American" forKey:@"foodPreferences"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.italianFoodButton.selected == YES) {
+        [currentUser addObject:@"Italian" forKey:@"foodPreferences"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.greekFoodButton.selected == YES) {
+        [currentUser addObject:@"Greek" forKey:@"foodPreferences"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.otherFoodButton.selected == YES) {
+        [currentUser addObject:@"Other" forKey:@"foodPreferences"];
         [currentUser saveInBackground];
     }
 }

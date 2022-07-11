@@ -423,37 +423,55 @@
                                 <rect key="frame" x="20" y="522" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Vegan"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Chinese"/>
+                                <connections>
+                                    <action selector="didTapChineseFood:" destination="kBL-jh-zN2" eventType="touchUpInside" id="6Nr-VI-2iS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLM-h4-tBl">
                                 <rect key="frame" x="156" y="522" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Vegetarian"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Mexican"/>
+                                <connections>
+                                    <action selector="didTapMexicanFood:" destination="kBL-jh-zN2" eventType="touchUpInside" id="Iqa-5Y-f7G"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QH-yj-E73">
                                 <rect key="frame" x="291" y="522" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Kosher"/>
+                                <buttonConfiguration key="configuration" style="gray" title="American"/>
+                                <connections>
+                                    <action selector="didTapAmericanFood:" destination="kBL-jh-zN2" eventType="touchUpInside" id="L4i-23-wFR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pvQ-bG-iar">
                                 <rect key="frame" x="20" y="639" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Gluten Free"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Italian"/>
+                                <connections>
+                                    <action selector="didTapItalianFood:" destination="kBL-jh-zN2" eventType="touchUpInside" id="ZI3-lS-eLh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2S5-3F-Gv3">
                                 <rect key="frame" x="156" y="639" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Lactose Intolerant"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Greek"/>
+                                <connections>
+                                    <action selector="didTapGreekFood:" destination="kBL-jh-zN2" eventType="touchUpInside" id="hSj-2W-8rZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4p-tM-bKP">
                                 <rect key="frame" x="291" y="639" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Sea Food Allergies"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Other"/>
+                                <connections>
+                                    <action selector="didTapOtherFood:" destination="kBL-jh-zN2" eventType="touchUpInside" id="pTn-Wl-GoL"/>
+                                </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-HY-tKZ">
                                 <rect key="frame" x="76" y="811" width="262" height="4"/>
@@ -464,9 +482,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="americanFoodButton" destination="6QH-yj-E73" id="VaH-e8-4yN"/>
+                        <outlet property="chineseFoodButton" destination="G9G-T8-Nva" id="j81-Ij-Vd6"/>
                         <outlet property="glutenFreeButton" destination="kZ3-Wp-XJJ" id="dM2-2P-jke"/>
+                        <outlet property="greekFoodButton" destination="2S5-3F-Gv3" id="YhY-va-ZaX"/>
+                        <outlet property="italianFoodButton" destination="pvQ-bG-iar" id="vfH-nq-6xi"/>
                         <outlet property="kosherButton" destination="hpR-al-ywD" id="9dN-bs-KgK"/>
                         <outlet property="lactoseIntolerantButton" destination="hBI-ea-oED" id="Eue-Or-Q9H"/>
+                        <outlet property="mexicanFoodButton" destination="gLM-h4-tBl" id="gor-f6-oqo"/>
+                        <outlet property="otherFoodButton" destination="D4p-tM-bKP" id="UMf-N8-0F9"/>
                         <outlet property="seaFoodAllergiesButton" destination="uik-Un-aiD" id="Jej-Hm-djq"/>
                         <outlet property="veganButton" destination="qHL-bo-Z7z" id="EpJ-bP-Ent"/>
                         <outlet property="vegitarianButton" destination="8hF-NX-Odc" id="diA-08-avi"/>
