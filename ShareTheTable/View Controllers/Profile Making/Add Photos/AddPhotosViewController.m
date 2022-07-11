@@ -11,6 +11,7 @@
 #import "SceneDelegate.h"
 #import "CreateAccountViewController.h"
 #import "QuestionViewController.h"
+#import "UniformTypeIdentifiers/UniformTypeIdentifiers.h"
 
 @interface AddPhotosViewController () <PHPickerViewControllerDelegate>
 
@@ -39,9 +40,8 @@
     // TODO: DELETE ACCOUNT MADE
 }
 
-
-
 - (IBAction)tapSelectPhotos:(id)sender {
+    // self.imageViews = [[NSMutableArray alloc] init];
     PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
     config.selectionLimit = 5;
     config.filter = [PHPickerFilter imagesFilter];
@@ -54,6 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.imageViews = [[NSMutableArray alloc] init];
 }
 
 /*
@@ -82,25 +83,50 @@
         NSLog(@"result: %@", result);
         NSLog(@"%@", result.assetIdentifier);
         NSLog(@"%@", result.itemProvider);
+        
+        [result.itemProvider loadItemForTypeIdentifier:result.assetIdentifier options:nil completionHandler:^(id item, NSError *error) {
             
-        // Get UIImage
-        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
+            NSLog(@"%@", item);
+            NSLog(@"%@", [item class]);
             
-            NSLog(@"object: %@, error: %@", object, error);
-            if ([object isKindOfClass:[UIImage class]]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    //UIImageView *imageView = [self newImageViewForImage:(UIImage*)object];
-                        
-                    [self.images addObject:object];
-                    //[self.imagetest1 setImage:object];
-
-                    [self.view setNeedsLayout];
-                });
+            if([item isKindOfClass:[NSURL class]]) {
+                //NSError *error = nil;
+                NSData *data = [NSData dataWithContentsOfURL:item];
+                UIImage *image = [UIImage imageWithData:data];
+                [self.imageViews addObject:image];
             }
+            self.imagetest1.image = [self.imageViews objectAtIndex:0];
+            //self.imagetest2.image = [self.imageViews objectAtIndex:1];
         }];
+        
+        // Get UIImage
+//        [result.itemProvider loadObjectOfClass:[NSURL class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
+//
+//            NSLog(@"object: %@, error: %@", object, error);
+//            if ([object isKindOfClass:[NSURL class]]) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    //UIImageView *imageView = [self newImageViewForImage:(UIImage*)object];
+//                    NSData *data = [[NSData alloc] initWithContentsOfURL:object];
+//
+//                    UIImage *image = [UIImage imageWithData:data];
+//
+//                    [self.imageViews addObject:image];
+//                    self.imagetest1.image = image;
+//
+//                    [self.view setNeedsLayout];
+//                });
+//            }
+//
+//        }];
     }
-    [self.imagetest1 setImage:[self.images objectAtIndex:0]];
-    [self.imagetest2 setImage:[self.images objectAtIndex:1]];
+    
+    for (id obj in self.imageViews) {
+        NSLog(@"obj: %@", obj);
+    }
+    
+   
+//    [self.imagetest1 setImage:[self.images objectAtIndex:0]];
+//    [self.imagetest2 setImage:[self.images objectAtIndex:1]];
 }
 
 @end

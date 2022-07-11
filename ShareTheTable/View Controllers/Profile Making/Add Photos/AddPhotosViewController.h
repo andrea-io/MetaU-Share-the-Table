@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *image2;
 @property (weak, nonatomic) IBOutlet UIButton *image1;
 @property (weak, nonatomic) IBOutlet UIButton *selectPhotosButton;
-@property (nonatomic, strong) id<AddPhotosControllerDelegate> delegate;
-@property (nonatomic, strong) NSMutableArray* images;
+//@property (nonatomic, strong) id<AddPhotosControllerDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray* imageViews;
 
 
 @end

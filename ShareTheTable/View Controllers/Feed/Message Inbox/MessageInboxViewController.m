@@ -6,12 +6,22 @@
 //
 
 #import "MessageInboxViewController.h"
+#import "SceneDelegate.h"
+#import "FeedViewController.h"
 
 @interface MessageInboxViewController ()
 
 @end
 
 @implementation MessageInboxViewController
+- (IBAction)tapBack:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    FeedViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabNav"];
+    sceneDelegate.window.rootViewController = navViewController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

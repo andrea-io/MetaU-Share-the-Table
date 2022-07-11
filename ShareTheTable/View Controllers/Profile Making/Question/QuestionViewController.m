@@ -6,12 +6,35 @@
 //
 
 #import "QuestionViewController.h"
+#import "AddPhotosViewController.h"
+#import "SceneDelegate.h"
+#import "FeedViewController.h"
 
 @interface QuestionViewController ()
 
 @end
 
 @implementation QuestionViewController
+
+- (IBAction)tapCompleteProfile:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    FeedViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabNav"];
+    sceneDelegate.window.rootViewController = navViewController;
+}
+
+- (IBAction)tapBack:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    AddPhotosViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"Nav"];
+    sceneDelegate.window.rootViewController = navViewController;
+    
+    // TODO: DELETE ACCOUNT MADE
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

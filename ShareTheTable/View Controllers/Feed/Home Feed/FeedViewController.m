@@ -13,6 +13,14 @@
 
 @implementation FeedViewController
 
+- (IBAction)tapMessage:(id)sender {
+    [self performSegueWithIdentifier:@"feedToMessageSegue" sender:nil];
+}
+
+- (IBAction)tapViewProfile:(id)sender {
+    [self performSegueWithIdentifier:@"feedToDetailSegue" sender:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
