@@ -106,15 +106,16 @@
             if ([object isKindOfClass:[UIImage class]]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //UIImageView *imageView = [self newImageViewForImage:(UIImage*)object];
-                    UIImage* img = object;
-                    img = [self resizeImage:img withSize:CGSizeMake(159,159)];
+                    UIImage* imageSelected = object;
+                    imageSelected = [self resizeImage:imageSelected withSize:CGSizeMake(159,159)];
+                    [self.imageViews addObject:imageSelected];
                     
-                    [self.imageViews addObject:img];
                     if(self.imageViews.count == 5) {
                         PFObject* currentUser = [PFUser currentUser];
                         for(UIImage* image in self.imageViews) {
-                            NSData *imageData = UIImageJPEGRepresentation(image, .7);
-                            [currentUser addObject:imageData forKey:@"userPhotos"];
+                            NSString* imageString = [UIImagePNGRepresentation(image) base64Encoding];
+                
+                            [currentUser addObject:imageString forKey:@"userPhotos"];
                             [currentUser saveInBackground];
                         }
                 

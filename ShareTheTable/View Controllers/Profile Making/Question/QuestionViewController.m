@@ -9,6 +9,7 @@
 #import "AddPhotosViewController.h"
 #import "SceneDelegate.h"
 #import "FeedViewController.h"
+#import "Parse/Parse.h"
 
 @interface QuestionViewController ()
 
@@ -16,13 +17,80 @@
 
 @implementation QuestionViewController
 
+- (void)refreshButtons:(UIButton*)button {
+    // Button was already selected
+    if(button.selected == YES) {
+        button.selected = NO;
+        [button setBackgroundColor:UIColor.clearColor];
+    } else {
+        // Button was not already selected
+        button.selected = YES;
+        [button setBackgroundColor:UIColor.greenColor];
+    }
+}
+
+- (IBAction)didTapSeaFoodAllergies:(id)sender {
+    [self refreshButtons:self.seaFoodAllergiesButton];
+}
+
+- (IBAction)didTapLactoseIntolerant:(id)sender {
+    [self refreshButtons:self.lactoseIntolerantButton];
+}
+
+- (IBAction)didTapGlutenFree:(id)sender {
+    [self refreshButtons:self.glutenFreeButton];
+}
+
+- (IBAction)didTapKosher:(id)sender {
+    [self refreshButtons:self.kosherButton];
+}
+
+- (IBAction)didTapVegetarian:(id)sender {
+    [self refreshButtons:self.vegitarianButton];
+}
+
+- (IBAction)didTapVegan:(id)sender {
+    [self refreshButtons:self.veganButton];
+}
+
 - (IBAction)tapCompleteProfile:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     FeedViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabNav"];
     sceneDelegate.window.rootViewController = navViewController;
+    
+    PFObject* currentUser = [PFUser currentUser];
+    
+    if(self.veganButton.selected == YES) {
+        [currentUser addObject:@"Vegan" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.vegitarianButton.selected == YES) {
+        [currentUser addObject:@"Vegetarian" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.kosherButton.selected == YES) {
+        [currentUser addObject:@"Kosher" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.glutenFreeButton.selected == YES) {
+        [currentUser addObject:@"Gluten Free" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.lactoseIntolerantButton.selected == YES) {
+        [currentUser addObject:@"Lactose Intolerant" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
+    
+    if(self.seaFoodAllergiesButton.selected == YES) {
+        [currentUser addObject:@"Seafood Allergies" forKey:@"dietaryRestrictions"];
+        [currentUser saveInBackground];
+    }
 }
 
 - (IBAction)tapBack:(id)sender {
@@ -39,6 +107,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.veganButton.selected = NO;
+    self.vegitarianButton.selected = NO;
+    self.kosherButton.selected = NO;
+    self.glutenFreeButton.selected = NO;
+    self.lactoseIntolerantButton.selected = NO;
+    self.seaFoodAllergiesButton.selected = NO;
 }
 
 /*
