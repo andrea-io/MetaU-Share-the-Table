@@ -12,6 +12,7 @@
 #import "CreateAccountViewController.h"
 #import "QuestionViewController.h"
 #import "UniformTypeIdentifiers/UniformTypeIdentifiers.h"
+#import "Parse/Parse.h"
 
 @interface AddPhotosViewController () <PHPickerViewControllerDelegate>
 
@@ -75,6 +76,20 @@
     return imageView;
 }
 
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (void)picker:(nonnull PHPickerViewController *)picker didFinishPicking:(nonnull NSArray<PHPickerResult *> *)results {
     
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -84,49 +99,38 @@
         NSLog(@"%@", result.assetIdentifier);
         NSLog(@"%@", result.itemProvider);
         
-        [result.itemProvider loadItemForTypeIdentifier:result.assetIdentifier options:nil completionHandler:^(id item, NSError *error) {
-            
-            NSLog(@"%@", item);
-            NSLog(@"%@", [item class]);
-            
-            if([item isKindOfClass:[NSURL class]]) {
-                //NSError *error = nil;
-                NSData *data = [NSData dataWithContentsOfURL:item];
-                UIImage *image = [UIImage imageWithData:data];
-                [self.imageViews addObject:image];
-            }
-            self.imagetest1.image = [self.imageViews objectAtIndex:0];
-            //self.imagetest2.image = [self.imageViews objectAtIndex:1];
-        }];
-        
         // Get UIImage
-//        [result.itemProvider loadObjectOfClass:[NSURL class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
-//
-//            NSLog(@"object: %@, error: %@", object, error);
-//            if ([object isKindOfClass:[NSURL class]]) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    //UIImageView *imageView = [self newImageViewForImage:(UIImage*)object];
-//                    NSData *data = [[NSData alloc] initWithContentsOfURL:object];
-//
-//                    UIImage *image = [UIImage imageWithData:data];
-//
-//                    [self.imageViews addObject:image];
-//                    self.imagetest1.image = image;
-//
-//                    [self.view setNeedsLayout];
-//                });
-//            }
-//
-//        }];
+        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
+
+            NSLog(@"object: %@, error: %@", object, error);
+            if ([object isKindOfClass:[UIImage class]]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //UIImageView *imageView = [self newImageViewForImage:(UIImage*)object];
+                    UIImage* img = object;
+                    img = [self resizeImage:img withSize:CGSizeMake(159,159)];
+                    
+                    [self.imageViews addObject:img];
+                    if(self.imageViews.count == 5) {
+                        PFObject* currentUser = [PFUser currentUser];
+                        for(UIImage* image in self.imageViews) {
+                            NSData *imageData = UIImageJPEGRepresentation(image, .7);
+                            [currentUser addObject:imageData forKey:@"userPhotos"];
+                            [currentUser saveInBackground];
+                        }
+                
+                        [self.image1 setImage:[self.imageViews objectAtIndex:0] forState:UIControlStateNormal];
+                        [self.image2 setImage:[self.imageViews objectAtIndex:1] forState:UIControlStateNormal];
+                        [self.image3 setImage:[self.imageViews objectAtIndex:2] forState:UIControlStateNormal];
+                        [self.image4 setImage:[self.imageViews objectAtIndex:3] forState:UIControlStateNormal];
+                        [self.image5 setImage:[self.imageViews objectAtIndex:4] forState:UIControlStateNormal];
+                    }
+
+                    [self.view setNeedsLayout];
+                });
+            }
+
+        }];
     }
-    
-    for (id obj in self.imageViews) {
-        NSLog(@"obj: %@", obj);
-    }
-    
-   
-//    [self.imagetest1 setImage:[self.images objectAtIndex:0]];
-//    [self.imagetest2 setImage:[self.images objectAtIndex:1]];
 }
 
 @end
