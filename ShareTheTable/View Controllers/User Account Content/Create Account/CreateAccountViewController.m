@@ -7,6 +7,8 @@
 
 #import "CreateAccountViewController.h"
 #import "Parse/Parse.h"
+//#import "User.h"
+
 @interface CreateAccountViewController ()
 
 @end
@@ -15,14 +17,17 @@
 
 - (IBAction)registerUser:(id)sender {
     // Initialize a user object
-    PFUser *newUser = [PFUser user];
     
-    // Set user properties
-    newUser.username = self.usernameTextView.text;
-    newUser.password = self.passwordTextView.text;
-        
+    PFUser* newUser = [PFUser new];
+    
+    newUser.username = self.usernameTextField.text;
+    newUser.password = self.passwordTextField.text;
+    newUser[@"firstName"] = self.firstNameTextField.text;
+    newUser[@"ageValue"] = self.ageTextField.text;
+    newUser[@"locationName"] = self.locationTextField.text;
+    
     // Check if the user left either the username and/or password fields empty
-    if ([self.usernameTextView.text isEqual:@""] || [self.passwordTextView.text isEqual:@""]) {
+    if ([self.usernameTextField.text isEqual:@""] || [self.passwordTextField.text isEqual:@""]) {
         // Create alert controller for empty username and/or password text fields
         UIAlertController *emptyFieldAlert = [UIAlertController alertControllerWithTitle:@"Username and Password Required" message:@"Please enter your username and password" preferredStyle:(UIAlertControllerStyleAlert)];
 
@@ -45,7 +50,7 @@
         } else {
             NSLog(@"User registered successfully");
             // Manually segue to feed view
-            [self performSegueWithIdentifier:@"createAccountToFeedSegue" sender:nil];
+            [self performSegueWithIdentifier:@"accountToPhotoSegue" sender:nil];
         }
     }];
 }

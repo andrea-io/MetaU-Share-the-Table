@@ -1,17 +1,17 @@
 //
-//  FeedViewController.m
+//  SignUpViewController.m
 //  ShareTheTable
 //
-//  Created by Andrea Gonzalez on 7/6/22.
+//  Created by Andrea Gonzalez on 7/7/22.
 //
 
-#import "FeedViewController.h"
+#import "SignUpViewController.h"
 
-@interface FeedViewController ()
+@interface SignUpViewController ()
 
 @end
 
-@implementation FeedViewController
+@implementation SignUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
