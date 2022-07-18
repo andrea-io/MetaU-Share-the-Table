@@ -29,8 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *kosherButton;
 @property (weak, nonatomic) IBOutlet UIButton *vegitarianButton;
 @property (weak, nonatomic) IBOutlet UIButton *veganButton;
-@property (nonatomic, strong) NSMutableArray* dietaryRestrictions;
-@property (nonatomic, strong) NSMutableArray* cuisinePreferences;
+@property (nonatomic, strong) NSMutableArray<PFObject*>* allPreferences;
 @property (nonatomic, strong) id<QuestionViewControllerDelegate> delegate;
 @property (nonatomic, strong) User *user;
 

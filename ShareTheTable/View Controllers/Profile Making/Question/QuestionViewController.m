@@ -18,6 +18,102 @@
 
 @implementation QuestionViewController
 
+- (IBAction)didTapAButton:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    // Refresh button selected
+    [self refreshButtons:button];
+    PFObject* currentUser = [PFUser currentUser];
+    NSLog(@"Button pressed: %@", [sender currentTitle]);
+    
+    // Tag = 1, button pressed was a dietary preference
+    if([button tag] == 1) {
+        PFObject* dietPreference = [[PFObject alloc] initWithClassName:@"Preference"];
+        // Check if the button was selected or deselected
+        if(button.selected == YES) {
+            PFQuery* query = [PFQuery queryWithClassName:@"Preference"];
+            
+            [query includeKey:@"preferenceName"];
+            [query whereKey:@"preferenceName" equalTo:[button currentTitle]];
+            
+            [query findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error) {
+                if(!error) {
+                    PFObject* foundObject = [objects objectAtIndex:0];
+                    [dietPreference setObjectId:foundObject.objectId];
+                } else {
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+            
+            [self.allPreferences addObject:dietPreference];
+        } else {
+            PFQuery* query = [PFQuery queryWithClassName:@"Preference"];
+            [query includeKey:@"preferenceName"];
+            [query whereKey:@"preferenceName" equalTo:[button currentTitle]];
+            
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    // The find succeeded.
+                    NSMutableArray* newPreferences = [self.allPreferences mutableCopy];
+                    PFObject* foundObject = [objects objectAtIndex:0];
+
+                    for (PFObject* obj in self.allPreferences){
+                        if ([obj.objectId isEqual:foundObject.objectId]) {
+                            [newPreferences removeObject:obj];
+                        }
+                    }
+                    self.allPreferences = newPreferences;
+                } else {
+                // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
+    // Tag = 2, button pressed was a food preference
+    } else if([button tag] == 2) {
+        PFObject* foodPreference = [[PFObject alloc] initWithClassName:@"Preference"];
+        // Check if the button was selected or deselected
+        if(button.selected == YES) {
+            PFQuery* query = [PFQuery queryWithClassName:@"Preference"];
+            
+            [query includeKey:@"preferenceName"];
+            [query whereKey:@"preferenceName" equalTo:[button currentTitle]];
+            
+            [query findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error) {
+                if(!error) {
+                    PFObject* foundObject = [objects objectAtIndex:0];
+                    [foodPreference setObjectId:foundObject.objectId];
+                } else {
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+            
+            [self.allPreferences addObject:foodPreference];
+        } else {
+            PFQuery* query = [PFQuery queryWithClassName:@"Preference"];
+            [query includeKey:@"preferenceName"];
+            [query whereKey:@"preferenceName" equalTo:[button currentTitle]];
+            
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    // The find succeeded.
+                    NSMutableArray* newPreferences = [self.allPreferences mutableCopy];
+                    PFObject* foundObject = [objects objectAtIndex:0];
+
+                    for (PFObject* obj in self.allPreferences){
+                        if ([obj.objectId isEqual:foundObject.objectId]) {
+                            [newPreferences removeObject:obj];
+                        }
+                    }
+                    self.allPreferences = newPreferences;
+                } else {
+                // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
+    }
+}
+
 - (void)refreshButtons:(UIButton*)button {
     // Button was already selected
     if(button.selected == YES) {
@@ -30,54 +126,6 @@
     }
 }
 
-- (IBAction)didTapChineseFood:(id)sender {
-    [self refreshButtons:self.chineseFoodButton];
-}
-
-- (IBAction)didTapMexicanFood:(id)sender {
-    [self refreshButtons:self.mexicanFoodButton];
-}
-
-- (IBAction)didTapAmericanFood:(id)sender {
-    [self refreshButtons:self.americanFoodButton];
-}
-
-- (IBAction)didTapItalianFood:(id)sender {
-    [self refreshButtons:self.italianFoodButton];
-}
-
-- (IBAction)didTapGreekFood:(id)sender {
-    [self refreshButtons:self.greekFoodButton];
-}
-
-- (IBAction)didTapOtherFood:(id)sender {
-    [self refreshButtons:self.otherFoodButton];
-}
-
-- (IBAction)didTapSeaFoodAllergies:(id)sender {
-    [self refreshButtons:self.seaFoodAllergiesButton];
-}
-
-- (IBAction)didTapLactoseIntolerant:(id)sender {
-    [self refreshButtons:self.lactoseIntolerantButton];
-}
-
-- (IBAction)didTapGlutenFree:(id)sender {
-    [self refreshButtons:self.glutenFreeButton];
-}
-
-- (IBAction)didTapKosher:(id)sender {
-    [self refreshButtons:self.kosherButton];
-}
-
-- (IBAction)didTapVegetarian:(id)sender {
-    [self refreshButtons:self.vegitarianButton];
-}
-
-- (IBAction)didTapVegan:(id)sender {
-    [self refreshButtons:self.veganButton];
-}
-
 - (IBAction)tapCompleteProfile:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
     
@@ -86,64 +134,8 @@
     sceneDelegate.window.rootViewController = navViewController;
     
     PFObject* currentUser = [PFUser currentUser];
-    
-    if(self.veganButton.selected == YES) {
-        [currentUser addObject:@"Vegan" forKey:@"dietaryRestrictions"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.vegitarianButton.selected == YES) {
-        [currentUser addObject:@"Vegetarian" forKey:@"dietaryRestrictions"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.kosherButton.selected == YES) {
-        [currentUser addObject:@"Kosher" forKey:@"dietaryRestrictions"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.glutenFreeButton.selected == YES) {
-        [currentUser addObject:@"Gluten Free" forKey:@"dietaryRestrictions"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.lactoseIntolerantButton.selected == YES) {
-        [currentUser addObject:@"Lactose Intolerant" forKey:@"dietaryRestrictions"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.seaFoodAllergiesButton.selected == YES) {
-        [currentUser addObject:@"Seafood Allergies" forKey:@"dietaryRestrictions"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.chineseFoodButton.selected == YES) {
-        [currentUser addObject:@"Chinese" forKey:@"foodPreferences"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.mexicanFoodButton.selected == YES) {
-        [currentUser addObject:@"Mexican" forKey:@"foodPreferences"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.americanFoodButton.selected == YES) {
-        [currentUser addObject:@"American" forKey:@"foodPreferences"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.italianFoodButton.selected == YES) {
-        [currentUser addObject:@"Italian" forKey:@"foodPreferences"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.greekFoodButton.selected == YES) {
-        [currentUser addObject:@"Greek" forKey:@"foodPreferences"];
-        [currentUser saveInBackground];
-    }
-    
-    if(self.otherFoodButton.selected == YES) {
-        [currentUser addObject:@"Other" forKey:@"foodPreferences"];
+    for(PFObject* obj in self.allPreferences) {
+        [currentUser addObject:obj forKey:@"allPreferences"];
         [currentUser saveInBackground];
     }
     
@@ -178,6 +170,14 @@
     self.glutenFreeButton.selected = NO;
     self.lactoseIntolerantButton.selected = NO;
     self.seaFoodAllergiesButton.selected = NO;
+    self.chineseFoodButton.selected = NO;
+    self.mexicanFoodButton.selected = NO;
+    self.americanFoodButton.selected = NO;
+    self.italianFoodButton.selected = NO;
+    self.greekFoodButton.selected = NO;
+    self.otherFoodButton.selected = NO;
+    
+    self.allPreferences = [[NSMutableArray alloc] init];
 }
 
 /*
