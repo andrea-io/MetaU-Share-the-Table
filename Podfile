@@ -8,7 +8,6 @@ target 'ShareTheTable' do
   # Pods for ShareTheTable
 
   pod 'Parse'
-  pod 'MARKRangeSlider'
 
   target 'ShareTheTableTests' do
     inherit! :search_paths

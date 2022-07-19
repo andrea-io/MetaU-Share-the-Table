@@ -6,7 +6,6 @@
 //
 
 #import "FeedViewController.h"
-#import "Parse/Parse.h"
 
 @interface FeedViewController ()
 
@@ -19,17 +18,12 @@
 }
 
 - (IBAction)tapViewProfile:(id)sender {
-    [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
+    [self performSegueWithIdentifier:@"feedToDetailSegue" sender:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    PFUser* currentUser = [PFUser currentUser];
-    
-    NSString* usersName = currentUser[@"firstName"];
-    
-    self.welcomeLabel.text = [@"Hi, " stringByAppendingString:usersName];
 }
 
 /*
