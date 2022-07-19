@@ -8,7 +8,7 @@
 #import "SelfProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Parse/Parse.h"
-#import "NSData+Base64.h"
+//#import "NSData+Base64.h"
 
 @interface SelfProfileViewController ()
 
