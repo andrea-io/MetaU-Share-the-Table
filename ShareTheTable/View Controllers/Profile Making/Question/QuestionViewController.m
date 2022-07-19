@@ -10,7 +10,6 @@
 #import "SceneDelegate.h"
 #import "FeedViewController.h"
 #import "Parse/Parse.h"
-#import "User.h"
 
 @interface QuestionViewController ()
 
@@ -146,16 +145,6 @@
         [currentUser addObject:@"Other" forKey:@"foodPreferences"];
         [currentUser saveInBackground];
     }
-    
-    [User pushUserToFeed:[PFUser currentUser] withName:currentUser[@"firstName"] withAge:currentUser[@"ageValue"] withLocation:currentUser[@"locationName"] withCompletion:^(BOOL succeeded, NSError* _Nullable error) {
-        if(error){
-            NSLog(@"Error pushing user: %@", error.localizedDescription);
-        }
-        else{
-            [self.delegate didPush:self.user];
-            NSLog(@"Pushed user, Success!");
-        }
-    }];
 }
 
 - (IBAction)tapBack:(id)sender {
