@@ -23,7 +23,7 @@
     newUser.username = self.usernameTextField.text;
     newUser.password = self.passwordTextField.text;
     newUser[@"firstName"] = self.firstNameTextField.text;
-    newUser[@"ageValue"] = self.ageTextField.text;
+    newUser[@"ageValue"] = [NSNumber numberWithInteger:[self.ageTextField.text integerValue]];
     newUser[@"locationName"] = self.locationTextField.text;
     
     // Check if the user left either the username and/or password fields empty

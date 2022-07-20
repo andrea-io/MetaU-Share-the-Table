@@ -589,6 +589,7 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Find Users"/>
                                 <connections>
                                     <action selector="didTapFindUsers:" destination="KG6-gy-5ID" eventType="touchUpInside" id="2eN-TJ-iTT"/>
+                                    <segue destination="fT4-xk-IKG" kind="presentation" identifier="searchToResultsSegue" id="xsI-6t-Qhw"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3y7-d0-GgD">
@@ -600,13 +601,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dietary Restrictions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOG-sR-AJ3">
                                 <rect key="frame" x="20" y="89" width="148" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh1-qo-zF6">
-                                <rect key="frame" x="20" y="202" width="78" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -656,12 +650,20 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Clear All"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh1-qo-zF6">
+                                <rect key="frame" x="168" y="205" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2f6-5X-ktY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="b8h-gs-qS1" kind="presentation" identifier="searchToResultsSegue" id="fDe-DI-o41"/>
+                        <outlet property="ageRangeLabel" destination="eh1-qo-zF6" id="mCX-Cn-ruj"/>
+                        <segue destination="b8h-gs-qS1" kind="presentation" identifier="searchToResultsSegueNav" id="fDe-DI-o41"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOg-9I-1mo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -712,7 +714,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgJ-oa-Fbk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552" y="2188"/>
+            <point key="canvasLocation" x="2157" y="2188"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gaH-6i-YrD">
@@ -1178,7 +1180,7 @@
                     <navigationItem key="navigationItem" id="aUQ-uY-s4H"/>
                     <connections>
                         <outlet property="viewProfileButton" destination="oMz-Ew-I9j" id="yl0-Hz-Vvl"/>
-                        <outlet property="welcomeLabel" destination="02m-xZ-TQ1" id="GtQ-nn-egU"/>
+                        <outlet property="welcomeLabel" destination="02m-xZ-TQ1" id="c1T-kV-Cc8"/>
                         <segue destination="LID-qg-WVU" kind="presentation" identifier="feedToMessageSegue" id="mwC-gK-yUx"/>
                         <segue destination="KG6-gy-5ID" kind="presentation" identifier="feedToSearchSegue" id="r0b-tt-7Iy"/>
                     </connections>
@@ -1281,6 +1283,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="xsI-6t-Qhw"/>
         <segue reference="LVI-4B-Atv"/>
         <segue reference="6TO-GM-K8E"/>
     </inferredMetricsTieBreakers>

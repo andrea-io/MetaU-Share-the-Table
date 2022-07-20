@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		66DCFFE7B6606937E4E460DA /* Pods_ShareTheTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21313C6A0103CD7115F7F9C1 /* Pods_ShareTheTable.framework */; };
+		BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4292887703B0012CCED /* SearchViewController.m */; };
+		BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E42C288770B70012CCED /* ResultsViewController.m */; };
+		BA12E4302887712F0012CCED /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E42F2887712F0012CCED /* UserCell.m */; };
 		BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1CD287632AE008BF56C /* AppDelegate.m */; };
 		BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1D0287632AE008BF56C /* SceneDelegate.m */; };
 		BA2FD1D7287632AE008BF56C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1D5287632AE008BF56C /* Main.storyboard */; };
@@ -59,6 +62,12 @@
 		72404BB47F9F1F555E135979 /* Pods-ShareTheTableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTableTests.release.xcconfig"; path = "Target Support Files/Pods-ShareTheTableTests/Pods-ShareTheTableTests.release.xcconfig"; sourceTree = "<group>"; };
 		83F3F6355D3A28D834B18E88 /* Pods-ShareTheTable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable/Pods-ShareTheTable.debug.xcconfig"; sourceTree = "<group>"; };
 		A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareTheTable_ShareTheTableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA12E4282887703B0012CCED /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		BA12E4292887703B0012CCED /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		BA12E42B288770B70012CCED /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		BA12E42C288770B70012CCED /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
+		BA12E42E2887712F0012CCED /* UserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		BA12E42F2887712F0012CCED /* UserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		BA2FD1C9287632AE008BF56C /* ShareTheTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTheTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2FD1CC287632AE008BF56C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA2FD1CD287632AE008BF56C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -151,6 +160,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BA12E431288771700012CCED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BA12E42E2887712F0012CCED /* UserCell.h */,
+				BA12E42F2887712F0012CCED /* UserCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BA2FD1C0287632AE008BF56C = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +202,7 @@
 				BA2FD2AD287DEBDA008BF56C /* NSData+Base64.h */,
 				BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */,
 				BA2FD1D5287632AE008BF56C /* Main.storyboard */,
+				BA12E431288771700012CCED /* Cells */,
 				BA2FD20F28764028008BF56C /* View Controllers */,
 				BA2FD1D8287632AF008BF56C /* Assets.xcassets */,
 				BA2FD1DA287632AF008BF56C /* LaunchScreen.storyboard */,
@@ -214,6 +233,10 @@
 		BA2FD20F28764028008BF56C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA12E4282887703B0012CCED /* SearchViewController.h */,
+				BA12E4292887703B0012CCED /* SearchViewController.m */,
+				BA12E42B288770B70012CCED /* ResultsViewController.h */,
+				BA12E42C288770B70012CCED /* ResultsViewController.m */,
 				BA2FD22728779801008BF56C /* Profile Making */,
 				BA2FD222287791E0008BF56C /* Feed */,
 				BA2FD226287797C1008BF56C /* User Account Content */,
@@ -583,15 +606,18 @@
 				BA2FD21328775D11008BF56C /* User.m in Sources */,
 				BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */,
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
+				BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
 				BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */,
 				BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */,
+				BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */,
 				BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */,
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
 				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
+				BA12E4302887712F0012CCED /* UserCell.m in Sources */,
 				BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */,
 				BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */,
 			);

@@ -19,7 +19,7 @@
     return @"User";
 }
 
-+ (void) pushUserToFeed: ( PFUser * _Nullable )user withName: ( NSString * _Nullable )firstName withAge: (NSString * _Nullable)ageValue withLocation: (NSString * _Nullable)location withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) pushUserToFeed: ( PFUser * _Nullable )user withName: ( NSString * _Nullable )firstName withAge: (NSNumber * _Nullable)ageValue withLocation: (NSString * _Nullable)location withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     User *newUser = [User new];
     newUser.user = [PFUser currentUser];
