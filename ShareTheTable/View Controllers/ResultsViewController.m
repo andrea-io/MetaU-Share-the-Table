@@ -94,7 +94,21 @@
     [query whereKey:@"ageValue" lessThan:self.maxAge];
     [query includeKey:@"ageValue"];
     [query includeKey:@"firstName"];
+    [query includeKey:@"allPreferences"];
+    [query includeKey:masterk]
     
+    NSString *preferenceURL = [NSString stringWithFormat:@"https://parseapi.back4app.com/users/myCurrentUserId"];
+    NSData *preferenceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:preferenceURL]];
+
+    //NSError *error;
+    //NSDictionary *preferenceJSON = [NSJSONSerialization JSONObjectWithData:preferenceData options:kNilOptions error:&error];
+    
+    NSMutableArray* prefArray = [[NSMutableArray alloc] init];
+    prefArray = [NSJSONSerialization JSONObjectWithData:preferenceData options:NSJSONReadingMutableContainers error:nil];
+    
+    NSLog(@"%@",prefArray);
+
+
     // Fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
         if (users != nil) {
