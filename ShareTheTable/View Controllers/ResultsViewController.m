@@ -11,6 +11,7 @@
 #import "User.h"
 #import "NSData+Base64.h"
 #import "SearchViewController.h"
+#import "DetailProfileViewController.h"
 
 @interface ResultsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -107,14 +108,23 @@
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqualToString:@"resultsToDetailSegue"]) {
+        User* cell = sender;
+        NSIndexPath *myIndexPath = [self.userTableView indexPathForCell:cell];
+        
+        User* dataToPass = self.arrayOfUsers[myIndexPath.row];
+        DetailProfileViewController *detailVC = [segue destinationViewController];
+        detailVC.detailUser = dataToPass;
+    }
 }
-*/
+
 
 @end

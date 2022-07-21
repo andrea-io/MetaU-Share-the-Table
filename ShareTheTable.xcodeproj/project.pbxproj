@@ -11,6 +11,7 @@
 		BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4292887703B0012CCED /* SearchViewController.m */; };
 		BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E42C288770B70012CCED /* ResultsViewController.m */; };
 		BA12E4302887712F0012CCED /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E42F2887712F0012CCED /* UserCell.m */; };
+		BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4332888D4510012CCED /* DetailProfileViewController.m */; };
 		BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1CD287632AE008BF56C /* AppDelegate.m */; };
 		BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1D0287632AE008BF56C /* SceneDelegate.m */; };
 		BA2FD1D7287632AE008BF56C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1D5287632AE008BF56C /* Main.storyboard */; };
@@ -68,6 +69,8 @@
 		BA12E42C288770B70012CCED /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		BA12E42E2887712F0012CCED /* UserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		BA12E42F2887712F0012CCED /* UserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		BA12E4322888D4510012CCED /* DetailProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
+		BA12E4332888D4510012CCED /* DetailProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
 		BA2FD1C9287632AE008BF56C /* ShareTheTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTheTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2FD1CC287632AE008BF56C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA2FD1CD287632AE008BF56C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 		BA2FD20F28764028008BF56C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA12E4322888D4510012CCED /* DetailProfileViewController.h */,
+				BA12E4332888D4510012CCED /* DetailProfileViewController.m */,
 				BA12E4282887703B0012CCED /* SearchViewController.h */,
 				BA12E4292887703B0012CCED /* SearchViewController.m */,
 				BA12E42B288770B70012CCED /* ResultsViewController.h */,
@@ -608,6 +613,7 @@
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
 				BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
+				BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
 				BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */,
 				BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */,
