@@ -95,7 +95,6 @@
     [query includeKey:@"ageValue"];
     [query includeKey:@"firstName"];
     [query includeKey:@"allPreferences"];
-    [query includeKey:masterk]
     
     NSString *preferenceURL = [NSString stringWithFormat:@"https://parseapi.back4app.com/users/myCurrentUserId"];
     NSData *preferenceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:preferenceURL]];
