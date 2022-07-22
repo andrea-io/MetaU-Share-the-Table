@@ -6,9 +6,7 @@
 //
 
 #import "ConversationViewController.h"
-#import "Message.h"
-#import "Parse/Parse.h"
-#import "ParseLiveQuery/ParseLiveQuery-Swift.h"
+
 @interface ConversationViewController ()
 
 @end
@@ -18,14 +16,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://livequeryexample.back4app.io" applicationId:@"cfEqijsSr9AS03FR76DJYM374KHH5GddQSQvIU7H" clientKey:@"F9dLUvMhb8D7aMCAukUDMFae630qhhlYTki6dGxP"];
+
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"conversationID == %@", self.messageData.conversationID];
-    PFQuery<PFObject*>* query = [PFQuery<PFObject*> queryWithClassName:@"Message" predicate:predicate];
-    [query orderByAscending:@"createdAt"];
+    PFQuery<PFObject*>* msgQuery = [PFQuery<PFObject*> queryWithClassName:@"Message" predicate:predicate];
+    [msgQuery orderByAscending:@"createdAt"];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray* messageObjects, NSError *error) {
+    [msgQuery findObjectsInBackgroundWithBlock:^(NSArray* messageObjects, NSError *error) {
         if(messageObjects != nil) {
             [self.messages addObjectsFromArray:messageObjects];
             [self.messageTableView reloadData];
+        }
+    }];
+    
+    self.subscription = [self.liveQueryClient subscribeToQuery:msgQuery];
+    [self.subscription addCreateHandler:^(PFQuery<PFObject *> * _Nonnull query, PFObject * _Nonnull object) {
+        if([object isKindOfClass:[Message class]]) {
+            [self.messages addObject:object];
         }
     }];
 }

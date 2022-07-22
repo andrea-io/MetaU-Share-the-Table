@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "Message.h"
 #import "MessageCell.h"
+#import "Parse/Parse.h"
+#import "ParseLiveQuery/ParseLiveQuery-Swift.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
 @property (strong, nonatomic) Message* messageData;
 @property (strong, nonatomic) NSMutableArray<Message*>* messages;
+
+@property (nonatomic, strong) PFLiveQueryClient *liveQueryClient;
+@property (nonatomic, strong) PFQuery *msgQuery;
+@property (nonatomic, strong) PFLiveQuerySubscription *subscription;
 
 @end
 
