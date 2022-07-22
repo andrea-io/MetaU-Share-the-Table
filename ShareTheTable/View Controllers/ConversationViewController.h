@@ -6,10 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Message.h"
+#import "MessageCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ConversationViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UITableView *messageTableView;
+@property (strong, nonatomic) Message* messageData;
+@property (strong, nonatomic) NSMutableArray<Message*>* messages;
 
 @end
 

@@ -604,7 +604,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="dAF-U6-ew5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="dAF-U6-ew5" customClass="MessageCell">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dAF-U6-ew5" id="DMy-ET-o1a">
@@ -633,6 +633,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageBodyText" destination="V7Z-Iz-PD9" id="GBW-dT-yXh"/>
+                                            <outlet property="messageUserImage" destination="jS1-Hz-C2f" id="dW4-Zs-txA"/>
+                                            <outlet property="messageUserName" destination="UcC-pr-qOv" id="Z9V-Lx-HU4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -643,6 +648,9 @@
                     <navigationItem key="navigationItem" id="b2p-H6-c0A">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.left.square" catalog="system" id="sS8-za-l7f"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="messageTableView" destination="yQT-Hk-nKZ" id="XmT-ZS-dva"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYi-1y-Ogt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

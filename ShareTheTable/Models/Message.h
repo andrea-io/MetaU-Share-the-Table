@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Message : PFObject
 
-@property (nonatomic, strong) PFObject* senderID;
+@property (nonatomic, strong) NSString* senderID;
 @property (nonatomic, strong) PFObject* conversationID;
 @property (nonatomic, strong) PFUser* user;
 @property (nonatomic, strong) NSString* messageBodyText;

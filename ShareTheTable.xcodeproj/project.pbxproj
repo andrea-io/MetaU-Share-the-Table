@@ -14,6 +14,7 @@
 		BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4332888D4510012CCED /* DetailProfileViewController.m */; };
 		BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4362889F1850012CCED /* ConversationViewController.m */; };
 		BA12E43A2889F3D80012CCED /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4392889F3D80012CCED /* Message.m */; };
+		BA12E43D288A08F60012CCED /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E43C288A08F60012CCED /* MessageCell.m */; };
 		BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1CD287632AE008BF56C /* AppDelegate.m */; };
 		BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1D0287632AE008BF56C /* SceneDelegate.m */; };
 		BA2FD1D7287632AE008BF56C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1D5287632AE008BF56C /* Main.storyboard */; };
@@ -77,6 +78,8 @@
 		BA12E4362889F1850012CCED /* ConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationViewController.m; sourceTree = "<group>"; };
 		BA12E4382889F3D80012CCED /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		BA12E4392889F3D80012CCED /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		BA12E43B288A08F60012CCED /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		BA12E43C288A08F60012CCED /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		BA2FD1C9287632AE008BF56C /* ShareTheTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTheTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2FD1CC287632AE008BF56C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA2FD1CD287632AE008BF56C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 			children = (
 				BA12E42E2887712F0012CCED /* UserCell.h */,
 				BA12E42F2887712F0012CCED /* UserCell.m */,
+				BA12E43B288A08F60012CCED /* MessageCell.h */,
+				BA12E43C288A08F60012CCED /* MessageCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -630,6 +635,7 @@
 				BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */,
 				BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */,
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
+				BA12E43D288A08F60012CCED /* MessageCell.m in Sources */,
 				BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */,
 				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
