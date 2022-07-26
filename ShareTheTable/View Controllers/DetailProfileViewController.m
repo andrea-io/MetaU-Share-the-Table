@@ -6,6 +6,8 @@
 //
 
 #import "DetailProfileViewController.h"
+#import "ConversationViewController.h"
+#import "Conversation.h"
 
 @interface DetailProfileViewController ()
 
@@ -23,14 +25,39 @@
     self.detailLocationLabel.text = self.detailUser.location;
 }
 
-/*
+- (IBAction)didTapMessageUser:(id)sender {
+
+    // Create new conversation object
+    self.conversation = [PFObject objectWithClassName:@"Conversation"];
+    // Assign the users that will be communicating
+    self.conversation[@"userOne"] = [PFUser currentUser].objectId;
+    self.conversation[@"userTwo"] = self.detailUser.user.objectId;
+    
+    // Segue to the conversation VC and display messages
+    [self.conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError* _Nullable error) {
+        if(succeeded) {
+            NSLog(@"Conversation object was saved");
+            NSLog(@"%@", self.conversation.objectId);
+        } else {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"profileToMessageSegue"]) {
+        User* otherUserInfo = self.detailUser;
+        
+        ConversationViewController* convoVC = [segue destinationViewController];
+        convoVC.otherUser = otherUserInfo;
+        convoVC.convoID = self.conversation.objectId;
+    }
 }
-*/
+
 
 @end

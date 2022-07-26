@@ -9,14 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Message : PFObject
+@interface Message : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString* senderID;
-@property (nonatomic, strong) PFObject* conversationID;
+@property (nonatomic, strong) NSString* conversationID;
 @property (nonatomic, strong) PFUser* user;
 @property (nonatomic, strong) NSString* messageBodyText;
 
-+ (void) pushMessage: ( PFUser * _Nullable )user withMessage: ( NSString * _Nullable )messageBodyText withConversation: (PFObject * _Nullable)conversationID withSender: (PFObject * _Nullable)senderID withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) pushMessage: ( PFUser * _Nullable )user withMessage: ( NSString * _Nullable )messageBodyText withConversation: (NSString * _Nullable)conversationID withSender: (PFObject * _Nullable)senderID withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

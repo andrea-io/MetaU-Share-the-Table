@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *detailUserFirstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailUserAgeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLocationLabel;
+@property (nonatomic, strong) PFObject* conversation;
 
 @property (nonatomic, weak) id<PostDetailViewControllerDelegate> delegate;
 

@@ -23,6 +23,10 @@
     sceneDelegate.window.rootViewController = navViewController;
 }
 
+- (IBAction)tapButton:(id)sender {
+    [self performSegueWithIdentifier:@"testSegue" sender:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

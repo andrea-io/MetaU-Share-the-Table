@@ -15,13 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ConversationViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITableView *messageTableView;
+@property (weak, nonatomic) IBOutlet UITextView* textMessageBody;
+@property (weak, nonatomic) IBOutlet UITableView* messageTableView;
 @property (strong, nonatomic) Message* messageData;
-@property (strong, nonatomic) NSMutableArray<Message*>* messages;
+@property (strong, nonatomic) NSMutableArray* messages;
+@property (strong, nonatomic) PFObject* otherUser;
+@property (strong, nonatomic) NSString* convoID;
+@property (nonatomic, strong) PFLiveQueryClient* liveQueryClient;
+@property (nonatomic, strong) PFQuery* msgQuery;
+@property (nonatomic, strong) PFLiveQuerySubscription* subscription;
 
-@property (nonatomic, strong) PFLiveQueryClient *liveQueryClient;
-@property (nonatomic, strong) PFQuery *msgQuery;
-@property (nonatomic, strong) PFLiveQuerySubscription *subscription;
 
 @end
 

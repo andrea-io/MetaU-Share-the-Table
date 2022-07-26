@@ -36,6 +36,7 @@
 		BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */; };
 		BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */; };
 		BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */; };
+		BAD8595428904772007E70BE /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595328904772007E70BE /* Conversation.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,8 @@
 		BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedProfileViewController.m; sourceTree = "<group>"; };
 		BA2FD2AD287DEBDA008BF56C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "../../../Downloads/NSData_Base64/NSData+Base64.h"; sourceTree = "<group>"; };
 		BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "../../../Downloads/NSData_Base64/NSData+Base64.m"; sourceTree = "<group>"; };
+		BAD8595228904772007E70BE /* Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
+		BAD8595328904772007E70BE /* Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,6 +272,8 @@
 				BA12E4392889F3D80012CCED /* Message.m */,
 				BA2FD21128775D11008BF56C /* User.h */,
 				BA2FD21228775D11008BF56C /* User.m */,
+				BAD8595228904772007E70BE /* Conversation.h */,
+				BAD8595328904772007E70BE /* Conversation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 				BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */,
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
 				BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */,
+				BAD8595428904772007E70BE /* Conversation.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
 				BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,

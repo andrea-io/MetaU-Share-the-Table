@@ -7,7 +7,7 @@
 
 #import "ConversationViewController.h"
 
-@interface ConversationViewController ()
+@interface ConversationViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -15,24 +15,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self initializeUserData];
+    [self initializeConversationData];
+    
+    self.messageTableView.dataSource = self;
+    self.messageTableView.delegate = self;
+    self.messageTableView.rowHeight = UITableViewAutomaticDimension;
+    
     // Do any additional setup after loading the view.
-    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://livequeryexample.back4app.io" applicationId:@"cfEqijsSr9AS03FR76DJYM374KHH5GddQSQvIU7H" clientKey:@"F9dLUvMhb8D7aMCAukUDMFae630qhhlYTki6dGxP"];
+    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://sharethetable.b4a.io" applicationId:@"IgLS0pEFPPTPM0LeAw7GKes2N0o5gIYmhxMaEyvR" clientKey:@"2YcygA4JtK1E3ymXS1i4EIhOAEFv9PZy5kw5DfDM"];
 
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"conversationID == %@", self.messageData.conversationID];
     PFQuery<PFObject*>* msgQuery = [PFQuery<PFObject*> queryWithClassName:@"Message" predicate:predicate];
     [msgQuery orderByAscending:@"createdAt"];
     
     [msgQuery findObjectsInBackgroundWithBlock:^(NSArray* messageObjects, NSError *error) {
-        if(messageObjects != nil) {
-            [self.messages addObjectsFromArray:messageObjects];
+        if(error != nil) {
+            self.messages = [[NSMutableArray alloc] initWithArray:messageObjects];
             [self.messageTableView reloadData];
         }
     }];
     
+    
     self.subscription = [self.liveQueryClient subscribeToQuery:msgQuery];
-    [self.subscription addCreateHandler:^(PFQuery<PFObject *> * _Nonnull query, PFObject * _Nonnull object) {
+    __weak typeof(self) weakSelf = self;
+
+    [self.subscription addCreateHandler:^(PFQuery* _Nonnull query, PFObject* _Nonnull object) {
         if([object isKindOfClass:[Message class]]) {
-            [self.messages addObject:object];
+            [weakSelf.messages addObject:object];
+        } else {
+            NSLog(@"This object was not found rip");
         }
     }];
 }
@@ -58,6 +71,21 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.messages.count;
 }
+
+- (IBAction)didTapSendMessage:(id)sender {
+    Message* message = [Message new];
+    message.messageBodyText = self.textMessageBody.text;
+    message.senderID = [PFUser currentUser].objectId;
+    message.conversationID = self.convoID;
+
+    [message saveInBackgroundWithBlock:^(BOOL suceeded, NSError* _Nullable error) {
+        if(suceeded) {
+            NSLog(@"Message was sent");
+        }
+    }];
+    [self.messageTableView reloadData];
+}
+
 
 /*
 #pragma mark - Navigation
