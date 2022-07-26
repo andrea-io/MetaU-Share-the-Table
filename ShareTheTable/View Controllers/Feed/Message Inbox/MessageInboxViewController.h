@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageInboxViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *conversationTableView;
+
+@property (strong, nonatomic) NSArray* arrayOfConversations;
 @end
 
 NS_ASSUME_NONNULL_END

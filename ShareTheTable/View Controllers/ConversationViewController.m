@@ -44,6 +44,7 @@
     [self.subscription addCreateHandler:^(PFQuery* _Nonnull query, PFObject* _Nonnull object) {
         if([object isKindOfClass:[Message class]]) {
             [weakSelf.messages addObject:object];
+            [self.messageTableView reloadData];
         } else {
             NSLog(@"This object was not found rip");
         }
@@ -81,9 +82,9 @@
     [message saveInBackgroundWithBlock:^(BOOL suceeded, NSError* _Nullable error) {
         if(suceeded) {
             NSLog(@"Message was sent");
+            [self.messageTableView reloadData];
         }
     }];
-    [self.messageTableView reloadData];
 }
 
 
