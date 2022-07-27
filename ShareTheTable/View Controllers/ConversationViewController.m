@@ -44,7 +44,7 @@
     [self.subscription addCreateHandler:^(PFQuery* _Nonnull query, PFObject* _Nonnull object) {
         if([object isKindOfClass:[Message class]]) {
             [weakSelf.messages addObject:object];
-            [self.messageTableView reloadData];
+            [weakSelf.messageTableView reloadData];
         } else {
             NSLog(@"This object was not found rip");
         }
