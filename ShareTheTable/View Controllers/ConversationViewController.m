@@ -41,7 +41,7 @@
     self.subscription = [self.liveQueryClient subscribeToQuery:msgQuery];
     __weak typeof(self) weakSelf = self;
 
-    [self.subscription addCreateHandler:^(PFQuery* _Nonnull query, PFObject* _Nonnull object) {
+    [self.subscription addCreateHandler:^(PFQuery<PFObject*>* _Nonnull query, PFObject* _Nonnull object) {
         if([object isKindOfClass:[Message class]]) {
             [weakSelf.messages addObject:object];
             [weakSelf.messageTableView reloadData];
