@@ -6,6 +6,7 @@
 //
 
 #import "ConversationViewController.h"
+#import "Conversation.h"
 
 @interface ConversationViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -16,55 +17,69 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initializeUserData];
-    [self initializeConversationData];
-    
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
-    //self.messageTableView.rowHeight = UITableViewAutomaticDimension;
+    self.messageTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    //[self initializeUserData];
+    //[self initializeConversationData];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
     
     // Do any additional setup after loading the view.
-    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://sharethetable.b4a.io" applicationId:@"IgLS0pEFPPTPM0LeAw7GKes2N0o5gIYmhxMaEyvR" clientKey:@"2YcygA4JtK1E3ymXS1i4EIhOAEFv9PZy5kw5DfDM"];
-
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"conversationID == %@", self.messageData.conversationID];
-    PFQuery<PFObject*>* msgQuery = [PFQuery<PFObject*> queryWithClassName:@"Message" predicate:predicate];
-    [msgQuery orderByAscending:@"createdAt"];
+//    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://sharethetable.b4a.io" applicationId:@"IgLS0pEFPPTPM0LeAw7GKes2N0o5gIYmhxMaEyvR" clientKey:@"2YcygA4JtK1E3ymXS1i4EIhOAEFv9PZy5kw5DfDM"];
+//
+//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"conversationID == %@", self.messageData.conversationID];
+//    PFQuery<PFObject*>* msgQuery = [PFQuery<PFObject*> queryWithClassName:@"Message" predicate:predicate];
+//    [msgQuery orderByAscending:@"createdAt"];
+//
+//    [msgQuery findObjectsInBackgroundWithBlock:^(NSArray* messageObjects, NSError *error) {
+//        if(error != nil) {
+//            self.messages = [[NSMutableArray alloc] initWithArray:messageObjects];
+//            [self.messageTableView reloadData];
+//        }
+//    }];
     
-    [msgQuery findObjectsInBackgroundWithBlock:^(NSArray* messageObjects, NSError *error) {
-        if(error != nil) {
-            self.messages = [[NSMutableArray alloc] initWithArray:messageObjects];
-            [self.messageTableView reloadData];
-        }
-    }];
     
-    
-    self.subscription = [self.liveQueryClient subscribeToQuery:msgQuery];
-    __weak typeof(self) weakSelf = self;
-
-    [self.subscription addCreateHandler:^(PFQuery<PFObject*>* _Nonnull query, PFObject* _Nonnull object) {
-        if([object isKindOfClass:[Message class]]) {
-            [weakSelf.messages addObject:object];
-            [weakSelf.messageTableView reloadData];
-        } else {
-            NSLog(@"This object was not found rip");
-        }
-    }];
+//    self.subscription = [self.liveQueryClient subscribeToQuery:msgQuery];
+//    __weak typeof(self) weakSelf = self;
+//
+//    [self.subscription addCreateHandler:^(PFQuery<PFObject*>* _Nonnull query, PFObject* _Nonnull object) {
+//        if([object isKindOfClass:[Message class]]) {
+//            [weakSelf.messages addObject:object];
+//            [weakSelf.messageTableView reloadData];
+//        } else {
+//            NSLog(@"This object was not found rip");
+//        }
+//    }];
 }
 
-- (void)initializeUserData {
-    self.messageData.senderID = PFUser.currentUser.objectId;
+- (void)onTimer {
+   // Add code to be run periodically
+    [self refreshConversationData];
 }
 
-- (void)initializeConversationData {
-    [self.messageTableView reloadData];
+//- (void)initializeUserData {
+//    self.messageData.senderID = PFUser.currentUser.objectId;
+//}
+
+- (void)refreshConversationData {
+    Conversation* convo = [[Conversation alloc] init];
+    NSLog(@"Other user: %@", self.otherUser);
+    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:PFUser.currentUser];
+    
+    self.messages = [convo fetchConversationMessages:self.convoID];
+    
+//    [self.messageTableView reloadData];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
-    self.messageData = self.messages[indexPath.row];
-    cell.messageBodyText.text = self.messageData.messageBodyText;
-    cell.messageUserName.text = self.messageData.user.username;
+    Message* message = self.messages[indexPath.row];
+    
+    cell.messageBodyText.text = message.messageBodyText;
+    cell.messageUserName.text = message.user.username;
     
     return cell;
 }
@@ -82,6 +97,8 @@
     [message saveInBackgroundWithBlock:^(BOOL suceeded, NSError* _Nullable error) {
         if(suceeded) {
             NSLog(@"Message was sent");
+            Conversation* convo = [Conversation objectWithoutDataWithObjectId:self.convoID];
+            [convo addObject:message forKey:@"messages"];
             [self.messageTableView reloadData];
         }
     }];

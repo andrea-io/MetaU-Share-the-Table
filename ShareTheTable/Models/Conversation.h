@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray* convoMessages;
 
 - (nonnull NSMutableArray*) fetchCurrentConversationList: (PFObject* _Nullable)currentUser;
+- (nonnull NSMutableArray*) fetchConversationMessages: (NSString* _Nullable)conversationID;
+- (nonnull NSString* ) checkIfConversationExists: (PFUser* _Nullable )otherUser withCurrentUser: (PFUser* _Nullable )currentUser;
 
 @end
 

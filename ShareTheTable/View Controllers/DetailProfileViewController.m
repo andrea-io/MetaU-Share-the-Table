@@ -27,25 +27,26 @@
 
 - (IBAction)didTapMessageUser:(id)sender {
 
-    // Create new conversation object
-    self.conversation = [PFObject objectWithClassName:@"Conversation"];
-    // Assign the users that will be communicating
-    PFObject* currentUser = [PFUser currentUser];
-    PFUser* idk = self.detailUser.user;
-    PFObject* otherUser = idk;
-    
-    [self.conversation setObject:currentUser forKey:@"userOnePointer"];
-    [self.conversation setObject:otherUser forKey:@"userTwoPointer"];
+//    // Create new conversation object
+//    self.conversation = [PFObject objectWithClassName:@"Conversation"];
+//    // Assign the users that will be communicating
+//    PFObject* currentUser = [PFUser currentUser];
+//    PFUser* idk = self.detailUser.user;
+//    PFObject* otherUser = idk;
+//
+//    [self.conversation setObject:currentUser forKey:@"userOnePointer"];
+//    [self.conversation setObject:otherUser forKey:@"userTwoPointer"];
     
     // Segue to the conversation VC and display messages
-    [self.conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError* _Nullable error) {
-        if(succeeded) {
-            NSLog(@"Conversation object was saved");
-            NSLog(@"%@", self.conversation.objectId);
-        } else {
-            NSLog(@"%@", error);
-        }
-    }];
+//    [self.conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError* _Nullable error) {
+//        if(succeeded) {
+//            NSLog(@"Conversation object was saved");
+//            NSLog(@"%@", self.conversation.objectId);
+//        } else {
+//            NSLog(@"%@", error);
+//        }
+//    }];
+    [self performSegueWithIdentifier:@"profileToMessageSegue" sender:self.detailUser];
 }
 
 
@@ -55,11 +56,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"profileToMessageSegue"]) {
-        User* otherUserInfo = self.detailUser;
+        PFUser* otherUser = sender;
         
         ConversationViewController* convoVC = [segue destinationViewController];
-        convoVC.otherUser = otherUserInfo;
-        convoVC.convoID = self.conversation.objectId;
+        [convoVC setOtherUser:otherUser];
     }
 }
 
