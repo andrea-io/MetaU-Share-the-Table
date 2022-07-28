@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UITableView *conversationTableView;
 
-@property (strong, nonatomic) NSArray* arrayOfConversations;
+@property (strong, nonatomic) NSMutableArray* arrayOfConversations;
 @end
 
 NS_ASSUME_NONNULL_END

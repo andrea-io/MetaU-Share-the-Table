@@ -30,8 +30,12 @@
     // Create new conversation object
     self.conversation = [PFObject objectWithClassName:@"Conversation"];
     // Assign the users that will be communicating
-    self.conversation[@"userOne"] = [PFUser currentUser].objectId;
-    self.conversation[@"userTwo"] = self.detailUser.user.objectId;
+    PFObject* currentUser = [PFUser currentUser];
+    PFUser* idk = self.detailUser.user;
+    PFObject* otherUser = idk;
+    
+    [self.conversation setObject:currentUser forKey:@"userOnePointer"];
+    [self.conversation setObject:otherUser forKey:@"userTwoPointer"];
     
     // Segue to the conversation VC and display messages
     [self.conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError* _Nullable error) {

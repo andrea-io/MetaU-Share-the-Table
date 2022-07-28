@@ -9,64 +9,67 @@
 
 @implementation Conversation
 
-@dynamic userOneID;
-@dynamic userTwoID;
+@dynamic userOnePointer;
+@dynamic userTwoPointer;
 @dynamic convoMessages;
 
 + (nonnull NSString *)parseClassName {
     return @"Conversation";
 }
 
-+ (nonnull NSMutableArray*) fetchCurrentConversationList: (NSString* _Nullable)currentUserID {
-    NSPredicate* predOther = [NSPredicate predicateWithFormat:@"%@ IN userTwo OR %@ IN userOne", currentUserID];
+- (nonnull NSMutableArray*) fetchCurrentConversationList: (PFObject* _Nullable)currentUser {
     
     NSMutableArray* conversationList = [[NSMutableArray alloc] init];
-    PFQuery* findCurrentUserQuery = [PFQuery queryWithClassName:@"Conversation" predicate:predOther];
     
-    [findCurrentUserQuery findObjectsInBackgroundWithBlock:^(NSArray* _Nullable objects, NSError* _Nullable error) {
-        if(error != nil) {
-            NSLog(@"%@", error.observationInfo);
-        } else {
-            [conversationList addObjectsFromArray:objects];
-        }
-    }];
+    PFQuery* findCurrentUserQueryUserTwo = [PFQuery queryWithClassName:@"Conversation"];
+    [findCurrentUserQueryUserTwo whereKey:@"userTwoPointer" equalTo:currentUser];
     
+    PFQuery* findCurrentUserQueryUserOne = [PFQuery queryWithClassName:@"Conversation"];
+    [findCurrentUserQueryUserOne whereKey:@"userOnePointer" equalTo:currentUser];
+    
+    PFQuery* combinedQuery = [PFQuery orQueryWithSubqueries:@[findCurrentUserQueryUserOne, findCurrentUserQueryUserTwo]];
+    
+    [conversationList addObjectsFromArray:[combinedQuery findObjects]];
+
     return conversationList;
 }
 
 + (nonnull NSMutableArray*) fetchConversationMessages: (NSString* _Nullable)conversationID {
     
-    PFQuery* query = [PFQuery queryWithClassName:@"Conversation"];
+    PFQuery* messagesQuery = [PFQuery queryWithClassName:@"Conversation"];
     
-    __block NSMutableArray* convoMessages;
-    
-    [query getObjectInBackgroundWithId:conversationID block:^(PFObject* _Nullable object, NSError* _Nullable error) {
-        convoMessages = [NSMutableArray arrayWithArray:object[@"messages"]];
-    }];
+    NSMutableArray* convoMessages = [[NSMutableArray alloc] init];
+    [convoMessages addObjectsFromArray:[messagesQuery findObjects]];
     
     return convoMessages;
 }
 
 + (nonnull NSString* ) checkIfConversationExists: (PFUser* _Nullable )otherUser withCurrentUser: (PFUser* _Nullable )currentUser {
     
-    NSString* otherUserID = otherUser.objectId;
-    NSString* currentUserID = currentUser.objectId;
-    
     // Create a query predicate where otherUser objectID is either found in the userOne or userTwo column of the Conversation database
     
-    NSPredicate* pred = [NSPredicate predicateWithFormat:@"%@ IN userTwo OR %@ IN userOne", otherUserID];
+    PFQuery* findOtherUserQueryUserTwo = [PFQuery queryWithClassName:@"Conversation"];
+    [findOtherUserQueryUserTwo whereKey:@"userTwoPointer" equalTo:otherUser];
     
-    PFQuery* findOtherUserQuery = [PFQuery queryWithClassName:@"Conversation" predicate:pred];
+    PFQuery* findOtherUserQueryUserOne = [PFQuery queryWithClassName:@"Conversation"];
+    [findOtherUserQueryUserOne whereKey:@"userOnePointer" equalTo:otherUser];
+    
+    PFQuery* otherUserExistence = [PFQuery orQueryWithSubqueries:@[findOtherUserQueryUserOne, findOtherUserQueryUserTwo]];
     
     // Using the query results, create another query where the PFUser Current User objectID is either found in the userOne or userTwo column of the Conversation database
     
-    NSPredicate* predOther = [NSPredicate predicateWithFormat:@"%@ IN userTwo OR %@ IN userOne", currentUserID];
+    PFQuery* findCurrentUserQueryUserTwo = [PFQuery queryWithClassName:@"Conversation"];
+    [findOtherUserQueryUserTwo whereKey:@"userTwoPointer" equalTo:currentUser];
     
-    PFQuery* findCurrentUserQuery = [PFQuery queryWithClassName:@"Conversation" predicate:predOther];
+    PFQuery* findCurrentUserQueryUserOne = [PFQuery queryWithClassName:@"Conversation"];
+    [findOtherUserQueryUserOne whereKey:@"userOnePointer" equalTo:currentUser];
     
-    PFQuery* finalQuery = [PFQuery orQueryWithSubqueries:@[findOtherUserQuery, findCurrentUserQuery]];
+    PFQuery* currentUserExistence = [PFQuery orQueryWithSubqueries:@[findCurrentUserQueryUserOne, findCurrentUserQueryUserTwo]];
     
-    __block Conversation* convo = [Conversation new];
+    // Check to see if there exists 1 conversation object containing both users
+    PFQuery* finalQuery = [PFQuery orQueryWithSubqueries:@[currentUserExistence, otherUserExistence]];
+    
+    __block Conversation* convo = [[Conversation alloc] init];
     
     [finalQuery findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError *error) {
         // If the final query results in an object:
@@ -81,8 +84,8 @@
             // Create a new Conversation object where userOneID == PFUser Current User objectID. And userTwoID == otherUser objectID
             // Store that Conversation objectID and segue to Conversation View Controller
             
-            convo[@"userOneID"] = currentUserID;
-            convo[@"userTwoID"] = otherUserID;
+            convo[@"userOnePointer"] = currentUser;
+            convo[@"userTwoPointer"] = otherUser;
         }
     }];
     

@@ -11,9 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Conversation : PFObject<PFSubclassing>
 
-@property (nonatomic, strong) NSString* userOneID;
-@property (nonatomic, strong) NSString* userTwoID;
+@property (nonatomic, strong) PFObject* userOnePointer;
+@property (nonatomic, strong) PFObject* userTwoPointer;
 @property (nonatomic, strong) NSMutableArray* convoMessages;
+
+- (nonnull NSMutableArray*) fetchCurrentConversationList: (PFObject* _Nullable)currentUser;
 
 @end
 

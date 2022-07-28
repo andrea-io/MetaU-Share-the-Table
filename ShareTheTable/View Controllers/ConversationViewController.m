@@ -21,7 +21,7 @@
     
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
-    self.messageTableView.rowHeight = UITableViewAutomaticDimension;
+    //self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     
     // Do any additional setup after loading the view.
     self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://sharethetable.b4a.io" applicationId:@"IgLS0pEFPPTPM0LeAw7GKes2N0o5gIYmhxMaEyvR" clientKey:@"2YcygA4JtK1E3ymXS1i4EIhOAEFv9PZy5kw5DfDM"];
