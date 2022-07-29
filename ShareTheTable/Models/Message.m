@@ -18,7 +18,7 @@
     return @"Message";
 }
 
-+ (void) pushMessage: ( PFUser * _Nullable )user withMessage: ( NSString * _Nullable )messageBodyText withConversation: (PFObject * _Nullable)conversationID withSender: (PFObject * _Nullable)senderID withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) pushMessage: ( PFUser * _Nullable )user withMessage: ( NSString * _Nullable )messageBodyText withConversation: (NSString * _Nullable)conversationID withSender: (PFObject * _Nullable)senderID withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Message *newMessage = [Message new];
     newMessage.user = [PFUser currentUser];

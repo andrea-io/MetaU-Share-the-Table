@@ -50,12 +50,12 @@
     ConversationCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
     
     Conversation* convo = self.arrayOfConversations[indexPath.row];
-    if(convo.userOnePointer == PFUser.currentUser) {
-        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userTwoPointer.objectId];
+    if(convo.userOnePoint == PFUser.currentUser) {
+        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userTwoPoint.objectId];
         [user fetchIfNeeded];
         cell.conversationUserName.text = user.username;
     } else {
-        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userOnePointer.objectId];
+        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userOnePoint.objectId];
         [user fetchIfNeeded];
         cell.conversationUserName.text = user.username;
     }

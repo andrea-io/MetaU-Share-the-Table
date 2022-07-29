@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString* firstName;
 @property (nonatomic, strong) NSNumber* ageValue;
 @property (nonatomic, strong) NSString* location;
+@property (nonatomic, strong) NSDictionary* currentMatches;
 
 + (void) pushUserToFeed: ( PFUser * _Nullable )user withName: ( NSString * _Nullable )firstName withAge: (NSNumber * _Nullable)ageValue withLocation: (NSString * _Nullable)location withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

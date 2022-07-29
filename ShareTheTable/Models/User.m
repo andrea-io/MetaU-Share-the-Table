@@ -14,6 +14,7 @@
 @dynamic firstName;
 @dynamic ageValue;
 @dynamic location;
+@dynamic currentMatches;
 
 + (nonnull NSString *)parseClassName {
     return @"User";
@@ -26,6 +27,7 @@
     newUser.firstName = firstName;
     newUser.ageValue = ageValue;
     newUser.location = location;
+    newUser.currentMatches = [NSDictionary dictionaryWithObject:@"hi" forKey:@"idk"];
     
     [newUser saveInBackgroundWithBlock: completion];
 }

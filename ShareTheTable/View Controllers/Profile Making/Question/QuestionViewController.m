@@ -146,6 +146,8 @@
         else{
             [self.delegate didPush:self.user];
             NSLog(@"Pushed user, Success!");
+            currentUser[@"currentMatches"] = [NSDictionary dictionary];
+            [currentUser saveInBackground];
         }
     }];
 }
