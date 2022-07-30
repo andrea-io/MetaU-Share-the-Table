@@ -27,7 +27,6 @@
 }
 
 - (void)onTimer {
-   // Add code to be run periodically
     [self refreshConversationData];
 }
 

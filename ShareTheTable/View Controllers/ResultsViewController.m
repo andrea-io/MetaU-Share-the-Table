@@ -98,10 +98,7 @@
     
     NSString *preferenceURL = [NSString stringWithFormat:@"https://parseapi.back4app.com/users/myCurrentUserId"];
     NSData *preferenceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:preferenceURL]];
-
-    //NSError *error;
-    //NSDictionary *preferenceJSON = [NSJSONSerialization JSONObjectWithData:preferenceData options:kNilOptions error:&error];
-    
+  
     NSMutableArray* prefArray = [[NSMutableArray alloc] init];
     prefArray = [NSJSONSerialization JSONObjectWithData:preferenceData options:NSJSONReadingMutableContainers error:nil];
     
@@ -124,7 +121,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
