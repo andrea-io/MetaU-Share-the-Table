@@ -17,12 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 
-//@property (weak, nonatomic) IBOutlet UITextField *ageTextView;
-//@property (weak, nonatomic) IBOutlet UITextField *locationTextView;
-//@property (weak, nonatomic) IBOutlet UITextField *firstNameTextView;
 @property (weak, nonatomic) IBOutlet UIButton *createAccountButton;
-//@property (weak, nonatomic) IBOutlet UITextField *passwordTextView;
-//@property (weak, nonatomic) IBOutlet UITextField *usernameTextView;
 
 @end
 

@@ -8,8 +8,12 @@
 #import "MessageInboxViewController.h"
 #import "SceneDelegate.h"
 #import "FeedViewController.h"
+#import "Parse/Parse.h"
+#import "ConversationCell.h"
+#import "ConversationViewController.h"
+#import "Conversation.h"
 
-@interface MessageInboxViewController ()
+@interface MessageInboxViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -23,19 +27,64 @@
     sceneDelegate.window.rootViewController = navViewController;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (IBAction)tapButton:(id)sender {
+    [self performSegueWithIdentifier:@"testSegue" sender:nil];
 }
 
-/*
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.conversationTableView.delegate = self;
+    self.conversationTableView.dataSource = self;
+    self.conversationTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    Conversation* convo = [[Conversation alloc] init];
+    self.arrayOfConversations = [[NSMutableArray alloc] init];
+    
+    self.arrayOfConversations = [convo fetchCurrentConversationList:PFUser.currentUser];
+    NSLog(@"%@", self.arrayOfConversations);
+    [self.conversationTableView reloadData];
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ConversationCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
+    
+    Conversation* convo = self.arrayOfConversations[indexPath.row];
+    if(convo.userOnePoint == PFUser.currentUser) {
+        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userTwoPoint.objectId];
+        [user fetchIfNeeded];
+        cell.conversationUserName.text = user.username;
+    } else {
+        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userOnePoint.objectId];
+        [user fetchIfNeeded];
+        cell.conversationUserName.text = user.username;
+    }
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfConversations.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"inboxToConversationSegue" sender:indexPath];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"inboxToConversationSegue"]) {
+        
+        ConversationViewController* convoVC = [segue destinationViewController];
+        //convoVC.otherUser.objectId = self.arrayOfConversations[index];
+        //convoVC.convoID = self.conversation.objectId;
+    }
 }
-*/
+
 
 @end

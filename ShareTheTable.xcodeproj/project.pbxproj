@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		66DCFFE7B6606937E4E460DA /* Pods_ShareTheTable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21313C6A0103CD7115F7F9C1 /* Pods_ShareTheTable.framework */; };
+		BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4292887703B0012CCED /* SearchViewController.m */; };
+		BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E42C288770B70012CCED /* ResultsViewController.m */; };
+		BA12E4302887712F0012CCED /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E42F2887712F0012CCED /* UserCell.m */; };
+		BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4332888D4510012CCED /* DetailProfileViewController.m */; };
+		BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4362889F1850012CCED /* ConversationViewController.m */; };
+		BA12E43A2889F3D80012CCED /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E4392889F3D80012CCED /* Message.m */; };
+		BA12E43D288A08F60012CCED /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA12E43C288A08F60012CCED /* MessageCell.m */; };
 		BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1CD287632AE008BF56C /* AppDelegate.m */; };
 		BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD1D0287632AE008BF56C /* SceneDelegate.m */; };
 		BA2FD1D7287632AE008BF56C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2FD1D5287632AE008BF56C /* Main.storyboard */; };
@@ -28,6 +35,10 @@
 		BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD229287897CB008BF56C /* SelfProfileViewController.m */; };
 		BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */; };
 		BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */; };
+		BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */; };
+		BAD8595428904772007E70BE /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595328904772007E70BE /* Conversation.m */; };
+		BAD8595728908E70007E70BE /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595628908E70007E70BE /* ConversationCell.m */; };
+		BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD859592894A5F8007E70BE /* UserInfo.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +69,20 @@
 		72404BB47F9F1F555E135979 /* Pods-ShareTheTableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTableTests.release.xcconfig"; path = "Target Support Files/Pods-ShareTheTableTests/Pods-ShareTheTableTests.release.xcconfig"; sourceTree = "<group>"; };
 		83F3F6355D3A28D834B18E88 /* Pods-ShareTheTable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable/Pods-ShareTheTable.debug.xcconfig"; sourceTree = "<group>"; };
 		A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareTheTable_ShareTheTableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA12E4282887703B0012CCED /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		BA12E4292887703B0012CCED /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		BA12E42B288770B70012CCED /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		BA12E42C288770B70012CCED /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
+		BA12E42E2887712F0012CCED /* UserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		BA12E42F2887712F0012CCED /* UserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		BA12E4322888D4510012CCED /* DetailProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailProfileViewController.h; sourceTree = "<group>"; };
+		BA12E4332888D4510012CCED /* DetailProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailProfileViewController.m; sourceTree = "<group>"; };
+		BA12E4352889F1850012CCED /* ConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationViewController.h; sourceTree = "<group>"; };
+		BA12E4362889F1850012CCED /* ConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationViewController.m; sourceTree = "<group>"; };
+		BA12E4382889F3D80012CCED /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		BA12E4392889F3D80012CCED /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		BA12E43B288A08F60012CCED /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		BA12E43C288A08F60012CCED /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		BA2FD1C9287632AE008BF56C /* ShareTheTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareTheTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2FD1CC287632AE008BF56C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA2FD1CD287632AE008BF56C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +119,14 @@
 		BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageInboxViewController.m; sourceTree = "<group>"; };
 		BA2FD22E287898DA008BF56C /* DetailedProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailedProfileViewController.h; sourceTree = "<group>"; };
 		BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedProfileViewController.m; sourceTree = "<group>"; };
+		BA2FD2AD287DEBDA008BF56C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "../../../Downloads/NSData_Base64/NSData+Base64.h"; sourceTree = "<group>"; };
+		BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "../../../Downloads/NSData_Base64/NSData+Base64.m"; sourceTree = "<group>"; };
+		BAD8595228904772007E70BE /* Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
+		BAD8595328904772007E70BE /* Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
+		BAD8595528908E70007E70BE /* ConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
+		BAD8595628908E70007E70BE /* ConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
+		BAD859582894A5F8007E70BE /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		BAD859592894A5F8007E70BE /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +181,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BA12E431288771700012CCED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BA12E42E2887712F0012CCED /* UserCell.h */,
+				BA12E42F2887712F0012CCED /* UserCell.m */,
+				BA12E43B288A08F60012CCED /* MessageCell.h */,
+				BA12E43C288A08F60012CCED /* MessageCell.m */,
+				BAD8595528908E70007E70BE /* ConversationCell.h */,
+				BAD8595628908E70007E70BE /* ConversationCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BA2FD1C0287632AE008BF56C = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +224,10 @@
 				BA2FD1CD287632AE008BF56C /* AppDelegate.m */,
 				BA2FD1CF287632AE008BF56C /* SceneDelegate.h */,
 				BA2FD1D0287632AE008BF56C /* SceneDelegate.m */,
+				BA2FD2AD287DEBDA008BF56C /* NSData+Base64.h */,
+				BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */,
 				BA2FD1D5287632AE008BF56C /* Main.storyboard */,
+				BA12E431288771700012CCED /* Cells */,
 				BA2FD20F28764028008BF56C /* View Controllers */,
 				BA2FD1D8287632AF008BF56C /* Assets.xcassets */,
 				BA2FD1DA287632AF008BF56C /* LaunchScreen.storyboard */,
@@ -209,6 +258,14 @@
 		BA2FD20F28764028008BF56C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA12E4352889F1850012CCED /* ConversationViewController.h */,
+				BA12E4362889F1850012CCED /* ConversationViewController.m */,
+				BA12E4322888D4510012CCED /* DetailProfileViewController.h */,
+				BA12E4332888D4510012CCED /* DetailProfileViewController.m */,
+				BA12E4282887703B0012CCED /* SearchViewController.h */,
+				BA12E4292887703B0012CCED /* SearchViewController.m */,
+				BA12E42B288770B70012CCED /* ResultsViewController.h */,
+				BA12E42C288770B70012CCED /* ResultsViewController.m */,
 				BA2FD22728779801008BF56C /* Profile Making */,
 				BA2FD222287791E0008BF56C /* Feed */,
 				BA2FD226287797C1008BF56C /* User Account Content */,
@@ -219,8 +276,14 @@
 		BA2FD21028775CCE008BF56C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BA12E4382889F3D80012CCED /* Message.h */,
+				BA12E4392889F3D80012CCED /* Message.m */,
 				BA2FD21128775D11008BF56C /* User.h */,
 				BA2FD21228775D11008BF56C /* User.m */,
+				BAD8595228904772007E70BE /* Conversation.h */,
+				BAD8595328904772007E70BE /* Conversation.m */,
+				BAD859582894A5F8007E70BE /* UserInfo.h */,
+				BAD859592894A5F8007E70BE /* UserInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -575,17 +638,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD8595728908E70007E70BE /* ConversationCell.m in Sources */,
 				BA2FD21328775D11008BF56C /* User.m in Sources */,
 				BA2FD1CE287632AE008BF56C /* AppDelegate.m in Sources */,
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
+				BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */,
+				BAD8595428904772007E70BE /* Conversation.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
+				BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
+				BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */,
 				BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */,
+				BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */,
 				BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */,
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
+				BA12E43D288A08F60012CCED /* MessageCell.m in Sources */,
+				BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */,
+				BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */,
 				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
+				BA12E4302887712F0012CCED /* UserCell.m in Sources */,
+				BA12E43A2889F3D80012CCED /* Message.m in Sources */,
 				BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */,
 				BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */,
 			);

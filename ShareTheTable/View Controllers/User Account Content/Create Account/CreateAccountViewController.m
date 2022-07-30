@@ -7,6 +7,7 @@
 
 #import "CreateAccountViewController.h"
 #import "Parse/Parse.h"
+#import "UserInfo.h"
 //#import "User.h"
 
 @interface CreateAccountViewController ()
@@ -22,9 +23,6 @@
     
     newUser.username = self.usernameTextField.text;
     newUser.password = self.passwordTextField.text;
-    newUser[@"firstName"] = self.firstNameTextField.text;
-    newUser[@"ageValue"] = self.ageTextField.text;
-    newUser[@"locationName"] = self.locationTextField.text;
     
     // Check if the user left either the username and/or password fields empty
     if ([self.usernameTextField.text isEqual:@""] || [self.passwordTextField.text isEqual:@""]) {
@@ -49,8 +47,23 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            // Manually segue to feed view
-            [self performSegueWithIdentifier:@"accountToPhotoSegue" sender:nil];
+            
+            UserInfo *userInfo = [UserInfo new];
+            userInfo[@"firstName"] = self.firstNameTextField.text;
+            userInfo[@"ageValue"] = [NSNumber numberWithInteger:[self.ageTextField.text integerValue]];
+            userInfo[@"locationName"] = self.locationTextField.text;
+            userInfo[@"userPointer"] = newUser;
+            userInfo[@"username"] = newUser[@"username"];
+            [userInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (error != nil) {
+                    NSLog(@"Error: %@", error.localizedDescription);
+                } else {
+                    NSLog(@"UserInfo updated successfully");
+
+                    // Manually segue to feed view
+                    [self performSegueWithIdentifier:@"accountToPhotoSegue" sender:nil];
+                }
+            }];
         }
     }];
 }
@@ -59,15 +72,5 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
