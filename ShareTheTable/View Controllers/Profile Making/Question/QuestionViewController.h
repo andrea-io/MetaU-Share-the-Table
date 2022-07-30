@@ -6,12 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
+#import "UserInfo.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol QuestionViewControllerDelegate
 
-- (void)didPush:(User *)user;
+- (void)didPush:(UserInfo *)user;
 
 @end
 
@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *veganButton;
 @property (nonatomic, strong) NSMutableArray<PFObject*>* allPreferences;
 @property (nonatomic, strong) id<QuestionViewControllerDelegate> delegate;
-@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) UserInfo *user;
 
 @end
 

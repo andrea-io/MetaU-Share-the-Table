@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
+#import "UserInfo.h"
 #import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailProfileViewController : UIViewController
 
-@property (nonatomic, strong) User *detailUser;
+@property (nonatomic, strong) UserInfo *detailUser;
 @property (weak, nonatomic) IBOutlet UILabel *detailUserFirstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailUserAgeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLocationLabel;

@@ -13,6 +13,7 @@
 #import "QuestionViewController.h"
 #import "UniformTypeIdentifiers/UniformTypeIdentifiers.h"
 #import "Parse/Parse.h"
+#import "UserInfo.h"
 
 @interface AddPhotosViewController () <PHPickerViewControllerDelegate>
 
@@ -112,11 +113,14 @@
                     
                     if(self.imageViews.count == 5) {
                         PFObject* currentUser = [PFUser currentUser];
+                        PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
+                        [query whereKey:@"userPointer" equalTo:currentUser];
+                        UserInfo *userInfo = [query getFirstObject];
                         for(UIImage* image in self.imageViews) {
                             NSString* imageString = [UIImagePNGRepresentation(image) base64Encoding];
                 
-                            [currentUser addObject:imageString forKey:@"userPhotos"];
-                            [currentUser saveInBackground];
+                            [userInfo addObject:imageString forKey:@"userPhotos"];
+                            [userInfo saveInBackground];
                         }
                 
                         [self.image1 setImage:[self.imageViews objectAtIndex:0] forState:UIControlStateNormal];

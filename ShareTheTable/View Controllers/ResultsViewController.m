@@ -42,14 +42,14 @@
     [refreshControl endRefreshing];
 }
 
-- (void)didPush:(nonnull User *)user {
+- (void)didPush:(nonnull UserInfo *)user {
     //[self.arrayOfPosts insertObject:post atIndex:0];
     [self.userTableView reloadData];
 }
 
 - (void) loadMoreData {
     // Construct query
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"ageValue" greaterThan:self.minAge];
     [query whereKey:@"ageValue" lessThan:self.maxAge];
     
@@ -75,7 +75,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
     
-    User *user = self.arrayOfUsers[indexPath.row];
+    UserInfo *user = self.arrayOfUsers[indexPath.row];
     
     cell.userFirstNameLabel.text = user.firstName;
     cell.userAgeLabel.text = [user.ageValue stringValue];
@@ -89,7 +89,7 @@
 
 - (void)refreshData {
     // Construct query
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"ageValue" greaterThan:self.minAge];
     [query whereKey:@"ageValue" lessThan:self.maxAge];
     [query includeKey:@"ageValue"];
@@ -130,10 +130,10 @@
     // Pass the selected object to the new view controller.
     
     if([segue.identifier isEqualToString:@"resultsToDetailSegue"]) {
-        User* cell = sender;
+        UserInfo* cell = sender;
         NSIndexPath *myIndexPath = [self.userTableView indexPathForCell:cell];
         
-        User* dataToPass = self.arrayOfUsers[myIndexPath.row];
+        UserInfo* dataToPass = self.arrayOfUsers[myIndexPath.row];
         DetailProfileViewController *detailVC = [segue destinationViewController];
         detailVC.detailUser = dataToPass;
     }

@@ -7,6 +7,7 @@
 
 #import "ConversationViewController.h"
 #import "Conversation.h"
+#import "UserInfo.h"
 
 @interface ConversationViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,37 +22,8 @@
     self.messageTableView.delegate = self;
     self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     
-    //[self initializeUserData];
-    //[self initializeConversationData];
+    [NSTimer scheduledTimerWithTimeInterval:10000 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
-    
-    // Do any additional setup after loading the view.
-//    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://sharethetable.b4a.io" applicationId:@"IgLS0pEFPPTPM0LeAw7GKes2N0o5gIYmhxMaEyvR" clientKey:@"2YcygA4JtK1E3ymXS1i4EIhOAEFv9PZy5kw5DfDM"];
-//
-//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"conversationID == %@", self.messageData.conversationID];
-//    PFQuery<PFObject*>* msgQuery = [PFQuery<PFObject*> queryWithClassName:@"Message" predicate:predicate];
-//    [msgQuery orderByAscending:@"createdAt"];
-//
-//    [msgQuery findObjectsInBackgroundWithBlock:^(NSArray* messageObjects, NSError *error) {
-//        if(error != nil) {
-//            self.messages = [[NSMutableArray alloc] initWithArray:messageObjects];
-//            [self.messageTableView reloadData];
-//        }
-//    }];
-    
-    
-//    self.subscription = [self.liveQueryClient subscribeToQuery:msgQuery];
-//    __weak typeof(self) weakSelf = self;
-//
-//    [self.subscription addCreateHandler:^(PFQuery<PFObject*>* _Nonnull query, PFObject* _Nonnull object) {
-//        if([object isKindOfClass:[Message class]]) {
-//            [weakSelf.messages addObject:object];
-//            [weakSelf.messageTableView reloadData];
-//        } else {
-//            NSLog(@"This object was not found rip");
-//        }
-//    }];
 }
 
 - (void)onTimer {
@@ -59,18 +31,19 @@
     [self refreshConversationData];
 }
 
-//- (void)initializeUserData {
-//    self.messageData.senderID = PFUser.currentUser.objectId;
-//}
-
 - (void)refreshConversationData {
     Conversation* convo = [[Conversation alloc] init];
     NSLog(@"Other user: %@", self.otherUser);
-    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:PFUser.currentUser];
+    PFObject* currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
+    [query whereKey:@"userPointer" equalTo:currentUser];
+    UserInfo *userInfo = [query getFirstObject];
+    
+    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:userInfo];
     
     self.messages = [convo fetchConversationMessages:self.convoID];
     
-//    [self.messageTableView reloadData];
+    [self.messageTableView reloadData];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -93,26 +66,14 @@
     message.messageBodyText = self.textMessageBody.text;
     message.senderID = [PFUser currentUser].objectId;
     message.conversationID = self.convoID;
-
-    [message saveInBackgroundWithBlock:^(BOOL suceeded, NSError* _Nullable error) {
-        if(suceeded) {
-            NSLog(@"Message was sent");
-            Conversation* convo = [Conversation objectWithoutDataWithObjectId:self.convoID];
-            [convo addObject:message forKey:@"messages"];
-            [self.messageTableView reloadData];
-        }
-    }];
+    [message save];
+    self.textMessageBody.text = @"";
+    Conversation* convo = [Conversation objectWithoutDataWithObjectId:self.convoID];
+    [convo addObject:message forKey:@"messages"];
+    [convo save];
+    [self.messageTableView reloadData];
+    
+    [self refreshConversationData];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

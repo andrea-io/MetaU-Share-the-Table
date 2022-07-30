@@ -38,6 +38,7 @@
 		BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */; };
 		BAD8595428904772007E70BE /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595328904772007E70BE /* Conversation.m */; };
 		BAD8595728908E70007E70BE /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595628908E70007E70BE /* ConversationCell.m */; };
+		BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD859592894A5F8007E70BE /* UserInfo.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,8 @@
 		BAD8595328904772007E70BE /* Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
 		BAD8595528908E70007E70BE /* ConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
 		BAD8595628908E70007E70BE /* ConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
+		BAD859582894A5F8007E70BE /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		BAD859592894A5F8007E70BE /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +282,8 @@
 				BA2FD21228775D11008BF56C /* User.m */,
 				BAD8595228904772007E70BE /* Conversation.h */,
 				BAD8595328904772007E70BE /* Conversation.m */,
+				BAD859582894A5F8007E70BE /* UserInfo.h */,
+				BAD859592894A5F8007E70BE /* UserInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -649,6 +654,7 @@
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
 				BA12E43D288A08F60012CCED /* MessageCell.m in Sources */,
 				BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */,
+				BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */,
 				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,

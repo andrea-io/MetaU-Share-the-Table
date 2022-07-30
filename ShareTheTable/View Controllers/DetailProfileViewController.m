@@ -22,7 +22,7 @@
     // Set up all text labels
     self.detailUserFirstNameLabel.text = self.detailUser.firstName;
     self.detailUserAgeLabel.text = [self.detailUser.ageValue stringValue];
-    self.detailLocationLabel.text = self.detailUser.location;
+    self.detailLocationLabel.text = self.detailUser.locationName;
 }
 
 - (IBAction)didTapMessageUser:(id)sender {
@@ -56,7 +56,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"profileToMessageSegue"]) {
-        PFUser* otherUser = sender;
+        UserInfo* otherUser = sender;
         
         ConversationViewController* convoVC = [segue destinationViewController];
         [convoVC setOtherUser:otherUser];

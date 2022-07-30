@@ -6,7 +6,7 @@
 //
 
 #import <Parse/Parse.h>
-
+#import "UserInfo.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Conversation : PFObject<PFSubclassing>
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nonnull NSMutableArray*) fetchCurrentConversationList: (PFObject* _Nullable)currentUser;
 - (nonnull NSMutableArray*) fetchConversationMessages: (NSString* _Nullable)conversationID;
-- (nonnull NSString* ) checkIfConversationExists: (PFObject* _Nullable )otherUser withCurrentUser: (PFObject* _Nullable )currentUser;
+- (nonnull NSString* ) checkIfConversationExists: (UserInfo* _Nullable )otherUser withCurrentUser: (UserInfo* _Nullable )currentUser;
 - (void) addUserToMatchesList: (PFObject* _Nullable)otherUser withCurrentUser:( PFObject* _Nullable) currentUser withConvo: (Conversation* _Nullable)conversation;
 @end
 

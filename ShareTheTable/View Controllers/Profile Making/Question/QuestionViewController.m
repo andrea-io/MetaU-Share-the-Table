@@ -22,7 +22,6 @@
     UIButton *button = (UIButton *)sender;
     // Refresh button selected
     [self refreshButtons:button];
-    PFObject* currentUser = [PFUser currentUser];
     NSLog(@"Button pressed: %@", [sender currentTitle]);
     
     // Tag = 1, button pressed was a dietary preference
@@ -134,22 +133,27 @@
     sceneDelegate.window.rootViewController = navViewController;
     
     PFObject* currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
+    [query whereKey:@"userPointer" equalTo:currentUser];
+    UserInfo *userInfo = [query getFirstObject];
     for(PFObject* obj in self.allPreferences) {
-        [currentUser addObject:obj forKey:@"allPreferences"];
-        [currentUser saveInBackground];
+        [userInfo addObject:obj forKey:@"allPreferences"];
+        [userInfo saveInBackground];
     }
     
-    [User pushUserToFeed:[PFUser currentUser] withName:currentUser[@"firstName"] withAge:currentUser[@"ageValue"] withLocation:currentUser[@"locationName"] withCompletion:^(BOOL succeeded, NSError* _Nullable error) {
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
             NSLog(@"Error pushing user: %@", error.localizedDescription);
         }
         else{
-            [self.delegate didPush:self.user];
+            [self.delegate didPush:userInfo];
             NSLog(@"Pushed user, Success!");
-            currentUser[@"currentMatches"] = [NSDictionary dictionary];
-            [currentUser saveInBackground];
         }
     }];
+    
+//    [User pushUserToFeed:[PFUser currentUser] withName:currentUser[@"firstName"] withAge:currentUser[@"ageValue"] withLocation:currentUser[@"locationName"] withCompletion:^(BOOL succeeded, NSError* _Nullable error) {
+//
+//    }];
 }
 
 - (IBAction)tapBack:(id)sender {
