@@ -136,6 +136,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"userPointer" equalTo:currentUser];
     UserInfo *userInfo = [query getFirstObject];
+    
     for(PFObject* obj in self.allPreferences) {
         [userInfo addObject:obj forKey:@"allPreferences"];
         [userInfo saveInBackground];

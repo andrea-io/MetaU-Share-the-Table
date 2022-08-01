@@ -49,10 +49,18 @@
 
 - (void) addUserToMatchesList: (UserInfo* _Nullable)otherUser withCurrentUser:( UserInfo* _Nullable) currentUser withConvo: (Conversation* _Nullable)conversation {
     
-    NSLog(@"%@", conversation.objectId);
+    // Look for previous currentMatches dictionaries info
+    NSMutableDictionary *currentUserDict = [[NSMutableDictionary alloc] initWithDictionary:currentUser[@"currentMatches"]];
+    NSMutableDictionary *otherUserDict = [[NSMutableDictionary alloc] initWithDictionary:otherUser[@"currentMatches"]];
     
-    currentUser[@"currentMatches"] = [NSDictionary dictionaryWithObject:conversation.objectId forKey:otherUser.objectId];
-    otherUser[@"currentMatches"] = [NSDictionary dictionaryWithObject:conversation.objectId forKey:currentUser.objectId];
+    // Set new object to be placed into that dictionary
+    [currentUserDict setObject:conversation.objectId forKey:otherUser.objectId];
+    [otherUserDict setObject:conversation.objectId forKey:currentUser.objectId];
+   
+    // Reassign the dictionaries to each user
+    currentUser[@"currentMatches"] = currentUserDict;
+    otherUser[@"currentMatches"] = otherUserDict;
+    
     [currentUser save];
     [otherUser save];
 }
