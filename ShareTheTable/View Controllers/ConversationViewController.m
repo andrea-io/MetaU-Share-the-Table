@@ -18,30 +18,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initializeUserData];
+    [self initializeConversation];
+    
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
     self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     
-    [NSTimer scheduledTimerWithTimeInterval:10000 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
-    
+    //[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
 
 - (void)onTimer {
     [self refreshConversationData];
 }
 
-- (void)refreshConversationData {
-    Conversation* convo = [[Conversation alloc] init];
+- (void)initializeUserData {
     NSLog(@"Other user: %@", self.otherUser);
     PFObject* currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"userPointer" equalTo:currentUser];
-    UserInfo *userInfo = [query getFirstObject];
-    
-    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:userInfo];
-    
+    self.currentUserInfo = [query getFirstObject];
+}
+
+-(void)initializeConversation {
+    self.textMessageBody.text = @"";
+    Conversation* convo = [[Conversation alloc] init];
+    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:self.currentUserInfo];
+    [self refreshConversationData];
+}
+
+- (void)refreshConversationData {
+    Conversation* convo = [[Conversation alloc] init];
     self.messages = [convo fetchConversationMessages:self.convoID];
-    
     [self.messageTableView reloadData];
 }
 
@@ -49,9 +57,10 @@
     MessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     Message* message = self.messages[indexPath.row];
+    [message fetch];
     
     cell.messageBodyText.text = message.messageBodyText;
-    cell.messageUserName.text = message.user.username;
+    cell.messageUserName.text = message.senderID;
     
     return cell;
 }

@@ -620,27 +620,46 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jS1-Hz-C2f">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jS1-Hz-C2f">
                                                     <rect key="frame" x="20" y="8" width="62" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.1112002443" blue="0.42688735709999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="cv6-Wb-bhO"/>
+                                                        <constraint firstAttribute="width" constant="62" id="fhM-f3-U7E"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-pr-qOv">
-                                                    <rect key="frame" x="90" y="8" width="304" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-pr-qOv">
+                                                    <rect key="frame" x="90" y="8" width="66.5" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="3A0-mu-8Wz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7Z-Iz-PD9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7Z-Iz-PD9">
                                                     <rect key="frame" x="90" y="28" width="304" height="42"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="42" id="Or5-ve-5yd"/>
+                                                        <constraint firstAttribute="width" constant="304" id="enL-Y6-zw2"/>
+                                                    </constraints>
                                                     <string key="text">Example text message Example text message Example text message Example text message Example text message Example text message Example text message Example text message</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="UcC-pr-qOv" secondAttribute="trailing" constant="257.5" id="2PH-jf-gsc"/>
+                                                <constraint firstItem="jS1-Hz-C2f" firstAttribute="leading" secondItem="DMy-ET-o1a" secondAttribute="leading" constant="20" symbolic="YES" id="L0V-ka-iNo"/>
+                                                <constraint firstAttribute="bottom" secondItem="jS1-Hz-C2f" secondAttribute="bottom" constant="8" id="TeC-80-Ou9"/>
+                                                <constraint firstAttribute="bottom" secondItem="V7Z-Iz-PD9" secondAttribute="bottom" constant="8" id="XIv-4h-XHW"/>
+                                                <constraint firstItem="UcC-pr-qOv" firstAttribute="top" secondItem="DMy-ET-o1a" secondAttribute="top" constant="8" id="XxN-cu-J8T"/>
+                                                <constraint firstItem="V7Z-Iz-PD9" firstAttribute="top" secondItem="UcC-pr-qOv" secondAttribute="bottom" constant="6" id="Y0L-Rh-Qtk"/>
+                                                <constraint firstItem="jS1-Hz-C2f" firstAttribute="top" secondItem="DMy-ET-o1a" secondAttribute="top" constant="8" id="cBi-FC-7gS"/>
+                                                <constraint firstItem="V7Z-Iz-PD9" firstAttribute="leading" secondItem="jS1-Hz-C2f" secondAttribute="trailing" constant="8" symbolic="YES" id="mPY-r9-5wC"/>
+                                                <constraint firstItem="UcC-pr-qOv" firstAttribute="leading" secondItem="jS1-Hz-C2f" secondAttribute="trailing" constant="8" symbolic="YES" id="sWg-1J-Jvv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageBodyText" destination="V7Z-Iz-PD9" id="GBW-dT-yXh"/>
@@ -1145,9 +1164,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="message" catalog="system" title="Message "/>
                                 <connections>
-                                    <action selector="didTapMessageUser:" destination="w26-aj-YLc" eventType="touchUpInside" id="6Mm-gg-1ZR"/>
                                     <action selector="didTapMessageUser:" destination="8m5-sg-Ntw" eventType="touchUpInside" id="SAt-ub-fo5"/>
-                                    <segue destination="Zbe-Fn-gDa" kind="presentation" identifier="profileToMessageSegue" id="hLg-W6-rQ1"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Preference list here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D8z-3t-EhV">
@@ -1176,12 +1193,12 @@
                         <outlet property="detailLocationLabel" destination="Zx7-dX-aHE" id="XxI-vH-JFP"/>
                         <outlet property="detailUserAgeLabel" destination="6mJ-6j-aMu" id="wth-E1-2BJ"/>
                         <outlet property="detailUserFirstNameLabel" destination="W09-fD-Xm7" id="JMy-s7-VWg"/>
+                        <segue destination="Zbe-Fn-gDa" kind="presentation" identifier="profileToMessageSegue" id="NhB-BT-ZfS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ZS-YB-cPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="w26-aj-YLc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2418.840579710145" y="2911.6071428571427"/>
+            <point key="canvasLocation" x="2413" y="2912"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="Srb-Jz-Ypw">
@@ -1345,7 +1362,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LqY-YW-jPm"/>
-        <segue reference="hLg-W6-rQ1"/>
+        <segue reference="NhB-BT-ZfS"/>
         <segue reference="LVI-4B-Atv"/>
         <segue reference="6TO-GM-K8E"/>
     </inferredMetricsTieBreakers>

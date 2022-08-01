@@ -37,14 +37,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
 		</dict>
 		<key>ParseLiveQuery.xcscheme</key>
 		<dict>
@@ -58,21 +58,21 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-ShareTheTable.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-ShareTheTableTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Starscream.xcscheme</key>
 		<dict>

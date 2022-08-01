@@ -19,15 +19,15 @@
     return @"Conversation";
 }
 
-- (nonnull NSMutableArray*) fetchCurrentConversationList: (PFObject* _Nullable)currentUser {
+- (nonnull NSMutableArray*) fetchCurrentConversationList: (UserInfo* _Nullable)currentUser {
     
     NSMutableArray* conversationList = [[NSMutableArray alloc] init];
     
     PFQuery* findCurrentUserQueryUserTwo = [PFQuery queryWithClassName:@"Conversation"];
-    [findCurrentUserQueryUserTwo whereKey:@"userTwoPointer" equalTo:currentUser];
+    [findCurrentUserQueryUserTwo whereKey:@"userTwoInfoPointer" equalTo:currentUser];
     
     PFQuery* findCurrentUserQueryUserOne = [PFQuery queryWithClassName:@"Conversation"];
-    [findCurrentUserQueryUserOne whereKey:@"userOnePointer" equalTo:currentUser];
+    [findCurrentUserQueryUserOne whereKey:@"userOneInfoPointer" equalTo:currentUser];
     
     PFQuery* combinedQuery = [PFQuery orQueryWithSubqueries:@[findCurrentUserQueryUserOne, findCurrentUserQueryUserTwo]];
     

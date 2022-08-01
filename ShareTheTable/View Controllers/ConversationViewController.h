@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITableView* messageTableView;
 @property (strong, nonatomic) NSMutableArray* messages;
 @property (strong, nonatomic) UserInfo* otherUser;
+@property (strong, nonatomic) UserInfo* currentUserInfo;
 @property (strong, nonatomic) NSString* convoID;
 @property (nonatomic, strong) PFLiveQueryClient* liveQueryClient;
 @property (nonatomic, strong) PFQuery* msgQuery;

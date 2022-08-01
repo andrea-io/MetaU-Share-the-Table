@@ -41,7 +41,12 @@
     Conversation* convo = [[Conversation alloc] init];
     self.arrayOfConversations = [[NSMutableArray alloc] init];
     
-    self.arrayOfConversations = [convo fetchCurrentConversationList:PFUser.currentUser];
+    PFObject* currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
+    [query whereKey:@"userPointer" equalTo:currentUser];
+    UserInfo *userInfo = [query getFirstObject];
+    
+    self.arrayOfConversations = [convo fetchCurrentConversationList:userInfo];
     NSLog(@"%@", self.arrayOfConversations);
     [self.conversationTableView reloadData];
 }
