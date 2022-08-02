@@ -8,7 +8,6 @@
 #import "FeedViewController.h"
 #import "BusinessInfo.h"
 #import "AppDelegate.h"
-#import "YLPAppDelegate.h"
 #import <YelpAPI/YLPClient+Search.h>
 #import <YelpAPI/YLPSortType.h>
 #import <YelpAPI/YLPSearch.h>
@@ -34,7 +33,7 @@
     
     self.yelpTableView.delegate = self;
     self.yelpTableView.dataSource = self;
-    self.yelpTableView.rowHeight = UITableViewAutomaticDimension;
+    //self.yelpTableView.rowHeight = UITableViewAutomaticDimension;
     
     double lat = 40.78;
     double longt = -73.96;
@@ -55,13 +54,19 @@
         }
         else {
             cell.restaurantName.text = self.search.businesses[indexPath.item].name;
+            cell.restaurantLocation.text = self.search.businesses[indexPath.item].location.address[0];
+            NSData* restaurantImageData = [NSData dataWithContentsOfURL:self.search.businesses[indexPath.item].imageURL];
+          
+            UIImage* restaurantImage = [UIImage imageWithData:restaurantImageData];
+            
+            cell.restaurantImageView.image = restaurantImage;
         }
         
         return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 20;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
