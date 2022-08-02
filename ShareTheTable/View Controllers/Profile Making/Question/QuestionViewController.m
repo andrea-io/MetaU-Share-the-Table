@@ -18,14 +18,16 @@
 
 @implementation QuestionViewController
 
+NSInteger const DIET_PREF_TAG = 1;
+NSInteger const FOOD_PREF_TAG = 2;
+
 - (IBAction)didTapAButton:(id)sender {
     UIButton *button = (UIButton *)sender;
     // Refresh button selected
     [self refreshButtons:button];
-    NSLog(@"Button pressed: %@", [sender currentTitle]);
     
     // Tag = 1, button pressed was a dietary preference
-    if([button tag] == 1) {
+    if([button tag] == DIET_PREF_TAG) {
         PFObject* dietPreference = [[PFObject alloc] initWithClassName:@"Preference"];
         // Check if the button was selected or deselected
         if(button.selected == YES) {
@@ -68,7 +70,7 @@
             }];
         }
     // Tag = 2, button pressed was a food preference
-    } else if([button tag] == 2) {
+    } else if([button tag] == FOOD_PREF_TAG) {
         PFObject* foodPreference = [[PFObject alloc] initWithClassName:@"Preference"];
         // Check if the button was selected or deselected
         if(button.selected == YES) {
@@ -136,24 +138,20 @@
     PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"userPointer" equalTo:currentUser];
     UserInfo *userInfo = [query getFirstObject];
+    
     for(PFObject* obj in self.allPreferences) {
         [userInfo addObject:obj forKey:@"allPreferences"];
         [userInfo saveInBackground];
     }
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error){
+        if(error) {
             NSLog(@"Error pushing user: %@", error.localizedDescription);
         }
-        else{
+        else {
             [self.delegate didPush:userInfo];
-            NSLog(@"Pushed user, Success!");
         }
     }];
-    
-//    [User pushUserToFeed:[PFUser currentUser] withName:currentUser[@"firstName"] withAge:currentUser[@"ageValue"] withLocation:currentUser[@"locationName"] withCompletion:^(BOOL succeeded, NSError* _Nullable error) {
-//
-//    }];
 }
 
 - (IBAction)tapBack:(id)sender {
@@ -163,13 +161,11 @@
     
     AddPhotosViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"Nav"];
     sceneDelegate.window.rootViewController = navViewController;
-    
-    // TODO: DELETE ACCOUNT MADE
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     self.veganButton.selected = NO;
     self.vegitarianButton.selected = NO;
     self.kosherButton.selected = NO;
@@ -185,15 +181,5 @@
     
     self.allPreferences = [[NSMutableArray alloc] init];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

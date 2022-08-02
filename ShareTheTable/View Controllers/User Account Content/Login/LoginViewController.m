@@ -38,7 +38,6 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
-            NSLog(@"User logged in successfully");
             // Display feed view controller after successful login
             [self performSegueWithIdentifier:@"loginToFeedSegue" sender:nil];
         }
@@ -47,7 +46,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 @end

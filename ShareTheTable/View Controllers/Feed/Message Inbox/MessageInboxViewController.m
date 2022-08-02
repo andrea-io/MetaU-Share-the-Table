@@ -12,6 +12,7 @@
 #import "ConversationCell.h"
 #import "ConversationViewController.h"
 #import "Conversation.h"
+#import "UserInfo.h"
 
 @interface MessageInboxViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -38,11 +39,16 @@
     self.conversationTableView.dataSource = self;
     self.conversationTableView.rowHeight = UITableViewAutomaticDimension;
     
-    Conversation* convo = [[Conversation alloc] init];
+    UserInfo* user = [[UserInfo alloc] init];
     self.arrayOfConversations = [[NSMutableArray alloc] init];
     
-    self.arrayOfConversations = [convo fetchCurrentConversationList:PFUser.currentUser];
-    NSLog(@"%@", self.arrayOfConversations);
+    PFObject* currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
+    [query whereKey:@"userPointer" equalTo:currentUser];
+    self.currentUserInfo = [query getFirstObject];
+    
+    self.arrayOfConversations = [user fetchCurrentConversationList:self.currentUserInfo];
+
     [self.conversationTableView reloadData];
 }
 
@@ -50,14 +56,14 @@
     ConversationCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
     
     Conversation* convo = self.arrayOfConversations[indexPath.row];
-    if(convo.userOnePoint == PFUser.currentUser) {
-        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userTwoPoint.objectId];
+    if([convo.userInfoOnePointer.objectId isEqualToString:self.currentUserInfo.objectId]) {
+        UserInfo* user = [UserInfo objectWithoutDataWithObjectId:convo.userInfoTwoPointer.objectId];
         [user fetchIfNeeded];
-        cell.conversationUserName.text = user.username;
+        cell.conversationUserName.text = user.firstName;
     } else {
-        PFUser* user = [PFUser objectWithoutDataWithObjectId:convo.userOnePoint.objectId];
+        UserInfo* user = [UserInfo objectWithoutDataWithObjectId:convo.userInfoOnePointer.objectId];
         [user fetchIfNeeded];
-        cell.conversationUserName.text = user.username;
+        cell.conversationUserName.text = user.firstName;
     }
     
     return cell;
@@ -68,21 +74,27 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"inboxToConversationSegue" sender:indexPath];
+    NSNumber* rowNumber = [NSNumber numberWithInt:indexPath.row];
+
+    [self performSegueWithIdentifier:@"inboxToConversationSegue" sender:rowNumber];
 }
 
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"inboxToConversationSegue"]) {
         
+        Conversation* conversationSelected = [self.arrayOfConversations objectAtIndex:sender];
+        UserInfo* detailUser;
+        
+        if([conversationSelected.userInfoOnePointer.objectId isEqualToString:self.currentUserInfo.objectId]) {
+            detailUser = [UserInfo objectWithoutDataWithObjectId:conversationSelected.userInfoTwoPointer.objectId];
+            [detailUser fetchIfNeeded];
+        } else {
+            detailUser = [UserInfo objectWithoutDataWithObjectId:conversationSelected.userInfoOnePointer.objectId];
+            [detailUser fetchIfNeeded];
+        }
+        
         ConversationViewController* convoVC = [segue destinationViewController];
-        //convoVC.otherUser.objectId = self.arrayOfConversations[index];
-        //convoVC.convoID = self.conversation.objectId;
+        [convoVC setOtherUser:detailUser];
     }
 }
 

@@ -6,6 +6,8 @@
 //
 
 #import "ConversationViewController.h"
+#import "DetailProfileViewController.h"
+#import "SceneDelegate.h"
 #import "Conversation.h"
 #import "UserInfo.h"
 
@@ -18,30 +20,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initializeUserData];
+    [self initializeConversation];
+    
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
     self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     
-    [NSTimer scheduledTimerWithTimeInterval:10000 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
-    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
 
 - (void)onTimer {
     [self refreshConversationData];
 }
 
-- (void)refreshConversationData {
-    Conversation* convo = [[Conversation alloc] init];
-    NSLog(@"Other user: %@", self.otherUser);
+- (void)initializeUserData {
+    // Repeated code below, will create a function to fetch UserInfo
     PFObject* currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"userPointer" equalTo:currentUser];
-    UserInfo *userInfo = [query getFirstObject];
-    
-    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:userInfo];
-    
+    self.currentUserInfo = [query getFirstObject];
+}
+
+-(void)initializeConversation {
+    self.textMessageBody.text = @"";
+    UserInfo* user = [[UserInfo alloc] init];
+    self.convoID = [user checkIfConversationExists:self.otherUser withCurrentUser:self.currentUserInfo];
+    [self refreshConversationData];
+}
+
+- (void)refreshConversationData {
+    Conversation* convo = [[Conversation alloc] init];
     self.messages = [convo fetchConversationMessages:self.convoID];
-    
     [self.messageTableView reloadData];
 }
 
@@ -49,9 +59,13 @@
     MessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     Message* message = self.messages[indexPath.row];
+    [message fetch];
+    
+    PFUser* user = [PFUser objectWithoutDataWithObjectId:message.senderID];
+    [user fetch];
     
     cell.messageBodyText.text = message.messageBodyText;
-    cell.messageUserName.text = message.user.username;
+    cell.messageUserName.text = user.username;
     
     return cell;
 }

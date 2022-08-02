@@ -31,8 +31,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"profileToMessageSegue"]) {
         UserInfo* otherUser = sender;
-        
-        ConversationViewController* convoVC = [segue destinationViewController];
+        UINavigationController *navigationController = segue.destinationViewController;
+                ConversationViewController* convoVC = (ConversationViewController*) navigationController.topViewController;
         [convoVC setOtherUser:otherUser];
     }
 }
