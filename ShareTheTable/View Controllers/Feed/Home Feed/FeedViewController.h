@@ -10,6 +10,7 @@
 @class YLPSearch;
 @class YLPCoordinate;
 @import YelpAPI;
+@import CoreLocation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *viewProfileButton;
 @property (strong, nonatomic) NSMutableArray* places;
 @property (nonatomic) YLPSearch *search;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
