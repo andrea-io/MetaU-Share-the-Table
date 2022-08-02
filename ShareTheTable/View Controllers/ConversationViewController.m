@@ -6,6 +6,8 @@
 //
 
 #import "ConversationViewController.h"
+#import "DetailProfileViewController.h"
+#import "SceneDelegate.h"
 #import "Conversation.h"
 #import "UserInfo.h"
 
@@ -25,7 +27,7 @@
     self.messageTableView.delegate = self;
     self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     
-    //[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
 
 - (void)onTimer {
@@ -33,7 +35,7 @@
 }
 
 - (void)initializeUserData {
-    NSLog(@"Other user: %@", self.otherUser);
+    // Repeated code below, will create a function to fetch UserInfo
     PFObject* currentUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"userPointer" equalTo:currentUser];
@@ -42,8 +44,8 @@
 
 -(void)initializeConversation {
     self.textMessageBody.text = @"";
-    Conversation* convo = [[Conversation alloc] init];
-    self.convoID = [convo checkIfConversationExists:self.otherUser withCurrentUser:self.currentUserInfo];
+    UserInfo* user = [[UserInfo alloc] init];
+    self.convoID = [user checkIfConversationExists:self.otherUser withCurrentUser:self.currentUserInfo];
     [self refreshConversationData];
 }
 
@@ -59,8 +61,11 @@
     Message* message = self.messages[indexPath.row];
     [message fetch];
     
+    PFUser* user = [PFUser objectWithoutDataWithObjectId:message.senderID];
+    [user fetch];
+    
     cell.messageBodyText.text = message.messageBodyText;
-    cell.messageUserName.text = message.senderID;
+    cell.messageUserName.text = user.username;
     
     return cell;
 }

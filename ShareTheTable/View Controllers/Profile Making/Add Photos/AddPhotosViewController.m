@@ -17,10 +17,11 @@
 
 @interface AddPhotosViewController () <PHPickerViewControllerDelegate>
 
-
 @end
 
 @implementation AddPhotosViewController
+
+NSInteger const PHOTO_LIMIT = 5;
 
 - (IBAction)tapNext:(id)sender {
     SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
@@ -38,14 +39,11 @@
     
     CreateAccountViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"AccountNav"];
     sceneDelegate.window.rootViewController = navViewController;
-    
-    // TODO: DELETE ACCOUNT MADE
 }
 
 - (IBAction)tapSelectPhotos:(id)sender {
-    // self.imageViews = [[NSMutableArray alloc] init];
     PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
-    config.selectionLimit = 5;
+    config.selectionLimit = PHOTO_LIMIT;
     config.filter = [PHPickerFilter imagesFilter];
 
     PHPickerViewController *pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
@@ -55,19 +53,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.imageViews = [[NSMutableArray alloc] init];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(UIImageView*)newImageViewForImage:(UIImage*)image {
     UIImageView *imageView = [[UIImageView alloc] init];
@@ -96,22 +83,16 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 
     for (PHPickerResult *result in results) {
-        NSLog(@"result: %@", result);
-        NSLog(@"%@", result.assetIdentifier);
-        NSLog(@"%@", result.itemProvider);
-        
         // Get UIImage
         [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
 
-            NSLog(@"object: %@, error: %@", object, error);
             if ([object isKindOfClass:[UIImage class]]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    //UIImageView *imageView = [self newImageViewForImage:(UIImage*)object];
                     UIImage* imageSelected = object;
                     imageSelected = [self resizeImage:imageSelected withSize:CGSizeMake(159,159)];
                     [self.imageViews addObject:imageSelected];
                     
-                    if(self.imageViews.count == 5) {
+                    if(self.imageViews.count == PHOTO_LIMIT) {
                         PFObject* currentUser = [PFUser currentUser];
                         PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
                         [query whereKey:@"userPointer" equalTo:currentUser];

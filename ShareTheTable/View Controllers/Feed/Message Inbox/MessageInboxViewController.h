@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITableView *conversationTableView;
 
 @property (strong, nonatomic) NSMutableArray* arrayOfConversations;
+@property (strong, nonatomic) UserInfo* currentUserInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

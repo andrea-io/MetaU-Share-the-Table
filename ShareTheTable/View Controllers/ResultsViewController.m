@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.userTableView.dataSource = self;
     self.userTableView.delegate = self;
@@ -43,7 +42,6 @@
 }
 
 - (void)didPush:(nonnull UserInfo *)user {
-    //[self.arrayOfPosts insertObject:post atIndex:0];
     [self.userTableView reloadData];
 }
 
@@ -68,9 +66,6 @@
         [self.userTableView reloadData];
     }];
 }
-
-
-#pragma mark - Navigation
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
@@ -101,9 +96,6 @@
   
     NSMutableArray* prefArray = [[NSMutableArray alloc] init];
     prefArray = [NSJSONSerialization JSONObjectWithData:preferenceData options:NSJSONReadingMutableContainers error:nil];
-    
-    NSLog(@"%@",prefArray);
-
 
     // Fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
@@ -117,9 +109,6 @@
         [self.userTableView reloadData];
     }];
 }
-
-
-#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

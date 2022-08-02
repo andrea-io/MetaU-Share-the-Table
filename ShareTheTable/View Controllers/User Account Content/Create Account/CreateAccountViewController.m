@@ -8,7 +8,6 @@
 #import "CreateAccountViewController.h"
 #import "Parse/Parse.h"
 #import "UserInfo.h"
-//#import "User.h"
 
 @interface CreateAccountViewController ()
 
@@ -45,9 +44,7 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User registered successfully");
-            
+        } else {            
             UserInfo *userInfo = [UserInfo new];
             userInfo[@"firstName"] = self.firstNameTextField.text;
             userInfo[@"ageValue"] = [NSNumber numberWithInteger:[self.ageTextField.text integerValue]];
@@ -58,8 +55,6 @@
                 if (error != nil) {
                     NSLog(@"Error: %@", error.localizedDescription);
                 } else {
-                    NSLog(@"UserInfo updated successfully");
-
                     // Manually segue to feed view
                     [self performSegueWithIdentifier:@"accountToPhotoSegue" sender:nil];
                 }
@@ -70,7 +65,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 @end

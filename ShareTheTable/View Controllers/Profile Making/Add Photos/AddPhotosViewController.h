@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *selectPhotosButton;
 @property (nonatomic, strong) NSMutableArray* imageViews;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

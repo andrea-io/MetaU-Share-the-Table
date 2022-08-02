@@ -34,7 +34,6 @@
 		BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21B28779195008BF56C /* QuestionViewController.m */; };
 		BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD229287897CB008BF56C /* SelfProfileViewController.m */; };
 		BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */; };
-		BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */; };
 		BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */; };
 		BAD8595428904772007E70BE /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595328904772007E70BE /* Conversation.m */; };
 		BAD8595728908E70007E70BE /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595628908E70007E70BE /* ConversationCell.m */; };
@@ -117,8 +116,6 @@
 		BA2FD229287897CB008BF56C /* SelfProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfProfileViewController.m; sourceTree = "<group>"; };
 		BA2FD22B2878982C008BF56C /* MessageInboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInboxViewController.h; sourceTree = "<group>"; };
 		BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageInboxViewController.m; sourceTree = "<group>"; };
-		BA2FD22E287898DA008BF56C /* DetailedProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailedProfileViewController.h; sourceTree = "<group>"; };
-		BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedProfileViewController.m; sourceTree = "<group>"; };
 		BA2FD2AD287DEBDA008BF56C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "../../../Downloads/NSData_Base64/NSData+Base64.h"; sourceTree = "<group>"; };
 		BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "../../../Downloads/NSData_Base64/NSData+Base64.m"; sourceTree = "<group>"; };
 		BAD8595228904772007E70BE /* Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
@@ -260,8 +257,6 @@
 			children = (
 				BA12E4352889F1850012CCED /* ConversationViewController.h */,
 				BA12E4362889F1850012CCED /* ConversationViewController.m */,
-				BA12E4322888D4510012CCED /* DetailProfileViewController.h */,
-				BA12E4332888D4510012CCED /* DetailProfileViewController.m */,
 				BA12E4282887703B0012CCED /* SearchViewController.h */,
 				BA12E4292887703B0012CCED /* SearchViewController.m */,
 				BA12E42B288770B70012CCED /* ResultsViewController.h */,
@@ -366,8 +361,8 @@
 		BA2FD231287898E7008BF56C /* Detailed Profile */ = {
 			isa = PBXGroup;
 			children = (
-				BA2FD22E287898DA008BF56C /* DetailedProfileViewController.h */,
-				BA2FD22F287898DA008BF56C /* DetailedProfileViewController.m */,
+				BA12E4322888D4510012CCED /* DetailProfileViewController.h */,
+				BA12E4332888D4510012CCED /* DetailProfileViewController.m */,
 			);
 			path = "Detailed Profile";
 			sourceTree = "<group>";
@@ -650,7 +645,6 @@
 				BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */,
 				BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */,
 				BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */,
-				BA2FD230287898DA008BF56C /* DetailedProfileViewController.m in Sources */,
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
 				BA12E43D288A08F60012CCED /* MessageCell.m in Sources */,
 				BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */,
