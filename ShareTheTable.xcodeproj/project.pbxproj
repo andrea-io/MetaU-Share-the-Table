@@ -38,6 +38,8 @@
 		BAD8595428904772007E70BE /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595328904772007E70BE /* Conversation.m */; };
 		BAD8595728908E70007E70BE /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595628908E70007E70BE /* ConversationCell.m */; };
 		BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD859592894A5F8007E70BE /* UserInfo.m */; };
+		BAD8595C28998478007E70BE /* BusinessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595B28998478007E70BE /* BusinessInfo.m */; };
+		BAD8596028999A6D007E70BE /* YelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595F28999A6D007E70BE /* YelpCell.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +126,10 @@
 		BAD8595628908E70007E70BE /* ConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
 		BAD859582894A5F8007E70BE /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		BAD859592894A5F8007E70BE /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		BAD8595B28998478007E70BE /* BusinessInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusinessInfo.m; sourceTree = "<group>"; };
+		BAD8595D289984C4007E70BE /* BusinessInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessInfo.h; sourceTree = "<group>"; };
+		BAD8595E28999A6D007E70BE /* YelpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpCell.h; sourceTree = "<group>"; };
+		BAD8595F28999A6D007E70BE /* YelpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpCell.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +193,8 @@
 				BA12E43C288A08F60012CCED /* MessageCell.m */,
 				BAD8595528908E70007E70BE /* ConversationCell.h */,
 				BAD8595628908E70007E70BE /* ConversationCell.m */,
+				BAD8595E28999A6D007E70BE /* YelpCell.h */,
+				BAD8595F28999A6D007E70BE /* YelpCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -231,6 +239,8 @@
 				BA2FD1DD287632AF008BF56C /* Info.plist */,
 				BA2FD201287634FE008BF56C /* Keys.plist */,
 				BA2FD1DE287632AF008BF56C /* main.m */,
+				BAD8595B28998478007E70BE /* BusinessInfo.m */,
+				BAD8595D289984C4007E70BE /* BusinessInfo.h */,
 			);
 			path = ShareTheTable;
 			sourceTree = "<group>";
@@ -639,6 +649,7 @@
 				BA2FD1DF287632AF008BF56C /* main.m in Sources */,
 				BA12E42D288770B70012CCED /* ResultsViewController.m in Sources */,
 				BAD8595428904772007E70BE /* Conversation.m in Sources */,
+				BAD8596028999A6D007E70BE /* YelpCell.m in Sources */,
 				BA2FD20E28763C5B008BF56C /* FeedViewController.m in Sources */,
 				BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
@@ -650,6 +661,7 @@
 				BA12E4372889F1850012CCED /* ConversationViewController.m in Sources */,
 				BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */,
 				BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */,
+				BAD8595C28998478007E70BE /* BusinessInfo.m in Sources */,
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
 				BA12E4302887712F0012CCED /* UserCell.m in Sources */,
