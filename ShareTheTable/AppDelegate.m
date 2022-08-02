@@ -34,6 +34,7 @@
 
     [Parse initializeWithConfiguration:config];
     
+    // Initialize Yelp API Client
     self.client = [[YLPClient alloc] initWithAPIKey:@"hwQOBFeyaIltgmj38TBwgw0N6yYvFEAVPy0Vn1vJjG5n71vYM8dQpAnLmwHqIca2RZXnrYXe_xThpkPo6uSFnMDujjG9_xUr0n4M35cu7Qax64i6sENqvJsaMUjpYnYx"];
     
     return YES;

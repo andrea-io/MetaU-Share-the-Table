@@ -20,28 +20,25 @@
 
 @implementation FeedViewController
 
-- (IBAction)tapMessage:(id)sender {
-    [self performSegueWithIdentifier:@"feedToMessageSegue" sender:nil];
-}
-
-- (IBAction)tapViewProfile:(id)sender {
-    [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
-}
+NSInteger const TOP_NUM_RESULTS = 20;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.yelpTableView.delegate = self;
     self.yelpTableView.dataSource = self;
+    
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestAlwaysAuthorization];
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    
     // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [self.locationManager requestWhenInUseAuthorization];
     }
+    
     [self.locationManager startUpdatingLocation];
     CLLocation* location = self.locationManager.location;
     
@@ -50,12 +47,20 @@
     
     YLPCoordinate* coord = [[YLPCoordinate alloc] initWithLatitude:lat longitude:longt];
     
-    [[AppDelegate sharedClient] searchWithCoordinate:coord term:nil limit:20 offset:0 sort:YLPSortTypeDistance completionHandler:^(YLPSearch * _Nullable search, NSError * _Nullable error) {
+    [[AppDelegate sharedClient] searchWithCoordinate:coord term:nil limit:TOP_NUM_RESULTS offset:0 sort:YLPSortTypeDistance completionHandler:^(YLPSearch * _Nullable search, NSError * _Nullable error) {
         self.search = search;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.yelpTableView reloadData];
         });
     }];
+}
+
+- (IBAction)tapMessage:(id)sender {
+    [self performSegueWithIdentifier:@"feedToMessageSegue" sender:nil];
+}
+
+- (IBAction)tapViewProfile:(id)sender {
+    [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -65,11 +70,13 @@
             cell.restaurantLocation.text = @"";
         } else {
             cell.restaurantName.text = self.search.businesses[indexPath.item].name;
+            
             if(self.search.businesses[indexPath.item].location.address[0] == nil) {
                 cell.restaurantLocation.text = @"";
             } else {
                 cell.restaurantLocation.text = self.search.businesses[indexPath.item].location.address[0];
             }
+            
             NSData* restaurantImageData = [NSData dataWithContentsOfURL:self.search.businesses[indexPath.item].imageURL];
           
             UIImage* restaurantImage = [UIImage imageWithData:restaurantImageData];
@@ -81,7 +88,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return TOP_NUM_RESULTS;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

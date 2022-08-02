@@ -12,9 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YelpCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *restaurantLocation;
-
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 
 @end
