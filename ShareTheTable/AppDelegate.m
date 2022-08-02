@@ -7,8 +7,11 @@
 
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
+@import YelpAPI;
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) YLPClient *client;
 
 @end
 
@@ -31,12 +34,19 @@
 
     [Parse initializeWithConfiguration:config];
     
+    // Initialize Yelp API Client
+    self.client = [[YLPClient alloc] initWithAPIKey:@"hwQOBFeyaIltgmj38TBwgw0N6yYvFEAVPy0Vn1vJjG5n71vYM8dQpAnLmwHqIca2RZXnrYXe_xThpkPo6uSFnMDujjG9_xUr0n4M35cu7Qax64i6sENqvJsaMUjpYnYx"];
+    
     return YES;
+}
+
++ (YLPClient *)sharedClient {
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    return appDelegate.client;
 }
 
 
 #pragma mark - UISceneSession lifecycle
-
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.

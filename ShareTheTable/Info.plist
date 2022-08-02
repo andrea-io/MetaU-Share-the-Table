@@ -11,6 +11,10 @@
 			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>
+					<key>NSLocationWhenInUseUsageDescription</key>
+					<string>Location is required to provide nearby suggestions</string>
+					<key>NSLocationAlwaysUsageDescription</key>
+					<string>Location is required to provide nearby suggestions</string>
 					<key>NSCameraUsageDescription</key>
 					<string>Need camera access to take pictures</string>
 					<key>NSPhotoLibraryUsageDescription</key>

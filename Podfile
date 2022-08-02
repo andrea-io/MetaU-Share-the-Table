@@ -10,6 +10,7 @@ target 'ShareTheTable' do
   pod 'Parse'
   pod 'MARKRangeSlider'
   pod 'ParseLiveQuery'
+  pod 'YelpAPI'
 
   target 'ShareTheTableTests' do
     inherit! :search_paths

@@ -11,11 +11,13 @@ PODS:
     - Parse (~> 1.19.0)
     - Starscream (~> 4.0.4)
   - Starscream (4.0.4)
+  - YelpAPI (3.0.0)
 
 DEPENDENCIES:
   - MARKRangeSlider
   - Parse
   - ParseLiveQuery
+  - YelpAPI
 
 SPEC REPOS:
   trunk:
@@ -25,6 +27,7 @@ SPEC REPOS:
     - Parse
     - ParseLiveQuery
     - Starscream
+    - YelpAPI
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
@@ -33,7 +36,8 @@ SPEC CHECKSUMS:
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   ParseLiveQuery: 7bc437c3b986880ffe5f241a9921e37f45df0677
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  YelpAPI: 9ae0ee45b998d306c1aff9b2d966dc23121f191e
 
-PODFILE CHECKSUM: 1033864383f6bd935b3493bcdc76c0527ae73b92
+PODFILE CHECKSUM: 44409103baa7abab9602f2eac2216f43fa2f6431
 
 COCOAPODS: 1.11.3
