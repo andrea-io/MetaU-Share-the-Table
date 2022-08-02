@@ -7,6 +7,12 @@
 
 #import "FeedViewController.h"
 #import "BusinessInfo.h"
+#import "AppDelegate.h"
+#import "YLPAppDelegate.h"
+#import <YelpAPI/YLPClient+Search.h>
+#import <YelpAPI/YLPSortType.h>
+#import <YelpAPI/YLPSearch.h>
+#import <YelpAPI/YLPBusiness.h>
 #import "YelpCell.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -28,25 +34,38 @@
     
     self.yelpTableView.delegate = self;
     self.yelpTableView.dataSource = self;
-        
+    self.yelpTableView.rowHeight = UITableViewAutomaticDimension;
+    
     double lat = 40.78;
     double longt = -73.96;
+    YLPCoordinate* coord = [[YLPCoordinate alloc] initWithLatitude:lat longitude:longt];
     
-    BusinessInfo* test = [BusinessInfo new];
-    
-    self.places = [test fetchBusinesses:lat withLongitude:longt withLimit:20];
+    [[AppDelegate sharedClient] searchWithCoordinate:coord term:nil limit:20 offset:0 sort:YLPSortTypeDistance completionHandler:^(YLPSearch * _Nullable search, NSError * _Nullable error) {
+        self.search = search;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.yelpTableView reloadData];
+        });
+    }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     YelpCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YelpCell" forIndexPath:indexPath];
-    
-    cell.restaurantName.text = @"Idk";
-    
-    return cell;
+        if (indexPath.item > [self.search.businesses count]) {
+            cell.restaurantName.text = @"";
+        }
+        else {
+            cell.restaurantName.text = self.search.businesses[indexPath.item].name;
+        }
+        
+        return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.places.count;
+    return 5;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
 @end

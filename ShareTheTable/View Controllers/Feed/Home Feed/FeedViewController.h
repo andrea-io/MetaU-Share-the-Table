@@ -6,6 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YLPClient;
+@class YLPSearch;
+@class YLPCoordinate;
+@import YelpAPI;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *viewProfileButton;
 @property (strong, nonatomic) NSMutableArray* places;
+@property (nonatomic) YLPSearch *search;
 
 @end
 
