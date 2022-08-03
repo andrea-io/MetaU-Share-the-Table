@@ -74,23 +74,25 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNumber* rowNumber = [NSNumber numberWithInt:indexPath.row];
-
-    [self performSegueWithIdentifier:@"inboxToConversationSegue" sender:rowNumber];
+    NSInteger rowNumber = indexPath.row;
+    
+    Conversation* conversationSelected = [self.arrayOfConversations objectAtIndex:rowNumber];
+    
+    [self performSegueWithIdentifier:@"inboxToConversationSegue" sender:conversationSelected];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"inboxToConversationSegue"]) {
         
-        Conversation* conversationSelected = [self.arrayOfConversations objectAtIndex:sender];
+        Conversation* conversationSelected = sender;
         UserInfo* detailUser;
         
         if([conversationSelected.userInfoOnePointer.objectId isEqualToString:self.currentUserInfo.objectId]) {
             detailUser = [UserInfo objectWithoutDataWithObjectId:conversationSelected.userInfoTwoPointer.objectId];
-            [detailUser fetchIfNeeded];
+            [detailUser fetch];
         } else {
             detailUser = [UserInfo objectWithoutDataWithObjectId:conversationSelected.userInfoOnePointer.objectId];
-            [detailUser fetchIfNeeded];
+            [detailUser fetch];
         }
         
         ConversationViewController* convoVC = [segue destinationViewController];

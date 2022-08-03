@@ -27,7 +27,7 @@
     self.messageTableView.delegate = self;
     self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
 
 - (void)onTimer {
