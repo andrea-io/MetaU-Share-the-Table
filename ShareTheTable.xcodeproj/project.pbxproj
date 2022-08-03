@@ -40,6 +40,7 @@
 		BAD8595A2894A5F8007E70BE /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD859592894A5F8007E70BE /* UserInfo.m */; };
 		BAD8595C28998478007E70BE /* BusinessInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595B28998478007E70BE /* BusinessInfo.m */; };
 		BAD8596028999A6D007E70BE /* YelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595F28999A6D007E70BE /* YelpCell.m */; };
+		BAD85966289A4F55007E70BE /* ReceiverMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD85965289A4F55007E70BE /* ReceiverMessageCell.m */; };
 		C051AE5CEACB3A280A58C366 /* Pods_ShareTheTable_ShareTheTableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A915F4E011ECBE881237962C /* Pods_ShareTheTable_ShareTheTableUITests.framework */; };
 		C127F9934B797E5603FCB439 /* Pods_ShareTheTableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DF796165C0658A32AA2BDB /* Pods_ShareTheTableTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +131,8 @@
 		BAD8595D289984C4007E70BE /* BusinessInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessInfo.h; sourceTree = "<group>"; };
 		BAD8595E28999A6D007E70BE /* YelpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpCell.h; sourceTree = "<group>"; };
 		BAD8595F28999A6D007E70BE /* YelpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpCell.m; sourceTree = "<group>"; };
+		BAD85964289A4F55007E70BE /* ReceiverMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiverMessageCell.h; sourceTree = "<group>"; };
+		BAD85965289A4F55007E70BE /* ReceiverMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiverMessageCell.m; sourceTree = "<group>"; };
 		F169A683C6CF09EAF65EBDB3 /* Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShareTheTable-ShareTheTableUITests/Pods-ShareTheTable-ShareTheTableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +194,8 @@
 				BA12E42F2887712F0012CCED /* UserCell.m */,
 				BA12E43B288A08F60012CCED /* MessageCell.h */,
 				BA12E43C288A08F60012CCED /* MessageCell.m */,
+				BAD85964289A4F55007E70BE /* ReceiverMessageCell.h */,
+				BAD85965289A4F55007E70BE /* ReceiverMessageCell.m */,
 				BAD8595528908E70007E70BE /* ConversationCell.h */,
 				BAD8595628908E70007E70BE /* ConversationCell.m */,
 				BAD8595E28999A6D007E70BE /* YelpCell.h */,
@@ -665,6 +670,7 @@
 				BA2FD1D1287632AE008BF56C /* SceneDelegate.m in Sources */,
 				BA2FD2052876393B008BF56C /* InitialViewController.m in Sources */,
 				BA12E4302887712F0012CCED /* UserCell.m in Sources */,
+				BAD85966289A4F55007E70BE /* ReceiverMessageCell.m in Sources */,
 				BA12E43A2889F3D80012CCED /* Message.m in Sources */,
 				BA2FD20828763A08008BF56C /* LoginViewController.m in Sources */,
 				BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */,

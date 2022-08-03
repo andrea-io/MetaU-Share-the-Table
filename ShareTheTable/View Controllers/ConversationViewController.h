@@ -11,6 +11,7 @@
 #import "Parse/Parse.h"
 #import "ParseLiveQuery/ParseLiveQuery-Swift.h"
 #import "UserInfo.h"
+#import "ReceiverMessageCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

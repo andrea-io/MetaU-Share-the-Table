@@ -56,7 +56,6 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    MessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     Message* message = self.messages[indexPath.row];
     [message fetch];
@@ -64,10 +63,20 @@
     PFUser* user = [PFUser objectWithoutDataWithObjectId:message.senderID];
     [user fetch];
     
-    cell.messageBodyText.text = message.messageBodyText;
-    cell.messageUserName.text = user.username;
-    
-    return cell;
+    // If message is from the current user logged in
+    if(PFUser.currentUser.username == user.username) {
+        MessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+        cell.messageBodyText.text = message.messageBodyText;
+        cell.messageUserName.text = user.username;
+        
+        return cell;
+    } else {
+        ReceiverMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiverMessageCell" forIndexPath:indexPath];
+        cell.messageBodyText.text = message.messageBodyText;
+        cell.messageUserName.text = user.username;
+        
+        return cell;
+    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
