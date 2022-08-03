@@ -132,6 +132,7 @@ NSInteger const FOOD_PREF_TAG = 2;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FeedViewController *navViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabNav"];
+    
     sceneDelegate.window.rootViewController = navViewController;
     
     PFObject* currentUser = [PFUser currentUser];

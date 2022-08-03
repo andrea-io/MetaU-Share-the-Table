@@ -1258,7 +1258,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, name!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02m-xZ-TQ1">
-                                <rect key="frame" x="35" y="88" width="139.5" height="37"/>
+                                <rect key="frame" x="20" y="88" width="139.5" height="37"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1289,9 +1289,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H9Q-5b-5yP">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H9Q-5b-5yP">
                                                     <rect key="frame" x="20" y="11" width="374" height="145.5"/>
                                                     <color key="backgroundColor" red="1" green="0.1112002443" blue="0.42688735709999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="145.5" id="5UY-av-OX0"/>
+                                                        <constraint firstAttribute="width" constant="374" id="KMp-r4-IPh"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLi-1C-bvL">
                                                     <rect key="frame" x="20" y="199" width="374" height="18"/>
@@ -1335,7 +1339,7 @@
                         <constraints>
                             <constraint firstItem="NJy-RK-lqJ" firstAttribute="top" secondItem="02m-xZ-TQ1" secondAttribute="bottom" constant="8" symbolic="YES" id="1RU-aU-S0n"/>
                             <constraint firstItem="NJy-RK-lqJ" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" id="BEk-vC-Cxw"/>
-                            <constraint firstItem="02m-xZ-TQ1" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" constant="35" id="LNw-3G-oTg"/>
+                            <constraint firstItem="02m-xZ-TQ1" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" constant="20" id="LNw-3G-oTg"/>
                             <constraint firstItem="oMz-Ew-I9j" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" constant="39" id="Yks-sK-V3L"/>
                             <constraint firstAttribute="bottom" secondItem="oMz-Ew-I9j" secondAttribute="bottom" constant="69" id="ja5-WT-iwO"/>
                             <constraint firstItem="oMz-Ew-I9j" firstAttribute="top" secondItem="NJy-RK-lqJ" secondAttribute="bottom" constant="22" id="kmT-2Q-gHA"/>
@@ -1379,7 +1383,7 @@
         <!--Home-->
         <scene sceneID="Pow-IQ-wXP">
             <objects>
-                <navigationController storyboardIdentifier="NavFeed" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="lVa-CW-ZFM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavFeed" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="partialCurl" modalPresentationStyle="fullScreen" id="lVa-CW-ZFM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="6EY-GF-wn0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ELg-BF-Ige">
@@ -1491,8 +1495,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="NhB-BT-ZfS"/>
         <segue reference="LqY-YW-jPm"/>
-        <segue reference="LVI-4B-Atv"/>
-        <segue reference="6TO-GM-K8E"/>
+        <segue reference="3ae-8l-8IN"/>
+        <segue reference="T80-Bt-qiF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Share the Table-logos" width="1200" height="1200"/>

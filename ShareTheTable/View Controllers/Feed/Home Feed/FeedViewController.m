@@ -6,13 +6,13 @@
 //
 
 #import "FeedViewController.h"
-#import "BusinessInfo.h"
 #import "AppDelegate.h"
 #import <YelpAPI/YLPClient+Search.h>
 #import <YelpAPI/YLPSortType.h>
 #import <YelpAPI/YLPSearch.h>
 #import <YelpAPI/YLPBusiness.h>
 #import "YelpCell.h"
+#import "Parse/Parse.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -27,17 +27,22 @@ NSInteger const TOP_NUM_RESULTS = 20;
     
     self.yelpTableView.delegate = self;
     self.yelpTableView.dataSource = self;
-    
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestAlwaysAuthorization];
+    self.welcomeLabel.text = [@"Hi, " stringByAppendingString:PFUser.currentUser.username];
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    
+    
+    [self.locationManager requestAlwaysAuthorization];
+    [self.locationManager requestWhenInUseAuthorization];
     
     // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [self.locationManager requestWhenInUseAuthorization];
     }
+    
+    self.locationManager.pausesLocationUpdatesAutomatically = false;
+    self.locationManager.allowsBackgroundLocationUpdates = true;
     
     [self.locationManager startUpdatingLocation];
     CLLocation* location = self.locationManager.location;
@@ -71,8 +76,8 @@ NSInteger const TOP_NUM_RESULTS = 20;
         } else {
             cell.restaurantName.text = self.search.businesses[indexPath.item].name;
             
-            if(self.search.businesses[indexPath.item].location.address[0] == nil) {
-                cell.restaurantLocation.text = @"";
+            if(self.search.businesses[indexPath.item].location.address.count == 0) {
+                cell.restaurantLocation.text = @"Location Unavailable";
             } else {
                 cell.restaurantLocation.text = self.search.businesses[indexPath.item].location.address[0];
             }
