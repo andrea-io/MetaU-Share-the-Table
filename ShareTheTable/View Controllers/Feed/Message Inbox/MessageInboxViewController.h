@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSMutableArray* arrayOfConversations;
 @property (strong, nonatomic) UserInfo* currentUserInfo;
+@property (strong, nonatomic) UserInfo* otherUserInfo;
 
 @end
 
