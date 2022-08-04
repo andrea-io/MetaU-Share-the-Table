@@ -59,10 +59,12 @@
     if([convo.userInfoOnePointer.objectId isEqualToString:self.currentUserInfo.objectId]) {
         UserInfo* user = [UserInfo objectWithoutDataWithObjectId:convo.userInfoTwoPointer.objectId];
         [user fetchIfNeeded];
+        self.otherUserInfo = user;
         cell.conversationUserName.text = user.firstName;
     } else {
         UserInfo* user = [UserInfo objectWithoutDataWithObjectId:convo.userInfoOnePointer.objectId];
         [user fetchIfNeeded];
+        self.otherUserInfo = user;
         cell.conversationUserName.text = user.firstName;
     }
     
@@ -79,6 +81,18 @@
     Conversation* conversationSelected = [self.arrayOfConversations objectAtIndex:rowNumber];
     
     [self performSegueWithIdentifier:@"inboxToConversationSegue" sender:conversationSelected];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        Conversation* convoToDelete = self.arrayOfConversations[indexPath.row];
+        
+        UserInfo* user = [UserInfo new];
+        [user deleteUserFromMatchesList:self.otherUserInfo withCurrentUser:self.currentUserInfo withConvo:convoToDelete];
+        
+        [self.arrayOfConversations removeObjectAtIndex:indexPath.row];
+        [self.conversationTableView reloadData];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

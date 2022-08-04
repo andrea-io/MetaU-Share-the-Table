@@ -39,6 +39,30 @@
     return conversationList;
 }
 
+- (void) deleteUserFromMatchesList: (UserInfo* _Nullable)otherUser withCurrentUser:( UserInfo* _Nullable) currentUser withConvo: (Conversation* _Nullable)conversation {
+    
+    // Look for previous currentMatches dictionaries info
+    NSMutableDictionary *currentUserDict = [[NSMutableDictionary alloc] initWithDictionary:currentUser[@"currentMatches"]];
+    NSMutableDictionary *otherUserDict = [[NSMutableDictionary alloc] initWithDictionary:otherUser[@"currentMatches"]];
+    
+    // Delete the two user's match with each other
+    [currentUserDict removeObjectForKey:otherUser.objectId];
+    [otherUserDict removeObjectForKey:currentUser.objectId];
+    
+    // Also delete the conversation itself
+    PFQuery* query = [PFQuery queryWithClassName:@"Conversation"];
+    [query whereKey:@"objectId" equalTo:conversation.objectId];
+    PFObject* object = [query findObjects][0];
+    [object delete];
+    
+    // Reassign the dictionaries to each user
+    currentUser[@"currentMatches"] = currentUserDict;
+    otherUser[@"currentMatches"] = otherUserDict;
+    
+    [currentUser save];
+    [otherUser save];
+}
+
 - (void) addUserToMatchesList: (UserInfo* _Nullable)otherUser withCurrentUser:( UserInfo* _Nullable) currentUser withConvo: (Conversation* _Nullable)conversation {
     
     // Look for previous currentMatches dictionaries info

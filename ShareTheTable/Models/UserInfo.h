@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDictionary* currentMatches;
 
 - (nonnull NSMutableArray*) fetchCurrentConversationList: (UserInfo* _Nullable)currentUser;
+- (void) deleteUserFromMatchesList: (UserInfo* _Nullable)otherUser withCurrentUser:( UserInfo* _Nullable) currentUser withConvo: (Conversation* _Nullable)conversation;
 - (void) addUserToMatchesList: (UserInfo* _Nullable)otherUser withCurrentUser:(UserInfo* _Nullable) currentUser withConvo: (Conversation* _Nullable)conversation;
 - (nonnull NSString*) checkIfConversationExists: (UserInfo* _Nullable)otherUser withCurrentUser: (UserInfo* _Nullable)currentUser;
 
