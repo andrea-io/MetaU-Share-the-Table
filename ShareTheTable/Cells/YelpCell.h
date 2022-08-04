@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *restaurantLocation;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
+@property (strong, nonatomic) UITapGestureRecognizer* tapGesture;
 
 @end
 

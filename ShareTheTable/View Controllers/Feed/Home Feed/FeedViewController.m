@@ -21,17 +21,23 @@
 @implementation FeedViewController
 
 NSInteger const TOP_NUM_RESULTS = 20;
+NSInteger const NUMBER_OF_TAPS = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.yelpTableView.delegate = self;
     self.yelpTableView.dataSource = self;
-    self.welcomeLabel.text = [@"Hi, " stringByAppendingString:PFUser.currentUser.username];
+    
+    PFObject* currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
+    [query whereKey:@"userPointer" equalTo:currentUser];
+    self.currentUserInfo = [query getFirstObject];
+    
+    self.welcomeLabel.text = [@"Hi, " stringByAppendingString:self.currentUserInfo.firstName];
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
     
     [self.locationManager requestAlwaysAuthorization];
     [self.locationManager requestWhenInUseAuthorization];
@@ -68,8 +74,7 @@ NSInteger const TOP_NUM_RESULTS = 20;
     [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
 }
 
-- (void)didDoubleTap:(UITapGestureRecognizer*)gesture {
-    NSLog(@"Fired");
+- (IBAction)didDoubleTap:(UITapGestureRecognizer*)gesture {
     UIView* gestureView = gesture.view;
     UIImageView* heart = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"heart.fill"]];
     
@@ -77,7 +82,11 @@ NSInteger const TOP_NUM_RESULTS = 20;
     [heart setTintColor:UIColor.whiteColor];
     [heart setCenter:gestureView.center];
     
-    [gestureView addSubview:heart];
+    NSIndexPath* index = [NSIndexPath indexPathForRow:gestureView.tag inSection:0];
+    
+    YelpCell* cell = [self.yelpTableView cellForRowAtIndexPath:index];
+    
+    [cell.contentView addSubview:heart];
     
     double delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -87,6 +96,8 @@ NSInteger const TOP_NUM_RESULTS = 20;
             [heart setAlpha:0];
         } completion:^(BOOL finished) {
             [heart removeFromSuperview];
+            [self.currentUserInfo addObject:self.search.businesses[index.item].identifier forKey:@"favoriteYelpResults"];
+            [self.currentUserInfo save];
         }];
     });
 }
@@ -94,8 +105,11 @@ NSInteger const TOP_NUM_RESULTS = 20;
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     YelpCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YelpCell" forIndexPath:indexPath];
     
-    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
-    self.tapGesture.numberOfTapsRequired = 2;
+    cell.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDoubleTap:)];
+    cell.tapGesture.view.tag = indexPath.row;
+    cell.tapGesture.numberOfTapsRequired = NUMBER_OF_TAPS;
+    [cell setUserInteractionEnabled:YES];
+    [cell addGestureRecognizer:cell.tapGesture];
     
     if (indexPath.item > [self.search.businesses count]) {
         cell.restaurantName.text = @"";
@@ -115,9 +129,6 @@ NSInteger const TOP_NUM_RESULTS = 20;
             
         cell.restaurantImageView.image = restaurantImage;
     }
-    
-    [cell setUserInteractionEnabled:YES];
-    [cell addGestureRecognizer:self.tapGesture];
         
     return cell;
 }
