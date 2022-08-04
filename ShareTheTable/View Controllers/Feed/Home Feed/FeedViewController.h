@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray* places;
 @property (nonatomic) YLPSearch *search;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) UITapGestureRecognizer* tapGesture;
 
 @end
 
