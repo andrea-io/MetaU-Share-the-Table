@@ -26,6 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<PostDetailViewControllerDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UIImageView *detailUserPhotoOne;
+@property (weak, nonatomic) IBOutlet UIImageView *detailUserPhotoTwo;
+@property (weak, nonatomic) IBOutlet UIImageView *detailUserPhotoThree;
+@property (weak, nonatomic) IBOutlet UIImageView *detailUserPhotoFour;
+@property (weak, nonatomic) IBOutlet UIImageView *detailUserPhotoFive;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

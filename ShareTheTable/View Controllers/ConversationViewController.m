@@ -65,15 +65,27 @@
     
     // If message is from the current user logged in
     if(PFUser.currentUser.username == user.username) {
-        MessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+        SenderMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMessageCell" forIndexPath:indexPath];
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
+        
+        NSData* imageData = [[NSData alloc] initWithBase64Encoding:[self.currentUserInfo.userPhotos objectAtIndex:0]];
+        
+        UIImage* image = [UIImage imageWithData:imageData];
+        
+        cell.messageUserImage.image = image;
         
         return cell;
     } else {
         ReceiverMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiverMessageCell" forIndexPath:indexPath];
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
+        
+        NSData* imageData = [[NSData alloc] initWithBase64Encoding:[self.currentUserInfo.userPhotos objectAtIndex:0]];
+        
+        UIImage* image = [UIImage imageWithData:imageData];
+        
+        cell.messageUserImage.image = image;
         
         return cell;
     }

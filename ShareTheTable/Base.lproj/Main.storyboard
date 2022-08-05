@@ -665,7 +665,7 @@
                                             <outlet property="messageUserName" destination="UcC-pr-qOv" id="hKc-5o-D0U"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="85" id="aoE-d6-kPZ" customClass="MessageCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SenderMessageCell" rowHeight="85" id="aoE-d6-kPZ" customClass="SenderMessageCell">
                                         <rect key="frame" x="0.0" y="129.5" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aoE-d6-kPZ" id="sID-Aa-0QQ">
@@ -1371,6 +1371,11 @@
                         <outlet property="detailLocationLabel" destination="Zx7-dX-aHE" id="XxI-vH-JFP"/>
                         <outlet property="detailUserAgeLabel" destination="6mJ-6j-aMu" id="wth-E1-2BJ"/>
                         <outlet property="detailUserFirstNameLabel" destination="W09-fD-Xm7" id="JMy-s7-VWg"/>
+                        <outlet property="detailUserPhotoFive" destination="40w-Q6-t3d" id="ySU-YP-ibI"/>
+                        <outlet property="detailUserPhotoFour" destination="4yq-bL-H6A" id="onk-zH-QUO"/>
+                        <outlet property="detailUserPhotoOne" destination="zP8-ZN-f9b" id="3yI-b4-5IH"/>
+                        <outlet property="detailUserPhotoThree" destination="6A4-uC-gOW" id="1mc-cS-Rw5"/>
+                        <outlet property="detailUserPhotoTwo" destination="bfF-Yn-i8o" id="Go9-rX-qrT"/>
                         <outlet property="dietaryRestrictionsList" destination="ytl-nE-rWv" id="MqZ-6o-qip"/>
                         <segue destination="idN-zj-fUf" kind="presentation" identifier="profileToMessageSegue" id="NhB-BT-ZfS"/>
                     </connections>

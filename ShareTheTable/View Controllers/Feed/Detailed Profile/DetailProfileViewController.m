@@ -16,19 +16,46 @@
 @implementation DetailProfileViewController
 NSInteger const CUISINE_TYPE_TAG = 2;
 NSInteger const DIETARY_RESTRICTION_TYPE_TAG = 1;
+NSInteger const PHOTO_COUNT = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSMutableArray* preferences = self.detailUser[@"allPreferences"];
-    for(PFObject* pref in preferences) {
+    
+    NSMutableArray* detailUserPreferences = self.detailUser[@"allPreferences"];
+    
+    self.cuisinesList.text = @"";
+    self.dietaryRestrictionsList.text = @"";
+    
+    for(PFObject* pref in detailUserPreferences) {
         [pref fetch];
-        if(pref[@"typeID"] == CUISINE_TYPE_TAG) {
-            [self.detailLocationLabel.text stringByAppendingString:pref[@"preferenceName"]];
+        NSNumber* prefTypeIDNum = [pref valueForKey:@"typeID"];
+        int prefTypeID = [prefTypeIDNum intValue];
+        
+        if(prefTypeID == CUISINE_TYPE_TAG) {
+            self.cuisinesList.text = [self.cuisinesList.text stringByAppendingString:[pref[@"preferenceName"] stringByAppendingString:@" "]];
         } else {
-            [self.detailLocationLabel.text stringByAppendingString:pref[@"preferenceName"]];
+            self.dietaryRestrictionsList.text = [self.dietaryRestrictionsList.text stringByAppendingString:[pref[@"preferenceName"] stringByAppendingString:@" "]];
         }
     }
-    // Set up all text labels
+    
+    NSMutableArray* detailUserPhotoImageObjects = [[NSMutableArray alloc] init];
+    
+    for(NSString* imageString in self.detailUser.userPhotos) {
+        NSData* imageData = [[NSData alloc] initWithBase64Encoding:imageString];
+        
+        UIImage* image = [UIImage imageWithData:imageData];
+        
+        [detailUserPhotoImageObjects addObject:image];
+    }
+    
+    // Assign photos
+    self.detailUserPhotoOne.image = [detailUserPhotoImageObjects objectAtIndex:0];
+    self.detailUserPhotoTwo.image = [detailUserPhotoImageObjects objectAtIndex:1];
+    self.detailUserPhotoThree.image = [detailUserPhotoImageObjects objectAtIndex:2];
+    self.detailUserPhotoFour.image = [detailUserPhotoImageObjects objectAtIndex:3];
+    self.detailUserPhotoFive.image = [detailUserPhotoImageObjects objectAtIndex:4];
+
+    // Set up all other text labels
     self.detailUserFirstNameLabel.text = self.detailUser.firstName;
     self.detailUserAgeLabel.text = [self.detailUser.ageValue stringValue];
     self.detailLocationLabel.text = self.detailUser.locationName;
