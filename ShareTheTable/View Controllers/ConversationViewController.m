@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "Conversation.h"
 #import "UserInfo.h"
+#import "FeedViewController.h"
 
 @interface ConversationViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -64,7 +65,7 @@
     [user fetch];
     
     // If message is from the current user logged in
-    if(PFUser.currentUser.username == user.username) {
+    if([PFUser.currentUser.username isEqualToString:user.username]) {
         SenderMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMessageCell" forIndexPath:indexPath];
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
@@ -108,6 +109,14 @@
     [self.messageTableView reloadData];
     
     [self refreshConversationData];
+}
+
+- (IBAction)didTapBack:(id)sender {
+    SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FeedViewController *feedViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabNav"];
+    sceneDelegate.window.rootViewController = feedViewController;
 }
 
 @end

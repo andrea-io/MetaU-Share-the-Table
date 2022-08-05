@@ -61,11 +61,23 @@
         [user fetchIfNeeded];
         self.otherUserInfo = user;
         cell.conversationUserName.text = user.firstName;
+        
+        NSString* imageString = [user.userPhotos objectAtIndex:0];
+        NSData* imageData = [[NSData alloc] initWithBase64Encoding:imageString];
+        UIImage* image = [UIImage imageWithData:imageData];
+        
+        cell.conversationUserImage.image = image;
     } else {
         UserInfo* user = [UserInfo objectWithoutDataWithObjectId:convo.userInfoOnePointer.objectId];
         [user fetchIfNeeded];
         self.otherUserInfo = user;
         cell.conversationUserName.text = user.firstName;
+        
+        NSString* imageString = [user.userPhotos objectAtIndex:0];
+        NSData* imageData = [[NSData alloc] initWithBase64Encoding:imageString];
+        UIImage* image = [UIImage imageWithData:imageData];
+        
+        cell.conversationUserImage.image = image;
     }
     
     return cell;

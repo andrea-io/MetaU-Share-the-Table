@@ -93,5 +93,8 @@
     }
 }
 
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
 
 @end

@@ -68,6 +68,10 @@ NSInteger const NUMBER_OF_TAPS = 2;
     }];
 }
 
+- (IBAction)tapViewProfile:(id)sender {
+    [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
+}
+
 - (IBAction)tapLogoutButton:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil

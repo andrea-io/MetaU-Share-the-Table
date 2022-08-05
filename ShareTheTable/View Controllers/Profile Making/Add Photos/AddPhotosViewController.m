@@ -104,11 +104,11 @@ NSInteger const PHOTO_LIMIT = 5;
                             [userInfo saveInBackground];
                         }
                 
-                        [self.image1 setImage:[self.imageViews objectAtIndex:0] forState:UIControlStateNormal];
-                        [self.image2 setImage:[self.imageViews objectAtIndex:1] forState:UIControlStateNormal];
-                        [self.image3 setImage:[self.imageViews objectAtIndex:2] forState:UIControlStateNormal];
-                        [self.image4 setImage:[self.imageViews objectAtIndex:3] forState:UIControlStateNormal];
-                        [self.image5 setImage:[self.imageViews objectAtIndex:4] forState:UIControlStateNormal];
+                        [self.image1 setImage:[self.imageViews objectAtIndex:0]];
+                        [self.image2 setImage:[self.imageViews objectAtIndex:1]];
+                        [self.image3 setImage:[self.imageViews objectAtIndex:2]];
+                        [self.image4 setImage:[self.imageViews objectAtIndex:3]];
+                        [self.image5 setImage:[self.imageViews objectAtIndex:4]];
                     }
 
                     [self.view setNeedsLayout];
