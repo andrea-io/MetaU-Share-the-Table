@@ -59,6 +59,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
     
+    // Will need to add a helper function, repeated code retrieving photos
     UserInfo* user = self.arrayOfUsers[indexPath.row];
     NSString* imageString = [user.userPhotos objectAtIndex:0];
     

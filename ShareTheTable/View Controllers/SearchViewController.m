@@ -25,6 +25,25 @@ NSInteger const FOOD_PREF_SEARCH_TAG = 2;
 static CGFloat const kViewControllerRangeSliderWidth = 290.0;
 static CGFloat const kViewControllerLabelWidth = 100.0;
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setUpViewComponents];
+    self.veganButton.selected = NO;
+    self.vegitarianButton.selected = NO;
+    self.kosherButton.selected = NO;
+    self.glutenFreeButton.selected = NO;
+    self.lactoseIntolerantButton.selected = NO;
+    self.seaFoodAllergiesButton.selected = NO;
+    self.chineseFoodButton.selected = NO;
+    self.mexicanFoodButton.selected = NO;
+    self.americanFoodButton.selected = NO;
+    self.italianFoodButton.selected = NO;
+    self.greekFoodButton.selected = NO;
+    self.otherFoodButton.selected = NO;
+
+    self.criteria = [[NSMutableArray alloc] init];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
      if([segue.identifier isEqualToString:@"searchToResultsSegue"]){
          ResultsViewController* controller = [segue destinationViewController];
@@ -143,25 +162,6 @@ static CGFloat const kViewControllerLabelWidth = 100.0;
         button.selected = YES;
         [button setBackgroundColor:UIColor.greenColor];
     }
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setUpViewComponents];
-    self.veganButton.selected = NO;
-    self.vegitarianButton.selected = NO;
-    self.kosherButton.selected = NO;
-    self.glutenFreeButton.selected = NO;
-    self.lactoseIntolerantButton.selected = NO;
-    self.seaFoodAllergiesButton.selected = NO;
-    self.chineseFoodButton.selected = NO;
-    self.mexicanFoodButton.selected = NO;
-    self.americanFoodButton.selected = NO;
-    self.italianFoodButton.selected = NO;
-    self.greekFoodButton.selected = NO;
-    self.otherFoodButton.selected = NO;
-
-    self.criteria = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillLayoutSubviews {
