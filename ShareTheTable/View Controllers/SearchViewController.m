@@ -164,6 +164,11 @@ static CGFloat const kViewControllerLabelWidth = 100.0;
     }
 }
 
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGFloat labelX = (CGRectGetWidth(self.view.frame) - kViewControllerLabelWidth) / 2;

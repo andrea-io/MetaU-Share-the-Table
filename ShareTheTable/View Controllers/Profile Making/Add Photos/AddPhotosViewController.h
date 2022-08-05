@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface AddPhotosViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *image5;
-@property (weak, nonatomic) IBOutlet UIButton *image4;
-@property (weak, nonatomic) IBOutlet UIButton *image3;
-@property (weak, nonatomic) IBOutlet UIButton *image2;
-@property (weak, nonatomic) IBOutlet UIButton *image1;
+@property (weak, nonatomic) IBOutlet UIImageView *image5;
+@property (weak, nonatomic) IBOutlet UIImageView *image4;
+@property (weak, nonatomic) IBOutlet UIImageView *image3;
+@property (weak, nonatomic) IBOutlet UIImageView *image2;
+@property (weak, nonatomic) IBOutlet UIImageView *image1;
 @property (weak, nonatomic) IBOutlet UIButton *selectPhotosButton;
 @property (nonatomic, strong) NSMutableArray* imageViews;
 
