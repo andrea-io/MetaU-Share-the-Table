@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *detailUserAgeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLocationLabel;
 @property (nonatomic, strong) PFObject* conversation;
+@property (weak, nonatomic) IBOutlet UILabel *cuisinesList;
+@property (weak, nonatomic) IBOutlet UILabel *dietaryRestrictionsList;
 
 @property (nonatomic, weak) id<PostDetailViewControllerDelegate> delegate;
 

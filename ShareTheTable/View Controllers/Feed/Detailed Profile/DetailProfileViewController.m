@@ -14,10 +14,20 @@
 @end
 
 @implementation DetailProfileViewController
+NSInteger const CUISINE_TYPE_TAG = 2;
+NSInteger const DIETARY_RESTRICTION_TYPE_TAG = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSMutableArray* preferences = self.detailUser[@"allPreferences"];
+    for(PFObject* pref in preferences) {
+        [pref fetch];
+        if(pref[@"typeID"] == CUISINE_TYPE_TAG) {
+            [self.detailLocationLabel.text stringByAppendingString:pref[@"preferenceName"]];
+        } else {
+            [self.detailLocationLabel.text stringByAppendingString:pref[@"preferenceName"]];
+        }
+    }
     // Set up all text labels
     self.detailUserFirstNameLabel.text = self.detailUser.firstName;
     self.detailUserAgeLabel.text = [self.detailUser.ageValue stringValue];

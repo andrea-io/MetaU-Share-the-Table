@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *userLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userAgeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userFirstNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userMainPhotoImageView;
