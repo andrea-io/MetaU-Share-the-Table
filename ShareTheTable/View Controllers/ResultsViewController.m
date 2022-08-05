@@ -26,22 +26,7 @@
     self.userTableView.delegate = self;
     self.userTableView.rowHeight = UITableViewAutomaticDimension;
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.userTableView insertSubview:refreshControl atIndex:0];
-}
-
-- (void)beginRefresh:(UIRefreshControl *)refreshControl {
-    [self refreshData];
-
-    // Reload the tableView now that there is new data
-    [self.userTableView reloadData];
-
-    // Tell the refreshControl to stop spinning
-    [refreshControl endRefreshing];
-}
-
-- (void)didPush:(nonnull UserInfo *)user {
+    [self loadMoreData];
     [self.userTableView reloadData];
 }
 
@@ -50,6 +35,10 @@
     PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
     [query whereKey:@"ageValue" greaterThan:self.minAge];
     [query whereKey:@"ageValue" lessThan:self.maxAge];
+    
+    if(self.criteria.count > 0) {
+        [query whereKey:@"allPreferences" containsAllObjectsInArray:self.criteria];
+    }
     
     [query includeKey:@"ageValue"];
     [query includeKey:@"firstName"];
@@ -70,44 +59,24 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
     
-    UserInfo *user = self.arrayOfUsers[indexPath.row];
+    // Will need to add a helper function, repeated code retrieving photos
+    UserInfo* user = self.arrayOfUsers[indexPath.row];
+    NSString* imageString = [user.userPhotos objectAtIndex:0];
     
+    NSData* imageData = [[NSData alloc] initWithBase64Encoding:imageString];
+    
+    UIImage* image = [UIImage imageWithData:imageData];
+    
+    cell.userMainPhotoImageView.image = image;
     cell.userFirstNameLabel.text = user.firstName;
     cell.userAgeLabel.text = [user.ageValue stringValue];
+    cell.userLocationLabel.text = user.locationName;
     
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfUsers.count;
-}
-
-- (void)refreshData {
-    // Construct query
-    PFQuery *query = [PFQuery queryWithClassName:@"UserInfo"];
-    [query whereKey:@"ageValue" greaterThan:self.minAge];
-    [query whereKey:@"ageValue" lessThan:self.maxAge];
-    [query includeKey:@"ageValue"];
-    [query includeKey:@"firstName"];
-    [query includeKey:@"allPreferences"];
-    
-    NSString *preferenceURL = [NSString stringWithFormat:@"https://parseapi.back4app.com/users/myCurrentUserId"];
-    NSData *preferenceData = [NSData dataWithContentsOfURL:[NSURL URLWithString:preferenceURL]];
-  
-    NSMutableArray* prefArray = [[NSMutableArray alloc] init];
-    prefArray = [NSJSONSerialization JSONObjectWithData:preferenceData options:NSJSONReadingMutableContainers error:nil];
-
-    // Fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-        if (users != nil) {
-            self.arrayOfUsers = [[NSMutableArray alloc] init];
-            [self.arrayOfUsers addObjectsFromArray:users];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-        // Reload the tableView now that there is new data
-        [self.userTableView reloadData];
-    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

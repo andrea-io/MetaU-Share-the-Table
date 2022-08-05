@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Message.h"
-#import "MessageCell.h"
+#import "SenderMessageCell.h"
 #import "Parse/Parse.h"
 #import "ParseLiveQuery/ParseLiveQuery-Swift.h"
 #import "UserInfo.h"

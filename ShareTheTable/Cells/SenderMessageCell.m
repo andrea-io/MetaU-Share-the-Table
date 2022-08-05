@@ -1,13 +1,13 @@
 //
-//  MessageCell.m
+//  SenderMessageCell.m
 //  ShareTheTable
 //
 //  Created by Andrea Gonzalez on 7/21/22.
 //
 
-#import "MessageCell.h"
+#import "SenderMessageCell.h"
 
-@implementation MessageCell
+@implementation SenderMessageCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -26,7 +26,6 @@ NSInteger const FOOD_PREF_TAG = 2;
     // Refresh button selected
     [self refreshButtons:button];
     
-    // Tag = 1, button pressed was a dietary preference
     if([button tag] == DIET_PREF_TAG) {
         PFObject* dietPreference = [[PFObject alloc] initWithClassName:@"Preference"];
         // Check if the button was selected or deselected
@@ -69,7 +68,6 @@ NSInteger const FOOD_PREF_TAG = 2;
                 }
             }];
         }
-    // Tag = 2, button pressed was a food preference
     } else if([button tag] == FOOD_PREF_TAG) {
         PFObject* foodPreference = [[PFObject alloc] initWithClassName:@"Preference"];
         // Check if the button was selected or deselected
