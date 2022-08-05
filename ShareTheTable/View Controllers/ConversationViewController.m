@@ -65,7 +65,7 @@
     [user fetch];
     
     // If message is from the current user logged in
-    if(PFUser.currentUser.username == user.username) {
+    if([PFUser.currentUser.username isEqualToString:user.username]) {
         SenderMessageCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SenderMessageCell" forIndexPath:indexPath];
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
