@@ -1296,7 +1296,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NJy-RK-lqJ">
-                                <rect key="frame" x="0.0" y="133" width="414" height="641"/>
+                                <rect key="frame" x="0.0" y="133" width="414" height="513"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YelpCell" rowHeight="297" id="f94-3M-Lts" customClass="YelpCell">
@@ -1349,9 +1349,9 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMz-Ew-I9j">
-                                <rect key="frame" x="39" y="796" width="336" height="31"/>
+                                <rect key="frame" x="39" y="723" width="336" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="View Profile"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Search For Users"/>
                                 <connections>
                                     <action selector="tapViewProfile:" destination="yFw-yM-eDd" eventType="touchUpInside" id="dw2-BH-X80"/>
                                 </connections>
@@ -1365,20 +1365,27 @@
                                     <action selector="tapLogoutButton:" destination="yFw-yM-eDd" eventType="touchUpInside" id="Gi1-Oj-cc7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find users based on your unique preferences!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qg-m3-CwK">
+                                <rect key="frame" x="39" y="688" width="336" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9fg-mU-AbM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NJy-RK-lqJ" firstAttribute="top" secondItem="02m-xZ-TQ1" secondAttribute="bottom" constant="8" symbolic="YES" id="1RU-aU-S0n"/>
+                            <constraint firstItem="9fg-mU-AbM" firstAttribute="bottom" secondItem="oMz-Ew-I9j" secondAttribute="bottom" constant="59" id="B3e-vc-rgO"/>
                             <constraint firstItem="NJy-RK-lqJ" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" id="BEk-vC-Cxw"/>
                             <constraint firstItem="02m-xZ-TQ1" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" constant="20" id="LNw-3G-oTg"/>
                             <constraint firstItem="oMz-Ew-I9j" firstAttribute="leading" secondItem="9fg-mU-AbM" secondAttribute="leading" constant="39" id="Yks-sK-V3L"/>
-                            <constraint firstAttribute="bottom" secondItem="oMz-Ew-I9j" secondAttribute="bottom" constant="69" id="ja5-WT-iwO"/>
-                            <constraint firstItem="oMz-Ew-I9j" firstAttribute="top" secondItem="NJy-RK-lqJ" secondAttribute="bottom" constant="22" id="kmT-2Q-gHA"/>
                             <constraint firstItem="NJy-RK-lqJ" firstAttribute="trailing" secondItem="9fg-mU-AbM" secondAttribute="trailing" id="pR8-B8-KNf"/>
                             <constraint firstItem="NJy-RK-lqJ" firstAttribute="top" secondItem="02m-xZ-TQ1" secondAttribute="bottom" constant="8" symbolic="YES" id="qFr-DK-gUF"/>
                             <constraint firstItem="9fg-mU-AbM" firstAttribute="trailing" secondItem="oMz-Ew-I9j" secondAttribute="trailing" constant="39" id="qxc-Ur-GR6"/>
                             <constraint firstItem="02m-xZ-TQ1" firstAttribute="top" secondItem="9fg-mU-AbM" secondAttribute="top" id="uKV-t5-Wat"/>
+                            <constraint firstItem="oMz-Ew-I9j" firstAttribute="top" secondItem="NJy-RK-lqJ" secondAttribute="bottom" constant="77" id="wXC-vf-ca6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aUQ-uY-s4H"/>
