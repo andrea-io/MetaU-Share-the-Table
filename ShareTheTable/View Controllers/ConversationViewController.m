@@ -73,7 +73,7 @@
         
         UIImage* image = [UIImage imageWithData:imageData];
         
-        cell.messageUserImage.image = image;
+        cell.senderMessageUserImage.image = image;
         
         return cell;
     } else {
@@ -81,11 +81,11 @@
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
         
-        NSData* imageData = [[NSData alloc] initWithBase64Encoding:[self.currentUserInfo.userPhotos objectAtIndex:0]];
+        NSData* imageData = [[NSData alloc] initWithBase64Encoding:[self.otherUser.userPhotos objectAtIndex:0]];
         
         UIImage* image = [UIImage imageWithData:imageData];
         
-        cell.messageUserImage.image = image;
+        cell.receiverMessageUserImage.image = image;
         
         return cell;
     }

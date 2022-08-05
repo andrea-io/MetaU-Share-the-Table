@@ -661,8 +661,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageBodyText" destination="V7Z-Iz-PD9" id="9BN-Q8-t7r"/>
-                                            <outlet property="messageUserImage" destination="jS1-Hz-C2f" id="ssr-2k-qHz"/>
                                             <outlet property="messageUserName" destination="UcC-pr-qOv" id="hKc-5o-D0U"/>
+                                            <outlet property="receiverMessageUserImage" destination="jS1-Hz-C2f" id="xLf-Yx-XxL"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SenderMessageCell" rowHeight="85" id="aoE-d6-kPZ" customClass="SenderMessageCell">
@@ -710,8 +710,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageBodyText" destination="Hw7-wq-2CC" id="csq-12-4Kf"/>
-                                            <outlet property="messageUserImage" destination="uSF-sV-6ST" id="V1M-nF-tVT"/>
                                             <outlet property="messageUserName" destination="ysG-rW-x4u" id="7iK-Yr-PGv"/>
+                                            <outlet property="senderMessageUserImage" destination="uSF-sV-6ST" id="ibj-bm-IQa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SenderMessageCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel* messageBodyText;
-@property (weak, nonatomic) IBOutlet UIImageView* messageUserImage;
+@property (weak, nonatomic) IBOutlet UIImageView* senderMessageUserImage;
 @property (weak, nonatomic) IBOutlet UILabel* messageUserName;
 
 
