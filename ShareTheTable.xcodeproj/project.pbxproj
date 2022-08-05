@@ -32,7 +32,6 @@
 		BA2FD21328775D11008BF56C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21228775D11008BF56C /* User.m */; };
 		BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */; };
 		BA2FD21C28779195008BF56C /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD21B28779195008BF56C /* QuestionViewController.m */; };
-		BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD229287897CB008BF56C /* SelfProfileViewController.m */; };
 		BA2FD22D2878982C008BF56C /* MessageInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */; };
 		BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BA2FD2AE287DEBDA008BF56C /* NSData+Base64.m */; };
 		BAD8595428904772007E70BE /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD8595328904772007E70BE /* Conversation.m */; };
@@ -114,8 +113,6 @@
 		BA2FD21828778FFA008BF56C /* AddPhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPhotosViewController.m; sourceTree = "<group>"; };
 		BA2FD21A28779195008BF56C /* QuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		BA2FD21B28779195008BF56C /* QuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
-		BA2FD228287897CB008BF56C /* SelfProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfProfileViewController.h; sourceTree = "<group>"; };
-		BA2FD229287897CB008BF56C /* SelfProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfProfileViewController.m; sourceTree = "<group>"; };
 		BA2FD22B2878982C008BF56C /* MessageInboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInboxViewController.h; sourceTree = "<group>"; };
 		BA2FD22C2878982C008BF56C /* MessageInboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageInboxViewController.m; sourceTree = "<group>"; };
 		BA2FD2AD287DEBDA008BF56C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "../../../Downloads/NSData_Base64/NSData+Base64.h"; sourceTree = "<group>"; };
@@ -389,8 +386,6 @@
 		BA2FD23328789908008BF56C /* Self Profile */ = {
 			isa = PBXGroup;
 			children = (
-				BA2FD228287897CB008BF56C /* SelfProfileViewController.h */,
-				BA2FD229287897CB008BF56C /* SelfProfileViewController.m */,
 			);
 			path = "Self Profile";
 			sourceTree = "<group>";
@@ -654,7 +649,6 @@
 				BA12E4342888D4510012CCED /* DetailProfileViewController.m in Sources */,
 				BA2FD20B28763A93008BF56C /* CreateAccountViewController.m in Sources */,
 				BA2FD2AF287DEBDA008BF56C /* NSData+Base64.m in Sources */,
-				BA2FD22A287897CB008BF56C /* SelfProfileViewController.m in Sources */,
 				BA12E42A2887703B0012CCED /* SearchViewController.m in Sources */,
 				BA2FD21928778FFA008BF56C /* AddPhotosViewController.m in Sources */,
 				BA12E43D288A08F60012CCED /* SenderMessageCell.m in Sources */,

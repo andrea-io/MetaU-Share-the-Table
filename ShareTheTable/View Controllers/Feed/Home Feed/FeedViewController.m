@@ -13,6 +13,8 @@
 #import <YelpAPI/YLPBusiness.h>
 #import "YelpCell.h"
 #import "Parse/Parse.h"
+#import "SceneDelegate.h"
+#import "InitialViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -66,12 +68,15 @@ NSInteger const NUMBER_OF_TAPS = 2;
     }];
 }
 
-- (IBAction)tapMessage:(id)sender {
-    [self performSegueWithIdentifier:@"feedToMessageSegue" sender:nil];
-}
+- (IBAction)tapLogoutButton:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+    SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
 
-- (IBAction)tapViewProfile:(id)sender {
-    [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InitialViewController *initialViewController = [storyboard instantiateViewControllerWithIdentifier:@"NavController"];
+    sceneDelegate.window.rootViewController = initialViewController;
 }
 
 - (IBAction)didDoubleTap:(UITapGestureRecognizer*)gesture {
