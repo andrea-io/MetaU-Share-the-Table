@@ -12,6 +12,8 @@
 #import "NSData+Base64.h"
 #import "SearchViewController.h"
 #import "DetailProfileViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "SceneDelegate.h"
 
 @interface ResultsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -67,6 +69,9 @@
     
     UIImage* image = [UIImage imageWithData:imageData];
     
+    cell.userMainPhotoImageView.layer.cornerRadius = 10.0;
+    cell.userMainPhotoImageView.clipsToBounds = YES;
+    
     cell.userMainPhotoImageView.image = image;
     cell.userFirstNameLabel.text = user.firstName;
     cell.userAgeLabel.text = [user.ageValue stringValue];
@@ -94,7 +99,11 @@
 }
 
 - (IBAction)didTapBack:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
+    SceneDelegate *sceneDelegate = (SceneDelegate *)[UIApplication sharedApplication].connectedScenes.allObjects.firstObject.delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SearchViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabNav"];
+    sceneDelegate.window.rootViewController = searchViewController;
 }
 
 @end

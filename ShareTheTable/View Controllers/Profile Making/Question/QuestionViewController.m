@@ -117,11 +117,13 @@ NSInteger const FOOD_PREF_TAG = 2;
     // Button was already selected
     if(button.selected == YES) {
         button.selected = NO;
-        [button setBackgroundColor:UIColor.clearColor];
+        [button setBackgroundColor:UIColor.systemMintColor];
+        button.layer.cornerRadius = 20;
     } else {
         // Button was not already selected
         button.selected = YES;
-        [button setBackgroundColor:UIColor.greenColor];
+        [button setBackgroundColor:UIColor.systemMintColor];
+        button.layer.cornerRadius = 20;
     }
 }
 
@@ -177,7 +179,6 @@ NSInteger const FOOD_PREF_TAG = 2;
     self.italianFoodButton.selected = NO;
     self.greekFoodButton.selected = NO;
     self.otherFoodButton.selected = NO;
-    
     self.allPreferences = [[NSMutableArray alloc] init];
 }
 

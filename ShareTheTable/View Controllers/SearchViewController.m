@@ -157,10 +157,12 @@ static CGFloat const kViewControllerLabelWidth = 100.0;
     if(button.selected == YES) {
         button.selected = NO;
         [button setBackgroundColor:UIColor.clearColor];
+        button.layer.cornerRadius = 20;
     } else {
         // Button was not already selected
         button.selected = YES;
-        [button setBackgroundColor:UIColor.greenColor];
+        [button setBackgroundColor:UIColor.systemMintColor];
+        button.layer.cornerRadius = 20;
     }
 }
 
@@ -172,10 +174,10 @@ static CGFloat const kViewControllerLabelWidth = 100.0;
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     CGFloat labelX = (CGRectGetWidth(self.view.frame) - kViewControllerLabelWidth) / 2;
-        self.ageRangeLabel.frame = CGRectMake(labelX, 110.0, kViewControllerLabelWidth, 20.0);
+        self.ageRangeLabel.frame = CGRectMake(labelX, 250, 290, 20.0);
 
         CGFloat sliderX = (CGRectGetWidth(self.view.frame) - kViewControllerRangeSliderWidth) / 2;
-        self.rangeSlider.frame = CGRectMake(sliderX, CGRectGetMaxY(self.ageRangeLabel.frame) + 20.0, 290.0, 20.0);
+        self.rangeSlider.frame = CGRectMake(sliderX, 300, 290.0, 20.0);
 }
 
 - (void)rangeSliderValueDidChange:(MARKRangeSlider *)slider {
@@ -187,11 +189,13 @@ static CGFloat const kViewControllerLabelWidth = 100.0;
     self.ageRangeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.ageRangeLabel.backgroundColor = UIColor.systemBackgroundColor;
         self.ageRangeLabel.numberOfLines = NUMBER_OF_LINES;
-        self.ageRangeLabel.textColor = UIColor.blueColor;
-    
+        self.ageRangeLabel.textColor = UIColor.systemMintColor;
+    [self.ageRangeLabel setFont:[UIFont boldSystemFontOfSize:20]];
+
     // Init slider
     self.rangeSlider = [[MARKRangeSlider alloc] initWithFrame:CGRectZero];
     self.rangeSlider.backgroundColor = UIColor.systemBackgroundColor;
+    
     [self.rangeSlider addTarget:self
                          action:@selector(rangeSliderValueDidChange:)
                forControlEvents:UIControlEventValueChanged];

@@ -8,6 +8,7 @@
 #import "DetailProfileViewController.h"
 #import "ConversationViewController.h"
 #import "Conversation.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DetailProfileViewController ()
 
@@ -49,10 +50,29 @@ NSInteger const PHOTO_COUNT = 0;
     }
     
     // Assign photos
+    self.detailUserPhotoOne.layer.cornerRadius = 10.0;
+    self.detailUserPhotoOne.clipsToBounds = YES;
+    
     self.detailUserPhotoOne.image = [detailUserPhotoImageObjects objectAtIndex:0];
+    
+    self.detailUserPhotoTwo.layer.cornerRadius = 10.0;
+    self.detailUserPhotoTwo.clipsToBounds = YES;
+    
     self.detailUserPhotoTwo.image = [detailUserPhotoImageObjects objectAtIndex:1];
+    
+    self.detailUserPhotoThree.layer.cornerRadius = 10.0;
+    self.detailUserPhotoThree.clipsToBounds = YES;
+    
     self.detailUserPhotoThree.image = [detailUserPhotoImageObjects objectAtIndex:2];
+    
+    self.detailUserPhotoFour.layer.cornerRadius = 10.0;
+    self.detailUserPhotoFour.clipsToBounds = YES;
+    
     self.detailUserPhotoFour.image = [detailUserPhotoImageObjects objectAtIndex:3];
+    
+    self.detailUserPhotoFive.layer.cornerRadius = 10.0;
+    self.detailUserPhotoFive.clipsToBounds = YES;
+    
     self.detailUserPhotoFive.image = [detailUserPhotoImageObjects objectAtIndex:4];
 
     // Set up all other text labels
