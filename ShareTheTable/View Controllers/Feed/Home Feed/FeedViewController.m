@@ -15,6 +15,7 @@
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "InitialViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
@@ -66,10 +67,6 @@ NSInteger const NUMBER_OF_TAPS = 2;
             [self.yelpTableView reloadData];
         });
     }];
-}
-
-- (IBAction)tapViewProfile:(id)sender {
-    [self performSegueWithIdentifier:@"feedToSearchSegue" sender:nil];
 }
 
 - (IBAction)tapLogoutButton:(id)sender {
@@ -137,6 +134,8 @@ NSInteger const NUMBER_OF_TAPS = 2;
         UIImage* restaurantImage = [UIImage imageWithData:restaurantImageData];
             
         cell.restaurantImageView.image = restaurantImage;
+        cell.restaurantImageView.layer.cornerRadius = 10.0;
+        cell.restaurantImageView.clipsToBounds = YES;
     }
         
     return cell;

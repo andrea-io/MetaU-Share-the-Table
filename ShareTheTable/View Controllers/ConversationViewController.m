@@ -11,6 +11,7 @@
 #import "Conversation.h"
 #import "UserInfo.h"
 #import "FeedViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ConversationViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -27,6 +28,8 @@
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
     self.messageTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    [self.textMessageBody.layer setCornerRadius:10.0f];
     
     [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 }
@@ -70,10 +73,15 @@
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
         
+        [cell.messageBodyText.layer setMasksToBounds:true];
+        cell.messageBodyText.layer.cornerRadius = 3;
+        
         NSData* imageData = [[NSData alloc] initWithBase64Encoding:[self.currentUserInfo.userPhotos objectAtIndex:0]];
         
         UIImage* image = [UIImage imageWithData:imageData];
         
+        cell.senderMessageUserImage.layer.cornerRadius = 10.0;
+        cell.senderMessageUserImage.clipsToBounds = YES;
         cell.senderMessageUserImage.image = image;
         
         return cell;
@@ -82,10 +90,15 @@
         cell.messageBodyText.text = message.messageBodyText;
         cell.messageUserName.text = user.username;
         
+        [cell.messageBodyText.layer setMasksToBounds:true];
+        cell.messageBodyText.layer.cornerRadius = 3;
+
         NSData* imageData = [[NSData alloc] initWithBase64Encoding:[self.otherUser.userPhotos objectAtIndex:0]];
         
         UIImage* image = [UIImage imageWithData:imageData];
         
+        cell.receiverMessageUserImage.layer.cornerRadius = 10.0;
+        cell.receiverMessageUserImage.clipsToBounds = YES;
         cell.receiverMessageUserImage.image = image;
         
         return cell;

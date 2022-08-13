@@ -13,6 +13,7 @@
 #import "ConversationViewController.h"
 #import "Conversation.h"
 #import "UserInfo.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MessageInboxViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -66,6 +67,8 @@
         NSData* imageData = [[NSData alloc] initWithBase64Encoding:imageString];
         UIImage* image = [UIImage imageWithData:imageData];
         
+        cell.conversationUserImage.layer.cornerRadius = 10.0;
+        cell.conversationUserImage.clipsToBounds = YES;
         cell.conversationUserImage.image = image;
     } else {
         UserInfo* user = [UserInfo objectWithoutDataWithObjectId:convo.userInfoOnePointer.objectId];
@@ -77,6 +80,8 @@
         NSData* imageData = [[NSData alloc] initWithBase64Encoding:imageString];
         UIImage* image = [UIImage imageWithData:imageData];
         
+        cell.conversationUserImage.layer.cornerRadius = 10.0;
+        cell.conversationUserImage.clipsToBounds = YES;
         cell.conversationUserImage.image = image;
     }
     
