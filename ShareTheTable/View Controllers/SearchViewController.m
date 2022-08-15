@@ -212,8 +212,9 @@ static CGFloat const kViewControllerLabelWidth = 100.0;
 }
 
 - (void)updateRangeText {
-    self.ageRangeLabel.text = [NSString stringWithFormat:@"%0.2f - %0.2f",
-                           self.rangeSlider.leftValue, self.rangeSlider.rightValue];
+    
+    self.ageRangeLabel.text = [NSString stringWithFormat:@"%D - %D",
+                           (int) self.rangeSlider.leftValue, (int) self.rangeSlider.rightValue];
 }
 
 @end
